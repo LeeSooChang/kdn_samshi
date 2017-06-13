@@ -59,29 +59,25 @@ public class MemberController {
 	public String insertMemberForm(NoticePageBean noticebean, Model model, ReviewPageBean bean) {
 		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
 		model.addAttribute("noticeList", noticeList);
-		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
+		model.addAttribute("noticeBoardContent", "notice_board/listBoardFromHome.jsp");
 		
 		List<Review> list = reviewService.searchAll(bean);
 		model.addAttribute("list", list);
-		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
+		model.addAttribute("reviewBoardContent", "review_board/listReviewFromHome.jsp");
 		
 		List<Diet> dietList = dietService.searchAll();
 		model.addAttribute("dietList", dietList);
-		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
+		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenuFromHome.jsp");
 		
 		model.addAttribute("content", "member/register.jsp");
 		
 		List<Ranking> rankingList = rankingService.searchN();
-		System.out.println("저녁"+rankingList);
 		model.addAttribute("rankingList", rankingList);
 		List<Ranking> rankingM = rankingService.searchM();
-		System.out.println("아침"+rankingM);
 		model.addAttribute("rankingM", rankingM);
 		List<Ranking> rankingH = rankingService.searchH();
-		System.out.println("한식"+rankingH);
 		model.addAttribute("rankingH", rankingH);
 		List<Ranking> rankingI = rankingService.searchI();
-		System.out.println("일품"+rankingI);
 		model.addAttribute("rankingI", rankingI);
 		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
@@ -130,15 +126,15 @@ public class MemberController {
 	public String myPage(HttpSession session, NoticePageBean noticebean, Model model, ReviewPageBean bean) {
 		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
 		model.addAttribute("noticeList", noticeList);
-		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
+		model.addAttribute("noticeBoardContent", "notice_board/listBoardFromHome.jsp");
 		
 		List<Review> list = reviewService.searchAll(bean);
 		model.addAttribute("list", list);
-		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
+		model.addAttribute("reviewBoardContent", "review_board/listReviewFromHome.jsp");
 		
 		List<Diet> dietList = dietService.searchAll();
 		model.addAttribute("dietList", dietList);
-		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
+		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenuFromHome.jsp");
 		
 		int mno = (Integer) session.getAttribute("mno");
 		System.out.println(memberService.search(mno));
@@ -146,16 +142,12 @@ public class MemberController {
 		model.addAttribute("content", "member/myPage.jsp");
 		
 		List<Ranking> rankingList = rankingService.searchN();
-		System.out.println("저녁"+rankingList);
 		model.addAttribute("rankingList", rankingList);
 		List<Ranking> rankingM = rankingService.searchM();
-		System.out.println("아침"+rankingM);
 		model.addAttribute("rankingM", rankingM);
 		List<Ranking> rankingH = rankingService.searchH();
-		System.out.println("한식"+rankingH);
 		model.addAttribute("rankingH", rankingH);
 		List<Ranking> rankingI = rankingService.searchI();
-		System.out.println("일품"+rankingI);
 		model.addAttribute("rankingI", rankingI);
 		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
@@ -171,8 +163,6 @@ public class MemberController {
 	
 	@RequestMapping(value="updateMember.do", method=RequestMethod.POST)
 	public void updateMember(Member member, Model model, HttpServletResponse response) throws IOException {
-		System.out.println("this is member" + member);
-		
 		memberService.update(member);
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out= response.getWriter();
