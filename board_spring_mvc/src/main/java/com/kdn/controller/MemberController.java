@@ -21,6 +21,7 @@ import com.kdn.model.biz.MemberService;
 import com.kdn.model.biz.NoticeBoardService;
 import com.kdn.model.biz.RankingService;
 import com.kdn.model.biz.ReviewService;
+import com.kdn.model.biz.SuyoService;
 import com.kdn.model.domain.Anonymity;
 import com.kdn.model.domain.AnonymityPageBean;
 import com.kdn.model.domain.Diet;
@@ -31,6 +32,7 @@ import com.kdn.model.domain.PageBean;
 import com.kdn.model.domain.Ranking;
 import com.kdn.model.domain.Review;
 import com.kdn.model.domain.ReviewPageBean;
+import com.kdn.model.domain.Suyo;
 
 @Controller
 public class MemberController {
@@ -48,6 +50,9 @@ public class MemberController {
 	
 	@Autowired
 	private RankingService rankingService;
+	
+	@Autowired
+	private SuyoService suyoService;
 	
 	@Autowired
 	private AnonymityService anonymityService;
@@ -85,8 +90,10 @@ public class MemberController {
 		model.addAttribute("rankingH", rankingH);
 		List<Ranking> rankingI = rankingService.searchI();
 		model.addAttribute("rankingI", rankingI);
-		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
+		
+		List<Suyo> suyoCountList = suyoService.getSuyoCountAll();
+		model.addAttribute("suyoCountList", suyoCountList);
 		
 //		익명게시판
 		List<Anonymity> anonymityList = anonymityService.searchAll(anonymitybean);

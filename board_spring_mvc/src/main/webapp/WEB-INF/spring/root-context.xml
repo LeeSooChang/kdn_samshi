@@ -64,7 +64,7 @@
 				<value>/WEB-INF/spring/Suyo_query.xml</value>
 				<value>/WEB-INF/spring/Ranking_query.xml</value>
 				<value>/WEB-INF/spring/Anonymity_query.xml</value>
-				
+				<value>/WEB-INF/spring/Counter_query.xml</value>
 			</list>
 		</property>
 	</bean>

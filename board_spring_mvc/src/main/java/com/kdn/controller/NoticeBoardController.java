@@ -14,8 +14,12 @@ import java.util.List;
 
 
 
+
+
 import javax.servlet.http.HttpServletRequest;
  
+
+
 
 
 
@@ -48,11 +52,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
+
+
 import com.kdn.model.biz.AnonymityService;
 import com.kdn.model.biz.DietService;
 import com.kdn.model.biz.NoticeBoardService;
 import com.kdn.model.biz.RankingService;
 import com.kdn.model.biz.ReviewService;
+import com.kdn.model.biz.SuyoService;
 import com.kdn.model.domain.Anonymity;
 import com.kdn.model.domain.AnonymityPageBean;
 import com.kdn.model.domain.Diet;
@@ -62,6 +69,7 @@ import com.kdn.model.domain.PageBean;
 import com.kdn.model.domain.Ranking;
 import com.kdn.model.domain.Review;
 import com.kdn.model.domain.ReviewPageBean;
+import com.kdn.model.domain.Suyo;
  
 @Controller
 public class NoticeBoardController {
@@ -89,6 +97,9 @@ public class NoticeBoardController {
 	
 	@Autowired
 	private AnonymityService anonymityService;
+	
+	@Autowired
+	private SuyoService suyoService;
 	
 	@RequestMapping(value="insertNoticeBoardForm.do", method=RequestMethod.GET)
 	public String insertBoardForm(Model model, ReviewPageBean bean) {
@@ -122,22 +133,20 @@ public class NoticeBoardController {
 		
 		List<Diet> dietList = dietService.searchAll();
 		model.addAttribute("dietList", dietList);
-		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
+		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenuFromHome.jsp");
 		
 		List<Ranking> rankingList = rankingService.searchN();
-		System.out.println("저녁"+rankingList);
 		model.addAttribute("rankingList", rankingList);
 		List<Ranking> rankingM = rankingService.searchM();
-		System.out.println("아침"+rankingM);
 		model.addAttribute("rankingM", rankingM);
 		List<Ranking> rankingH = rankingService.searchH();
-		System.out.println("한식"+rankingH);
 		model.addAttribute("rankingH", rankingH);
 		List<Ranking> rankingI = rankingService.searchI();
-		System.out.println("일품"+rankingI);
 		model.addAttribute("rankingI", rankingI);
+		model.addAttribute("rankingBoardContent", "ranking_board/listBoardFromHome.jsp");
 		
-		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
+		List<Suyo> suyoCountList = suyoService.getSuyoCountAll();
+		model.addAttribute("suyoCountList", suyoCountList);
 		
 //		익명게시판
 		List<Anonymity> anonymityList = anonymityService.searchAll(anonymitybean);

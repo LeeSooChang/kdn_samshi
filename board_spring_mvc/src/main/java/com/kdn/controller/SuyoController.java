@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kdn.model.biz.CounterService;
 import com.kdn.model.biz.DietService;
 import com.kdn.model.biz.SuyoService;
+import com.kdn.model.domain.Counter;
 import com.kdn.model.domain.Diet;
 import com.kdn.model.domain.Suyo;
  
@@ -39,14 +41,43 @@ public class SuyoController {
 	@Autowired
 	private DietService dietService;
 	
+	@Autowired
+	private CounterService counterService;
+	
 	@RequestMapping(value="addSuyo.do", method=RequestMethod.GET)
 	public String addSuyo(int dietNo, int mno, Model model, HttpSession session, 
 						HttpServletResponse response, HttpServletRequest request) {
 		Suyo suyo = new Suyo(dietNo, mno);
 		int findDietNo = dietNo;
 		Diet findDiet = dietService.searchDiet(dietNo);
-		Suyo isSuyo = null;
+		
+		//카운터 얻어오기
+		int count = 0;
+		String date = findDiet.getDietDate();
+		Counter counter = counterService.search(date);
 		int dietScode = findDiet.getScode();
+		
+		if(dietScode == 1){
+			counter.setMcnt(counter.getMcnt() + 1);
+			count = counter.getMcnt();
+		}
+		else if(dietScode == 2){
+			counter.setIcnt(counter.getIcnt() + 1);
+			count = counter.getIcnt();
+		}
+		else if(dietScode == 3){
+			counter.setHcnt(counter.getHcnt() + 1);
+			count = counter.getHcnt();
+		}
+		else{
+			counter.setEcnt(counter.getEcnt() + 1);
+			count = counter.getEcnt();
+		}
+		
+		counterService.update(counter);
+		
+		Suyo isSuyo = null;
+		
 		switch (dietScode) {
 		case 2:
 			findDietNo++;
@@ -113,18 +144,33 @@ public class SuyoController {
 			break;
 		}
 		List<Suyo> list = suyoService.getSuyoCountAll(); 
-		int count = 0;
+		
 		for (Suyo suyo_ : list) {
 			if(suyo_.getDietNo() == dietNo){
 				count = suyo_.getSuyoCountAll();
 				break;
 			}
 		}	
-		
+
+		System.out.println("counter : " + counter.getMcnt());
+		System.out.println("counter : " + counter.getIcnt());
+		System.out.println("counter : " + counter.getHcnt());
+		System.out.println("counter : " + counter.getEcnt());
 		if(count == 5){
-			int scode = dietService.searchDiet(dietNo).getScode();
-			session.setAttribute("win", scode);
-			System.out.println(mno + " is Win ");
+			 response.setContentType("text/html; charset=UTF-8");
+			 PrintWriter writer = null;
+			try {
+				writer = response.getWriter();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		     writer.println("<script type='text/javascript'>");
+		     writer.println("alert('당첨되셨습니다 . 축하합니다.');");
+		     writer.println("history.go(-1);");
+		     writer.println("</script>");
+		     writer.flush();
+		     return "index";
 		}
 		return "redirect:listWeeklyMenu.do";
 	}
