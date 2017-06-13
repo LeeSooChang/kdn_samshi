@@ -133,7 +133,7 @@ public class NoticeBoardController {
 		
 		List<Diet> dietList = dietService.searchAll();
 		model.addAttribute("dietList", dietList);
-		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
+		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenuFromHome.jsp");
 		
 		List<Ranking> rankingList = rankingService.searchN();
 		model.addAttribute("rankingList", rankingList);
@@ -143,7 +143,7 @@ public class NoticeBoardController {
 		model.addAttribute("rankingH", rankingH);
 		List<Ranking> rankingI = rankingService.searchI();
 		model.addAttribute("rankingI", rankingI);
-		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
+		model.addAttribute("rankingBoardContent", "ranking_board/listBoardFromHome.jsp");
 		
 		List<Suyo> suyoCountList = suyoService.getSuyoCountAll();
 		model.addAttribute("suyoCountList", suyoCountList);
