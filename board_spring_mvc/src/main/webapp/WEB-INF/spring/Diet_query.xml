@@ -58,7 +58,7 @@
 	<select id = "searchDiet" parameterType="int" resultType="diet">
 		select dietNo, scode, to_char(DIETDATE, 'yyyy-mm-dd') dietDate, mainDish, sideDish
 		from diet 
-		where dietNo = #{dietNo};
+		where dietNo = #{dietNo}
 	</select>
 	
 	<delete id = "delete" parameterType="int">
