@@ -405,18 +405,22 @@
 		</div>
 		<div class="clearfix hidden-xs" style="width: 100%; height: 50px;"></div>
 		<div class="row">
-			<div class="col-md-3 text-center">
-				<c:if test="${!empty addMenuContent}">
-					<jsp:include page="${addMenuContent}" />
-				</c:if>
-				<c:if test="${!empty updateMenuContent}">
-					<jsp:include page="${updateMenuContent}" />
-				</c:if>
-				<c:if test="${empty addMenuContent}">
-					<article id="weeklyMenuContent">
-						<jsp:include page="${weeklyMenuContent}" />
-					</article>
-				</c:if>
+			<div class="row text-center">
+					<c:if test = "${empty addMenuContent && empty updateMenuContent}">
+						<article id="weeklyMenuContent">
+							<jsp:include page="${weeklyMenuContent}"/>
+						</article>
+					</c:if>
+					<c:if test = "${!empty addMenuContent}">
+						<article id="addMenuContent">
+							<jsp:include page="${addMenuContent}"/>	
+						</article>
+					</c:if>
+					<c:if test = "${!empty updateMenuContent}">
+						<article id="updateMenuContent">
+							<jsp:include page="${updateMenuContent}"/>	
+						</article>
+					</c:if>
 			</div>
 		</div>
 	</div>
