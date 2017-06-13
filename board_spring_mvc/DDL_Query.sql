@@ -13,6 +13,14 @@ create table suyo (
 					mno NUMBER REFERENCES member(mno)
 )
 
+select s.dietno, s.mno, d.dietdate
+from suyo s, (	select dietno, dietdate
+				from diet
+				) d
+where s.dietno = d.dietno;
+
+select * from diet;
+
 select * from suyo
 order by dietno;
 
