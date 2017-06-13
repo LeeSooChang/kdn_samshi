@@ -85,5 +85,16 @@ public class DietSeviceImpl implements DietService {
 		}
 	}
 
+	@Override
+	public Diet searchDiet(int dietNo) {
+		try{
+			return dao.search(dietNo);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+	         throw new UpdateException("DB SearchDiet error");
+		}
+	}
+
 	
 }

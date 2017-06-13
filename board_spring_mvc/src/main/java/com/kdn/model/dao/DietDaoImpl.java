@@ -62,4 +62,9 @@ public class DietDaoImpl implements DietDao {
 		return session.selectOne("diet.search", test);
 	}
 
+	@Override
+	public Diet search(int dietNo) {
+		return session.selectOne("diet.searchDiet", dietNo);
+	}
+
 }

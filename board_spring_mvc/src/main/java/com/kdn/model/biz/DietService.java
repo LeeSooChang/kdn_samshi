@@ -10,6 +10,7 @@ public interface DietService {
 	public void update(Diet diet);
 	public void remove(int dietNo);
 	public Diet search(String dietDate, int scode);
+	public Diet searchDiet(int dietNo);
 	public List<Diet> searchAll();
 	public List<Diet> searchPrefer(int mno);
 }

@@ -42,6 +42,9 @@
 </script>
 </head>
 <body>
+	<c:if test = "${win == 1}">
+		window.open("open.jsp", "open2", "width = 200, height = 100");
+	</c:if>
 	<div style ="float:left;">
 		<c:if test = "${!empty mno && grade=='Y' }">
 			<a href = "addWeeklyMenuForm.do" >Add Menu</a>

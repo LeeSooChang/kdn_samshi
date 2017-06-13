@@ -13,6 +13,7 @@ public interface DietDao {
 	public List<Diet> 	search5Diet() ;
 	public List<Diet>	searchPrefer(int mno);
 	public Diet 	search(String dietDate, int scode) ;
+	public Diet 	search(int dietNo) ;
 	public int 		getDietNo() ;
 	/*public void 	addFiles(List<FileBean> files, int dietNo) ;
 	public void 	removeFiles(int bno) ;*/
