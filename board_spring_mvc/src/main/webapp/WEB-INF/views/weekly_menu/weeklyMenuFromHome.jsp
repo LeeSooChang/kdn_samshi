@@ -51,12 +51,11 @@
 </script>
 </head>
 <body>
-	<div align="center">
 	<c:if test = "${!empty win && win == 1}">
 		<body onload="openWinnerPopUp()">
 	</c:if>
 	
-	<div style ="float:left;">
+	<div align="center">
 		<c:if test = "${!empty mno && grade=='Y' }">
 			<a href = "addWeeklyMenuForm.do" class="btn btn-default">등록</a>
 			<a href = "updateWeeklyMenuForm.do" class="btn btn-danger">수정</a>
