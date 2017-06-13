@@ -11,7 +11,6 @@
 <link href="./css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="./js/bootstrap-toggle.min.js"></script>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
-
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 
@@ -39,9 +38,17 @@
 		$("#fname").val(fname);
 		$('#scode').val(scode);
 	}
+	
+	function openWinnerPopUp(){
+		  	window.open("open.jsp","openPop","width=400, height=400");
+	}
 </script>
 </head>
 <body>
+	<c:if test = "${!empty win && win == 1}">
+		<body onload="openWinnerPopUp()">
+	</c:if>
+	
 	<div style ="float:left;">
 		<c:if test = "${!empty mno && grade=='Y' }">
 			<a href = "addWeeklyMenuForm.do" >Add Menu</a>
@@ -271,17 +278,17 @@
 									</c:if>
 									<br/>식사인원 : ${suyoCountList[ dietList[3].dietNo-1 ].suyoCountAll }
 					</td>
-					<td colspan = 2><a href = "#" data-toggle="modal" data-target="#reviewModal" onclick = "writeReviewInMenu('${dietList[8].mainDish}','${dietList[8].scode}')">${dietList[8].mainDish }</a>
-					<br/>${dietList[8].sideDish }<br/>
+					<td colspan = 2><a href = "#" data-toggle="modal" data-target="#reviewModal" onclick = "writeReviewInMenu('${dietList[7].mainDish}','${dietList[7].scode}')">${dietList[7].mainDish }</a>
+					<br/>${dietList[7].sideDish }<br/>
 							   		<c:if test="${ !empty mno }">
-										<a href="addSuyo.do?dietNo=${dietList[8].dietNo}&mno=${mno}">
+										<a href="addSuyo.do?dietNo=${dietList[7].dietNo}&mno=${mno}">
 											<span class="glyphicon glyphicon-thumbs-up"></span>
 										</a>
-										<a href="minusSuyo.do?dietNo=${dietList[8].dietNo}&mno=${mno}">
+										<a href="minusSuyo.do?dietNo=${dietList[7].dietNo}&mno=${mno}">
 											<span class="glyphicon glyphicon-thumbs-down"></span>
 										</a>
 									</c:if>
-									<br/>식사인원 : ${suyoCountList[ dietList[8].dietNo-1 ].suyoCountAll }
+									<br/>식사인원 : ${suyoCountList[ dietList[7].dietNo-1 ].suyoCountAll }
 					</td>
 					<td colspan = 2><a href = "#" data-toggle="modal" data-target="#reviewModal" onclick = "writeReviewInMenu('${dietList[11].mainDish}','${dietList[11].scode}')">${dietList[11].mainDish }</a>
 					<br/>${dietList[11].sideDish }<br/>
