@@ -84,7 +84,6 @@ public class HomeController {
 		model.addAttribute("rankingH", rankingH);
 		List<Ranking> rankingI = rankingService.searchI();
 		model.addAttribute("rankingI", rankingI);
-		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoardFromHome.jsp");
 		
 		List<Suyo> suyoCountList = suyoService.getSuyoCountAll();
