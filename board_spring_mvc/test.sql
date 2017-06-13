@@ -1,4 +1,18 @@
+create table counter(
+	cdate	date not null,
+	mcnt	number default 0,
+	icnt	number default 0,
+	hcnt	number default 0,
+	ecnt	number default 0
+)
+select *
+from counter
 
+
+drop table counter;
+
+select *
+from member;
 
 INSERT INTO diet(dietno, scode, dietdate, maindish, sidedish)
 VALUES(diet_no.NEXTVAL,1,'2017-06-12', '계란장조림','잡곡밥김치국<br/>숙주나물<br/>깍두기<br/>새우브로콜리죽');

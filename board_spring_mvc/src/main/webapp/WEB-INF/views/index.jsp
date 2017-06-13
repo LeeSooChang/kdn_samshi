@@ -30,9 +30,6 @@
 		frm.submit();
 	}
 
-/* 	function openPop() {
-		window.open("open.jsp", "openPop", "width=400, height=400");
-	} */
 </script>
 
 <!-- CSS includes -->
@@ -41,8 +38,7 @@
 
 <link href="fonts/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet">
-<link
-	href="https://www.shieldui.com/shared/components/latest/css/light/all.min.css"
+<link href="https://www.shieldui.com/shared/components/latest/css/light/all.min.css"
 	rel="stylesheet" />
 <link href="css/theme.css" rel="stylesheet">
 
@@ -142,6 +138,7 @@
 #loginFooter a {
 	color: inherit;
 }
+
 </style>
 
 <script type="text/javascript">
@@ -190,7 +187,7 @@ function openpopup(){
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a href="/board" title="My Restaurant Bootstrap Theme"> <img
+			<a href="/board" title="KDN FoodCourt"> <img
 				class="img-responsive" src="images/kdn_logo.jpg"
 				alt="My Restaurant Bootstrap Theme" />
 			</a>
@@ -199,20 +196,19 @@ function openpopup(){
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#news" class="smooth-scroll">Notice</a></li>
-				<li><a href="#services" class="smooth-scroll">Menu</a></li>
-				<li><a href="#about" class="smooth-scroll">Review</a></li>
-				<li><a href="#dishes" class="smooth-scroll">Anonymity </a></li>
-				<li><a href="#gallery" class="smooth-scroll">TOP</a></li>
+				<li><a href="#news" class="smooth-scroll">공지</a></li>
+				<li><a href="#services" class="smooth-scroll">메뉴</a></li>
+				<li><a href="#about" class="smooth-scroll">리뷰</a></li>
+				<li><a href="#gallery" class="smooth-scroll">랭킹</a></li>
+				<li><a href="#dishes" class="smooth-scroll">제안</a></li>
 				<c:if test="${empty mno}">
-					<li><a href="registerForm.do" class="smooth-scroll">
-							Register </a></li>
+					<li><a href="registerForm.do" class="smooth-scroll">회원가입</a></li>
 					<li><a href="" class="smooth-scroll" data-toggle="modal"
-						data-target="#myModal"> Login </a></li>
+						data-target="#myModal"> 로그인 </a></li>
 				</c:if>
 				<c:if test="${!empty mno}">
-					<li><a href="myPage.do" class="smooth-scroll"> MyPage </a></li>
-					<li><a href="logout.do" class="smooth-scroll"> Logout </a></li>
+					<li><a href="myPage.do" class="smooth-scroll"> 마이페이지 </a></li>
+					<li><a href="logout.do" class="smooth-scroll"> 로그아웃 </a></li>
 				</c:if>
 			</ul>
 		</div>
@@ -368,27 +364,24 @@ function openpopup(){
 						<img src="images/carousel1.jpg" alt="carousel1"
 							style="width: 100%" />
 						<div class="carousel-caption">
-							<h2>"People who love to eat are always the best people"</h2>
-							<p>Julia Child</p>
+							<h2>"One man with courage makes a majority."</h2>
+							<p>Andrew Jackson</p>
 						</div>
 					</div>
 					<div class="item">
 						<img src="images/carousel2.jpg" alt="carousel2"
 							style="width: 100%" />
 						<div class="carousel-caption">
-							<h2>What does it come from?</h2>
-							<p>Contrary to popular belief, Lorem Ipsum is not simply
-								random text.</p>
+							<h2>"When men are employed, they are best contented."</h2>
+							<p>Benjamin Franklin</p>
 						</div>
 					</div>
 					<div class="item">
 						<img src="images/carousel3.jpg" alt="carousel3"
 							style="width: 100%">
 						<div class="carousel-caption">
-							<h2>Why do we use it?</h2>
-							<p>It is a long established fact that a reader will be
-								distracted by the readable content of a page when looking at its
-								layout.</p>
+							<h2>"Happiness is a warm puppy."</h2>
+							<p>Charles M. Schulz</p>
 						</div>
 					</div>
 				</div>
@@ -409,7 +402,7 @@ function openpopup(){
 <div class="container-news">
 	<div class="container">
 		<div class="page-header" id="news">
-			<h1 class="text-center text-danger">Notice</h1>
+			<h1 class="text-center text-danger">NOTICE</h1>
 		</div>
 		<div class="row">
 			<div class="col-md-8">
@@ -459,7 +452,7 @@ function openpopup(){
 <div class="container-about">
 	<div class="container">
 		<div class="page-header" id="about">
-			<h1 class="text-center text-danger">Review</h1>
+			<h1 class="text-center text-danger">REVIEW</h1>
 		</div>
 		<div class="row">
 			<div class="col-md-4 text-center">
@@ -470,27 +463,11 @@ function openpopup(){
 		</div>
 	</div>
 </div>
-<div class="container-dishes">
-	<div class="clearfix hidden-xs" style="width: 100%; height: 10px;"></div>
-	<div class="container">
-		<div class="page-header" id="dishes">
-			<h1 class="text-center text-danger">Anonymity Board</h1>
-		</div>
-		<div class="row">
-			<div class="col-md-6">
-				<article id="reviewBoardContent">
-					<jsp:include page="${anonymityBoardContent}" />
-				</article>
-			</div>
-		</div>
-	</div>
-	<div class="clearfix hidden-xs" style="width: 100%; height: 50px;"></div>
-</div>
 
 <div class="container-gallery">
 	<div class="container">
 		<div class="page-header" id="gallery">
-			<h1 class="text-center text-default">Ranking</h1>
+			<h1 class="text-center text-default">RANKING</h1>
 		</div>
 		<div id="rankingBoardContent" class="row">
 			<div class="col-md-12 text-center">
@@ -505,6 +482,22 @@ function openpopup(){
 			<article id="rankingBoardContent">
 				<jsp:include page="${rankingBoardContent}" />
 			</article>
+		</div>
+	</div>
+	<div class="clearfix hidden-xs" style="width: 100%; height: 50px;"></div>
+</div>
+<div class="container-dishes" style="background-color:white">
+	<div class="clearfix hidden-xs" style="width: 100%; height: 10px;"></div>
+	<div class="container">
+		<div class="page-header" id="dishes">
+			<h1 class="text-center text-danger">SUGGESTION</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<article id="reviewBoardContent">
+					<jsp:include page="${anonymityBoardContent}" />
+				</article>
+			</div>
 		</div>
 	</div>
 	<div class="clearfix hidden-xs" style="width: 100%; height: 50px;"></div>
@@ -553,98 +546,6 @@ function openpopup(){
 		</div>
 	</div>
 </div>
-
-<!--<div class="container-gallery">
-    <div class="container">
-        <div class="page-header" id="gallery">
-            <h1 class="text-center text-default">Gallery</h1>
-        </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <ul class="list-unstyled text-center">
-               <li class="filter btn btn-success" data-filter=".dishes">Dishes</li>
-                    <li class="filter btn btn-success" data-filter=".restaurant">Restaurant</li>
-                    <li class="filter btn btn-success" data-filter=".garden">Garden</li>
-                    <li class="filter btn btn-success" data-filter=".kids">Kids</li>
-               <li class="filter btn btn-success" data-filter="all">All</li>
-                </ul>
-            </div>
-            <div class="mix restaurant col-md-4">
-                <a href="images/gallery/gallery1.jpg" class="img-wrapper">
-                    <img class="img-responsive" src="images/gallery/gallery1.jpg" />
-                </a>
-            </div>
-            <div class="mix restaurant col-md-4">
-                <a href="images/gallery/gallery2.jpg" class="img-wrapper">
-                    <img class="img-responsive" src="images/gallery/gallery2.jpg" />
-                </a>
-            </div>
-            <div class="mix restaurant col-md-4">
-                <a href="images/gallery/gallery3.jpg" class="img-wrapper">
-                    <img class="img-responsive" src="images/gallery/gallery3.jpg" />
-                </a>
-            </div>
-            <div class="mix restaurant col-md-4">
-                <a href="images/gallery/gallery4.jpg" class="img-wrapper">
-                    <img class="img-responsive" src="images/gallery/gallery4.jpg" />
-                </a>
-            </div>
-            <div class="mix garden col-md-4">
-                <a href="images/gallery/gallery5.jpg" class="img-wrapper">
-                    <img class="img-responsive" src="images/gallery/gallery5.jpg" />
-                </a>
-            </div>
-            <div class="mix garden col-md-4">
-                <a href="images/gallery/gallery6.jpg" class="img-wrapper">
-                    <img class="img-responsive" src="images/gallery/gallery6.jpg" />
-                </a>
-            </div>
-            <div class="mix dishes col-md-4">
-                <a href="images/gallery/gallery7.jpg" class="img-wrapper">
-                    <img class="img-responsive" src="images/gallery/gallery7.jpg" />
-                </a>
-            </div>
-            <div class="mix dishes col-md-4">
-                <a href="images/gallery/gallery8.jpg" class="img-wrapper">
-                    <img class="img-responsive" src="images/gallery/gallery8.jpg" />
-                </a>
-            </div>
-            <div class="mix dishes col-md-4">
-                <a href="images/gallery/gallery9.jpg" class="img-wrapper">
-                    <img class="img-responsive" src="images/gallery/gallery9.jpg" />
-                </a>
-            </div>
-         <div class="mix dishes col-md-4">
-                <a href="images/gallery/gallery10.jpg" class="img-wrapper">
-                    <img class="img-responsive" src="images/gallery/gallery10.jpg" />
-                </a>
-            </div>
-         <div class="mix dishes col-md-4">
-                <a href="images/gallery/gallery11.jpg" class="img-wrapper">
-                    <img class="img-responsive" src="images/gallery/gallery11.jpg" />
-                </a>
-            </div>
-         <div class="mix dishes col-md-4">
-                <a href="images/gallery/gallery12.jpg" class="img-wrapper">
-                    <img class="img-responsive" src="images/gallery/gallery12.jpg" />
-                </a>
-            </div>
-         <div class="mix kids col-md-4">
-                <a href="images/gallery/gallery13.jpg" class="img-wrapper">
-                    <img class="img-responsive" src="images/gallery/gallery13.jpg" />
-                </a>
-            </div>
-         <div class="mix kids col-md-4">
-                <a href="images/gallery/gallery14.jpg" class="img-wrapper">
-                    <img class="img-responsive" src="images/gallery/gallery13.jpg" />
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="clearfix hidden-xs" style="width:100%; height:50px;"></div>
-</div>
- -->
-
 
 <footer id="subfooter" class="clearfix">
 	<div class="container">

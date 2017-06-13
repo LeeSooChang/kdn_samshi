@@ -39,9 +39,9 @@
 </head>
 <body>
 	<div class="main">
-		<div class="check_member_grade">
+		<div class="check_member_grade" align="right">
 			<c:if test="${!empty grade and grade=='Y' }">
-				<a href="insertNoticeBoardForm.do">NEW</a>
+				<a href="insertNoticeBoardForm.do"  class="btn btn-default">등록</a>
 			</c:if>
 		</div>
 		<form id="nfrm">
@@ -49,6 +49,7 @@
 			<input type="hidden" id="nno" name="nno" />
 			<c:forEach var="noticeBoard" items="${noticeList}">
 				<div class="col-md-2 text-center">
+					<br/>
 					<p class="update_delete_option">
 						<c:choose>
 							<c:when test="${!empty grade and grade=='Y'}">
