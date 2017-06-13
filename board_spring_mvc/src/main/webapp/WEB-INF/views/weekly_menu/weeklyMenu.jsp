@@ -69,7 +69,7 @@
     <br/><br/>
     </div>
 	<div class="menulist">
-		<table class="table" id="tableid" width = "1100px">
+		<table class="table text-center" id="tableid" width = "1100px">
 			<thead>
 				<tr>
 					<th rowspan = 2></th><th colspan = 2>월</th><th colspan = 2>화</th><th colspan = 2>수</th><th colspan = 2>목</th><th colspan = 2>금</th>

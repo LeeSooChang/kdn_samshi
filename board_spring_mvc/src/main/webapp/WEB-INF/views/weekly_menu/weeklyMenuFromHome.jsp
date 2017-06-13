@@ -51,15 +51,12 @@
 </script>
 </head>
 <body>
-<<<<<<< HEAD
 	<div align="center">
-=======
 	<c:if test = "${!empty win && win == 1}">
 		<body onload="openWinnerPopUp()">
 	</c:if>
 	
 	<div style ="float:left;">
->>>>>>> branch 'master' of https://github.com/LeeSooChang/kdn_samshi.git
 		<c:if test = "${!empty mno && grade=='Y' }">
 			<a href = "addWeeklyMenuForm.do" class="btn btn-default">등록</a>
 			<a href = "updateWeeklyMenuForm.do" class="btn btn-danger">수정</a>
@@ -67,7 +64,7 @@
     <br/><br/>
     </div>
 	<div class="menulist">
-		<table class="table" id="tableid" width = "1100px">
+		<table class="table text-center" width = "1100px">
 			<thead>
 				<tr>
 					<th rowspan = 2></th><th colspan = 2>월</th><th colspan = 2>화</th><th colspan = 2>수</th><th colspan = 2>목</th><th colspan = 2>금</th>
