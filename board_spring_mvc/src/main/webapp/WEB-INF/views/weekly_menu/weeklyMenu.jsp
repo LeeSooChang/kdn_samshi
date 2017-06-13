@@ -46,8 +46,8 @@
 </script>
 </head>
 <body>
-	<c:if test = "${!empty win}">
-		<body onload="openWinnerPopUp();">
+	<c:if test = "${!empty win && win == 1}">
+		<body onload="openWinnerPopUp()">
 	</c:if>
 	
 	<div style ="float:left;">

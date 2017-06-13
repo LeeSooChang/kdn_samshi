@@ -61,6 +61,12 @@ where di.dietno = su.dietno(+)
 group by di.dietno
 order by di.dietno;
 
+select di.dietno "dietNo", count(*) "suyoCountAll"
+from SUYO su, diet di
+where di.dietno = su.dietno(+) 
+
+
+
 select * from diet;
 
 insert into SUYO(dietno, mno) values(27, 2222);
