@@ -29,9 +29,10 @@
 		text-align : center;
 		font-size : 12px;
 	}
-	a {
+	.menulist a {
 		color : magenta;
 	}
+	
 </style>
 <script type="text/javascript">
 	function writeReviewInMenu(fname,scode){
@@ -57,8 +58,8 @@
 			<a href = "updateWeeklyMenuForm.do" >update Menu</a>
     	</c:if>
     </div> 
-	<div>
-		<table width = "1100px" border = 1>
+	<div class="menulist">
+		<table class="menutable" width = "1100px" border="1">
 			<thead>
 				<tr>
 					<th rowspan = 2></th><th colspan = 2>월</th><th colspan = 2>화</th><th colspan = 2>수</th><th colspan = 2>목</th><th colspan = 2>금</th>
