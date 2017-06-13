@@ -51,15 +51,12 @@
 </script>
 </head>
 <body>
-<<<<<<< HEAD
 	<div align="center">
-=======
 	<c:if test = "${!empty win && win == 1}">
 		<body onload="openWinnerPopUp()">
 	</c:if>
 	
 	<div style ="float:left;">
->>>>>>> branch 'master' of https://github.com/LeeSooChang/kdn_samshi.git
 		<c:if test = "${!empty mno && grade=='Y' }">
 			<a href = "addWeeklyMenuForm.do" class="btn btn-default">등록</a>
 			<a href = "updateWeeklyMenuForm.do" class="btn btn-danger">수정</a>
