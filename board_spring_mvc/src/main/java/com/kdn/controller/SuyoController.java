@@ -1,7 +1,11 @@
 package com.kdn.controller;
  
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,39 +40,60 @@ public class SuyoController {
 	private DietService dietService;
 	
 	@RequestMapping(value="addSuyo.do", method=RequestMethod.GET)
-	public String addSuyo(int dietNo, int mno, Model model, HttpSession session) {
+	public String addSuyo(int dietNo, int mno, Model model, HttpSession session, 
+						HttpServletResponse response, HttpServletRequest request) {
 		Suyo suyo = new Suyo(dietNo, mno);
 		int findDietNo = dietNo;
 		Diet findDiet = dietService.searchDiet(dietNo);
 		Suyo isSuyo = null;
 		int dietScode = findDiet.getScode();
-		System.out.println("dietScode>>>>>>>>>>>>>>>>>>>>"+dietScode);
 		switch (dietScode) {
 		case 2:
 			findDietNo++;
-			System.out.println(suyo);
 			Suyo findSuyo2 = new Suyo(findDietNo, mno);
-			System.out.println(findSuyo2);
 			isSuyo = suyoService.searchSuyo(findSuyo2);
-			System.out.println(isSuyo);
 			if(isSuyo == null){
 				suyoService.add(suyo);
 			} else {
 				System.out.println("이미 한식 먹잖아요~");
+//				JOptionPane.showMessageDialog(null, "한식을 이미 선택하셨습니다. 한식을 취소하고 다시 선택해주세요.");
+				try {
+					 response.setContentType("text/html; charset=UTF-8");
+					 PrintWriter writer = response.getWriter();
+				     writer.println("<script type='text/javascript'>");
+				     writer.println("alert('한식을 이미 선택하셨습니다. 한식을 취소하고 다시 선택해주세요.');");
+				     writer.println("history.go(-1);");
+				     writer.println("</script>");
+				     writer.flush();
+				     return "index";
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 			break;
 			
 		case 3:
 			findDietNo--;
-			System.out.println(suyo);
 			Suyo findSuyo3 = new Suyo(findDietNo, mno);
-			System.out.println(findSuyo3);
 			isSuyo = suyoService.searchSuyo(findSuyo3);
-			System.out.println(isSuyo);
 			if(isSuyo == null){
 				suyoService.add(suyo);
 			} else {
 				System.out.println("이미 한식 먹잖아요~");
+//				JOptionPane.showMessageDialog(null, "일품을 이미 선택하셨습니다. 일품을 취소하고 다시 선택해주세요.");
+				response.setContentType("text/html; charset=UTF-8");
+				try {
+					response.setContentType("text/html; charset=UTF-8");
+					 PrintWriter writer = response.getWriter();
+				     writer.println("<script type='text/javascript'>");
+				     writer.println("alert('일품을 이미 선택하셨습니다. 일품을 취소하고 다시 선택해주세요.');");
+				     writer.println("history.go(-1);");
+				     writer.println("</script>");
+				     writer.flush();
+				     return "index";
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 			break;
 
