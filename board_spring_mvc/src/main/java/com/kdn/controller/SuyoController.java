@@ -38,7 +38,45 @@ public class SuyoController {
 	@RequestMapping(value="addSuyo.do", method=RequestMethod.GET)
 	public String addSuyo(int dietNo, int mno, Model model, HttpSession session) {
 		Suyo suyo = new Suyo(dietNo, mno);
-		suyoService.add(suyo);
+		int findDietNo = dietNo;
+		Diet findDiet = dietService.searchDiet(dietNo);
+		Suyo isSuyo = null;
+		int dietScode = findDiet.getScode();
+		System.out.println("dietScode>>>>>>>>>>>>>>>>>>>>"+dietScode);
+		switch (dietScode) {
+		case 2:
+			findDietNo++;
+			System.out.println(suyo);
+			Suyo findSuyo2 = new Suyo(findDietNo, mno);
+			System.out.println(findSuyo2);
+			isSuyo = suyoService.searchSuyo(findSuyo2);
+			System.out.println(isSuyo);
+			if(isSuyo == null){
+				suyoService.add(suyo);
+			} else {
+				System.out.println("이미 한식 먹잖아요~");
+			}
+			break;
+			
+		case 3:
+			findDietNo--;
+			System.out.println(suyo);
+			Suyo findSuyo3 = new Suyo(findDietNo, mno);
+			System.out.println(findSuyo3);
+			isSuyo = suyoService.searchSuyo(findSuyo3);
+			System.out.println(isSuyo);
+			if(isSuyo == null){
+				suyoService.add(suyo);
+			} else {
+				System.out.println("이미 한식 먹잖아요~");
+			}
+			break;
+
+		default:
+			suyoService.add(suyo);
+			break;
+		}
+		System.out.println(findDiet);
 		List<Suyo> list = suyoService.getSuyoCountAll(); 
 		int count = 0;
 		for (Suyo suyo_ : list) {

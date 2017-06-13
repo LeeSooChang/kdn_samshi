@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 CREATE TABLE member(mno NUMBER PRIMARY KEY,
 					grade CHAR DEFAULT 'N',
                     password VARCHAR2(255) NOT NULL,
@@ -12,6 +11,10 @@ create table suyo (
 					dietno NUMBER references diet(dietno),
 					mno NUMBER REFERENCES member(mno)
 )
+
+delete from suyo where mno=3333;
+
+select * from suyo where mno=3333;
 
 select s.dietno, s.mno, d.dietdate
 from suyo s, (	select dietno, dietdate
