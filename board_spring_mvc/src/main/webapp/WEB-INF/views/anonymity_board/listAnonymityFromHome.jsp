@@ -59,12 +59,12 @@
 		class="modal fade" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
-			<div class="modal-content">
+			<div class="modal-content" style="width: 400px;">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 style="color: blue">
 						<span class="glyphicon glyphicon-exclamation-sign"></span><label
-							id="modal-title">삽입 포멧</label>
+							id="modal-title">익명게시판 글 작성</label>
 					</h4>
 				</div>
 				<div class="modal-body" id="modal-body">
@@ -72,20 +72,13 @@
 					<form method="post" action="insertAnonymity.do">
 
 						<table align="center" width="300">
-							<tr>
-								<th colspan="2">게시글 작성</th>
-							</tr>
-							<!-- <tr height="50">
-								<td><label for="title">번호</label></td>
-								<td><input type="text" name="ano" id="ano"/></td>
-							</tr> -->
 							<tr height="50">
 								<td><label for="title">비밀번호</label></td>
 								<td><input type="text" name="anopw" id="anopw" /></td>
 							</tr>
 							<tr height="50">
 								<td><label for="title">제목</label></td>
-								<td><input type="text" name="anotitle" id="anotitle"/></td>
+								<td><input type="text" name="anotitle" id="anotitle" /></td>
 							</tr>
 							<tr>
 								<td colspan="2"><label for="contents">코멘트</label></td>
@@ -95,9 +88,14 @@
 										id="anocontents" cols="30" rows="5"></textarea></td>
 							</tr>
 							<tr>
-								<button type="submit" class="btn btn-default btn-success">
-									<span class="glyphicon glyphicon-ok"></span> 작성
-								</button>
+								<td colspan="2" align="right">
+									<button type="button" class="close" data-dismiss="modal">
+										<span class="glyphicon glyphicon-remove"></span> 취소
+									</button>
+									<button type="submit" class="close">
+										<span class="glyphicon glyphicon-ok"></span> 작성
+									</button>
+								</td>
 							</tr>
 						</table>
 					</form>
@@ -109,27 +107,20 @@
 		class="modal fade" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
-			<div class="modal-content">
+			<div class="modal-content" style="width: 400px;">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 style="color: blue">
 						<span class="glyphicon glyphicon-exclamation-sign"></span><label
-							id="modal-title">수정 포멧</label>
+							id="modal-title">익명게시판 글 수정</label>
 					</h4>
 				</div>
 				<div class="modal-body" id="modal-body">
 
 					<form method="post" action="updateAnonymity.do"
 						enctype="multipart/form-data">
-
+						<input type="hidden" name="ano" id="uano" />
 						<table align="center" width="300">
-							<tr>
-								<th colspan="2">게시글 작성</th>
-							</tr>
-							<tr height="50">
-								<td><label for="title">번호</label></td>
-								<td><input type="text" name="ano" id="uano" /></td>
-							</tr>
 							<tr height="50">
 								<td><label for="title">비밀번호</label></td>
 								<td><input type="text" name="anopw" id="uanopw" value="" /></td>
@@ -146,9 +137,14 @@
 										id="uanocontents" cols="30" rows="5"></textarea></td>
 							</tr>
 							<tr>
-								<button type="submit" class="btn btn-default btn-success">
-									<span class="glyphicon glyphicon-ok"></span> 수정
-								</button>
+								<td colspan="2" align="right">
+									<button type="button" class="close" data-dismiss="modal">
+										<span class="glyphicon glyphicon-remove"></span> 취소
+									</button>
+									<button type="submit" class="close">
+										<span class="glyphicon glyphicon-ok"></span> 작성
+									</button>
+								</td>
 							</tr>
 						</table>
 					</form>
@@ -160,7 +156,7 @@
 		class="modal fade" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
-			<div class="modal-content">
+			<div class="modal-content" style="width: 400px;">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 style="color: blue">
@@ -170,9 +166,9 @@
 				</div>
 				<div class="modal-body" id="modal-body">
 					<form role="form" method="post" action="deleteAnonymity.do">
-						게시물 번호 <input type="text" id="rano" name="ano" value="${ano }" />
-						게시물 비밀번호 <input type="text" id="ranopw" name="anopw"/>
-						<button type="submit" class="btn btn-default btn-success">
+						<input type="hidden" id="rano" name="ano" value="${ano }" /> 비밀번호
+						<input type="text" id="ranopw" name="anopw" />
+						<button type="submit" class="close">
 							<span class="glyphicon glyphicon-ok"></span> 삭제
 						</button>
 					</form>
