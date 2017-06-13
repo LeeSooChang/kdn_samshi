@@ -34,20 +34,25 @@
 	}
 </style>
 <script type="text/javascript">
+	function test(){
+		var test = document.getElementById("win");
+		console.log("test " + test.value);
+		if(test.value != ""){			
+			alert("축하합니다. 이벤트에 당첨 되셨습니다." + test.value);
+			<% session.removeValue("win"); %>
+		}
+	}
+
 	function writeReviewInMenu(fname,scode){
 		console.log(fname);
 		$("#fname").val(fname);
 		$('#scode').val(scode);
 	}
-	
-	function openWinnerPopUp(){
-		  	window.open("open.jsp","openPop","width=400, height=400");
-	}
 </script>
 </head>
 <body>
-	<c:if test = "${!empty win && win == 1}">
-		<body onload="openWinnerPopUp()">
+	<c:if test = "${empty win}" >
+		<body onload="test();">
 	</c:if>
 	
 	<div style ="float:left;">

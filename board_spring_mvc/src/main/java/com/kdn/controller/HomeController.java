@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kdn.model.biz.AnonymityService;
+import com.kdn.model.biz.CounterService;
 import com.kdn.model.biz.DietService;
 import com.kdn.model.biz.NoticeBoardService;
 import com.kdn.model.biz.RankingService;
@@ -57,6 +58,9 @@ public class HomeController {
 	@Autowired
 	private AnonymityService anonymityService;
 	
+	@Autowired
+	private CounterService counterService;
+	
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -95,7 +99,6 @@ public class HomeController {
 		model.addAttribute("anonymityList", anonymityList);
 		model.addAttribute("anonymityPageBean", anonymitybean);
 		model.addAttribute("anonymityBoardContent",  "anonymity_board/listAnonymityFromHome.jsp");
-		
 		return "index";
 	}
 	

@@ -26,6 +26,7 @@
 		<typeAlias type="com.kdn.model.domain.Anonymity" alias="anonymity"/>
 		<typeAlias alias="review" type="com.kdn.model.domain.Review"/>
 		<typeAlias alias="ranking" type="com.kdn.model.domain.Ranking"/>
+		<typeAlias alias="counter" type="com.kdn.model.domain.Counter"/>
 		<typeAlias alias="rankingpagebean" type="com.kdn.model.domain.RankingPageBean"/>
 			 
 	</typeAliases>
