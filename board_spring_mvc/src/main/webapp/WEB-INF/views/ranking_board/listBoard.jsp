@@ -19,6 +19,8 @@
 	
 </script>
 <link rel="stylesheet" type="text/css" href="css/basic.css" />
+<style>
+</style>
 </head>
 <body>
 			<c:forEach var="rankingM" items="${rankingM }">

@@ -7,7 +7,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 <style type="text/css">
-body{background-color: black; color:white;}
+body{background-color: black;}
+
+#pop_top{
+	width: 100%;
+	height: 150px;
+	text-align: center;
+	font-size: 20px;
+	color: white;
+}
+
+#pop_bottom{
+	width: 100%;
+	height:20px;
+	text-align: right;
+	color: white;
+}
 </style>
 </head>
 <body>
@@ -15,11 +30,11 @@ body{background-color: black; color:white;}
 	<p>${mno}님 안녕하세요</p>
 	<c:if test="${!empty preferList}">
 		<c:forEach var="preferList" items="${preferList}">
-		<p>오늘은 ${preferList.mainDish} 나오는 날입니다:)</p>
+		<p>오늘은 <span style="color:red"> ${preferList.mainDish}</span> 나오는 날입니다:)</p>
 		</c:forEach>	
 	</c:if>
 	<c:if test="${empty preferList }">
-		<p> 오늘도 좋은 하루 되세요:) </p>
+		<p>오늘도 좋은 하루 되세요:) </p>
 	</c:if>
 </div>
 <div id="pop_bottom">
