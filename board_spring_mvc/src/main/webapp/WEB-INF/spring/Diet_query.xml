@@ -55,6 +55,12 @@
 		where scode = #{scode:VARCHAR} and dietDate = #{dietDate:DATE}
 	</select>
 	
+	<select id = "searchDiet" parameterType="int" resultType="diet">
+		select dietNo, scode, to_char(DIETDATE, 'yyyy-mm-dd') dietDate, mainDish, sideDish
+		from diet 
+		where dietNo = #{dietNo};
+	</select>
+	
 	<delete id = "delete" parameterType="int">
 		delete from diet
 		where DIETNO= #{dietNo:INTEGER}

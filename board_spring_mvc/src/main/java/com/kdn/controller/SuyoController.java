@@ -1,5 +1,7 @@
 package com.kdn.controller;
  
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kdn.model.biz.DietService;
 import com.kdn.model.biz.SuyoService;
+import com.kdn.model.domain.Diet;
 import com.kdn.model.domain.Suyo;
  
 @Controller
@@ -28,11 +32,27 @@ public class SuyoController {
 	@Autowired
 	private SuyoService suyoService;
 	
+	@Autowired
+	private DietService dietService;
 	
 	@RequestMapping(value="addSuyo.do", method=RequestMethod.GET)
-	public String addSuyo(int dietNo, int mno, Model model) {
+	public String addSuyo(int dietNo, int mno, Model model, HttpSession session) {
 		Suyo suyo = new Suyo(dietNo, mno);
 		suyoService.add(suyo);
+		List<Suyo> list = suyoService.getSuyoCountAll(); 
+		int count = 0;
+		for (Suyo suyo_ : list) {
+			if(suyo_.getDietNo() == dietNo){
+				count = suyo_.getSuyoCountAll();
+				break;
+			}
+		}	
+		
+		if(count == 5){
+			int scode = dietService.searchDiet(dietNo).getScode();
+			session.setAttribute("win", scode);
+			System.out.println(mno + " is Win ");
+		}
 		return "redirect:listWeeklyMenu.do";
 	}
 	

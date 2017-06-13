@@ -18,7 +18,6 @@ public class SuyoServiceImpl implements SuyoService {
 	
 	@Override
 	public void add(Suyo suyo) {
-		System.out.println("suyoadd>>>>>>>>>>>>>>>>@service"+suyo);
 		Suyo findsuyo = dao.searchSuyo(suyo);
 		try {
 			if(findsuyo != null){
@@ -34,7 +33,6 @@ public class SuyoServiceImpl implements SuyoService {
 
 	@Override
 	public void minus(Suyo suyo) {
-		System.out.println("suyominus>>>>>>>>>>>>>@service"+suyo);
 		Suyo findsuyo = dao.searchSuyo(suyo);
 		try {
 			if(findsuyo != null){
@@ -50,9 +48,7 @@ public class SuyoServiceImpl implements SuyoService {
 	
 	@Override
 	public Suyo searchSuyo(Suyo suyo){
-		System.out.println("suyo>>>>>>>>>>>>>>>>>>>>>@service"+suyo);
 		Suyo findsuyo = dao.searchSuyo(suyo);
-		System.out.println("findsuyo>>>>>>>>>>>>>>>>>@service"+suyo);
 		try {
 			if(findsuyo != null){
 				return findsuyo;

@@ -99,6 +99,7 @@ public class MemberController {
 		session.setAttribute("mno", mno);
 		session.setAttribute("grade", memberService.search(mno).getGrade());
 		session.setAttribute("prefer", memberService.search(mno).getPrefer());
+		session.setAttribute("mname", memberService.search(mno).getMname());
 		
 		List<Diet> preferList = dietService.searchPrefer(mno);
 		System.out.println("preferList : " + preferList);
@@ -118,6 +119,8 @@ public class MemberController {
 	public String loginOut(HttpSession session) {
 		session.removeAttribute("mno");
 		session.removeAttribute("grade");
+		session.removeAttribute("prefer");
+		session.removeAttribute("mname");
 		return "redirect:/";
 	}
 	
