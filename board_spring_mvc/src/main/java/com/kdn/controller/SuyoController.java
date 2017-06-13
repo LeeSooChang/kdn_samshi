@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kdn.model.biz.DietService;
 import com.kdn.model.biz.SuyoService;
+import com.kdn.model.domain.Diet;
 import com.kdn.model.domain.Suyo;
  
 @Controller
@@ -35,6 +36,7 @@ public class SuyoController {
 	@RequestMapping(value="addSuyo.do", method=RequestMethod.GET)
 	public String addSuyo(int dietNo, int mno, Model model, HttpSession session) {
 		Suyo suyo = new Suyo(dietNo, mno);
+		
 		suyoService.add(suyo);
 		if(suyoService.searchSuyo(suyo).getSuyoCountAll() == 5){
 			int scode = dietService.searchDiet(dietNo).getScode();
