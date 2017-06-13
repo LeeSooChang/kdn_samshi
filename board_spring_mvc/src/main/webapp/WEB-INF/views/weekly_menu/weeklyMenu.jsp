@@ -39,12 +39,17 @@
 		$("#fname").val(fname);
 		$('#scode').val(scode);
 	}
+	
+	function openWinnerPopUp(){
+		  	window.open("open.jsp","openPop","width=400, height=400");
+	}
 </script>
 </head>
 <body>
-	<c:if test = "${win == 1}">
-		window.open("open.jsp", "open2", "width = 200, height = 100");
+	<c:if test = "${!empty win}">
+		<body onload="openWinnerPopUp();">
 	</c:if>
+	
 	<div style ="float:left;">
 		<c:if test = "${!empty mno && grade=='Y' }">
 			<a href = "addWeeklyMenuForm.do" >Add Menu</a>

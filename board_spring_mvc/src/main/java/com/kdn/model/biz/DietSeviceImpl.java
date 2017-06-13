@@ -88,7 +88,7 @@ public class DietSeviceImpl implements DietService {
 	@Override
 	public Diet searchDiet(int dietNo) {
 		try{
-			return dao.search(dietNo);
+			return dao.searchDiet(dietNo);
 		}
 		catch(Exception e){
 			e.printStackTrace();

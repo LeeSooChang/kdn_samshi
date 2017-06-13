@@ -1,5 +1,7 @@
 package com.kdn.controller;
  
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +38,17 @@ public class SuyoController {
 	@RequestMapping(value="addSuyo.do", method=RequestMethod.GET)
 	public String addSuyo(int dietNo, int mno, Model model, HttpSession session) {
 		Suyo suyo = new Suyo(dietNo, mno);
-		
 		suyoService.add(suyo);
-		if(suyoService.searchSuyo(suyo).getSuyoCountAll() == 5){
+		List<Suyo> list = suyoService.getSuyoCountAll(); 
+		int count = 0;
+		for (Suyo suyo_ : list) {
+			if(suyo_.getDietNo() == dietNo){
+				count = suyo_.getSuyoCountAll();
+				break;
+			}
+		}	
+		
+		if(count == 5){
 			int scode = dietService.searchDiet(dietNo).getScode();
 			session.setAttribute("win", scode);
 			System.out.println(mno + " is Win ");

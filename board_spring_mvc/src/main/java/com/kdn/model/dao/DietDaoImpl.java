@@ -63,7 +63,7 @@ public class DietDaoImpl implements DietDao {
 	}
 
 	@Override
-	public Diet search(int dietNo) {
+	public Diet searchDiet(int dietNo) {
 		return session.selectOne("diet.searchDiet", dietNo);
 	}
 
