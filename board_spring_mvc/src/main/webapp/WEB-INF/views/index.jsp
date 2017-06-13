@@ -169,7 +169,7 @@ function MM_openBrWindow(theURL,winName,features) { //v2.0
 }
 function openpopup(){
  if (getCookie('event') != 'checked') {
-  window.open("open.jsp","openPop","width=400, height=400");
+  window.open("open.jsp","openPop","width=400, height=200");
  }
 }
 </script>
