@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kdn.model.biz.AnonymityService;
 import com.kdn.model.biz.DietService;
 import com.kdn.model.biz.MemberService;
 import com.kdn.model.biz.NoticeBoardService;
 import com.kdn.model.biz.RankingService;
 import com.kdn.model.biz.ReviewService;
+import com.kdn.model.domain.Anonymity;
+import com.kdn.model.domain.AnonymityPageBean;
 import com.kdn.model.domain.Diet;
 import com.kdn.model.domain.Member;
 import com.kdn.model.domain.NoticeBoard;
@@ -46,6 +49,9 @@ public class MemberController {
 	@Autowired
 	private RankingService rankingService;
 	
+	@Autowired
+	private AnonymityService anonymityService;
+	
 	@ExceptionHandler
 	public ModelAndView handler(Exception e) {
 		ModelAndView model = new ModelAndView("index");
@@ -56,7 +62,7 @@ public class MemberController {
 	
 	//등록
 	@RequestMapping(value="registerForm.do", method=RequestMethod.GET)
-	public String insertMemberForm(NoticePageBean noticebean, Model model, ReviewPageBean bean) {
+	public String insertMemberForm(NoticePageBean noticebean, Model model, ReviewPageBean bean, AnonymityPageBean anonymitybean) {
 		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("noticeBoardContent", "notice_board/listBoardFromHome.jsp");
@@ -81,6 +87,12 @@ public class MemberController {
 		model.addAttribute("rankingI", rankingI);
 		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
+		
+//		익명게시판
+		List<Anonymity> anonymityList = anonymityService.searchAll(anonymitybean);
+		model.addAttribute("anonymityList", anonymityList);
+		model.addAttribute("anonymityPageBean", anonymitybean);
+		model.addAttribute("anonymityBoardContent",  "anonymity_board/listAnonymityFromHome.jsp");
 		return "index";
 	}
 	
@@ -126,7 +138,7 @@ public class MemberController {
 	
 	//myPage
 	@RequestMapping(value="myPage.do", method=RequestMethod.GET)
-	public String myPage(HttpSession session, NoticePageBean noticebean, Model model, ReviewPageBean bean) {
+	public String myPage(HttpSession session, NoticePageBean noticebean, Model model, ReviewPageBean bean, AnonymityPageBean anonymitybean) {
 		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("noticeBoardContent", "notice_board/listBoardFromHome.jsp");
@@ -154,6 +166,12 @@ public class MemberController {
 		model.addAttribute("rankingI", rankingI);
 		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
+		
+//		익명게시판
+		List<Anonymity> anonymityList = anonymityService.searchAll(anonymitybean);
+		model.addAttribute("anonymityList", anonymityList);
+		model.addAttribute("anonymityPageBean", anonymitybean);
+		model.addAttribute("anonymityBoardContent",  "anonymity_board/listAnonymityFromHome.jsp");
 		return "index";
 		
 	}

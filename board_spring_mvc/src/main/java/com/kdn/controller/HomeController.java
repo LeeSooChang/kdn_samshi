@@ -94,7 +94,7 @@ public class HomeController {
 		List<Anonymity> anonymityList = anonymityService.searchAll(anonymitybean);
 		model.addAttribute("anonymityList", anonymityList);
 		model.addAttribute("anonymityPageBean", anonymitybean);
-		model.addAttribute("anonymityBoardContent",  "anonymity_board/listAnonymity.jsp");
+		model.addAttribute("anonymityBoardContent",  "anonymity_board/listAnonymityFromHome.jsp");
 		
 		return "index";
 	}

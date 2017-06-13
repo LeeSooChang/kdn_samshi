@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kdn.model.biz.AnonymityService;
 import com.kdn.model.biz.DietService;
 import com.kdn.model.biz.NoticeBoardService;
 import com.kdn.model.biz.RankingService;
 import com.kdn.model.biz.ReviewService;
 import com.kdn.model.biz.SuyoService;
+import com.kdn.model.domain.Anonymity;
+import com.kdn.model.domain.AnonymityPageBean;
 import com.kdn.model.domain.Diet;
 import com.kdn.model.domain.NoticeBoard;
 import com.kdn.model.domain.NoticePageBean;
@@ -40,6 +43,9 @@ public class DietController {
 	
 	@Autowired
 	SuyoService suyoService;
+	
+	@Autowired 
+	private AnonymityService anonymityService;
 	
 	@ExceptionHandler
 	public ModelAndView handler(Exception e) {
@@ -188,7 +194,7 @@ public class DietController {
 	}
 	
 	@RequestMapping(value = "listWeeklyMenu.do", method = RequestMethod.GET)
-	public String home(Locale locale, Model model, NoticePageBean noticebean, ReviewPageBean bean) {
+	public String home(Locale locale, Model model, NoticePageBean noticebean, ReviewPageBean bean, AnonymityPageBean anonymitybean) {
 		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("noticeBoardContent", "notice_board/listBoardFromHome.jsp");
@@ -214,6 +220,12 @@ public class DietController {
 		
 		List<Suyo> suyoCountList = suyoService.getSuyoCountAll();
 		model.addAttribute("suyoCountList", suyoCountList);
+		
+//		익명게시판
+		List<Anonymity> anonymityList = anonymityService.searchAll(anonymitybean);
+		model.addAttribute("anonymityList", anonymityList);
+		model.addAttribute("anonymityPageBean", anonymitybean);
+		model.addAttribute("anonymityBoardContent",  "anonymity_board/listAnonymityFromHome.jsp");
 		return "index";
 	}
 	

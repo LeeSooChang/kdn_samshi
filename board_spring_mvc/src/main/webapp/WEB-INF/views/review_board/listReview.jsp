@@ -10,7 +10,7 @@
 
 <link href="css/kdn-table.css" rel="stylesheet">
 <title>Insert title here</title>
-<script>location.hash="about";</script>
+<script>location.hash="about";</script> 
 <script type="text/javascript">
 	//조건 검색, 페이지 번호로 게시글 요청을 위한 메서드  
 	function reviewPagelist(cpage) {
