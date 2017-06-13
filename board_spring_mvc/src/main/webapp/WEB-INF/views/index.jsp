@@ -22,18 +22,18 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
- function getBoard(rno){
+	function getBoard(rno) {
 		//input 양식의 hidden으로 선언된 no(게시글 번호)에 요청된 게시글 번호를 셋팅
 		document.getElementById("rno").value = rno;
 		var frm = document.getElementById("frm");
-		frm.action="test2.do";
+		frm.action = "test2.do";
 		frm.submit();
-}
- 
- function openPop(){
-	window.open("open.jsp","openPop","width=400, height=400");
- }
- </script>
+	}
+
+	function openPop() {
+		window.open("open.jsp", "openPop", "width=400, height=400");
+	}
+</script>
 
 <!-- CSS includes -->
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -444,49 +444,13 @@
 	<div class="clearfix hidden-xs" style="width: 100%; height: 10px;"></div>
 	<div class="container">
 		<div class="page-header" id="dishes">
-			<h1 class="text-center text-danger">Chef's Recommended</h1>
+			<h1 class="text-center text-danger">Anonymity Board</h1>
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<img src="images/dishes1.jpg" class="img-responsive" />
-						<h4 class="text-danger">Dishes name</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<img src="images/dishes2.jpg" class="img-responsive" />
-						<h4 class="text-danger">Dishes name</h4>
-						<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco
-							laboris nisi ut aliquip ex ea commodo consequat.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<img src="images/dishes3.jpg" class="img-responsive" />
-						<h4 class="text-danger">Dishes name</h4>
-						<p>Duis aute irure dolor in reprehenderit in voluptate velit
-							esse cillum dolore eu fugiat nulla pariatur ex ea commodo.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<img src="images/dishes4.jpg" class="img-responsive" />
-						<h4 class="text-danger">Dishes name</h4>
-						<p>Duis aute irure dolor in reprehenderit in voluptate velit
-							esse cillum dolore eu fugiat nulla pariatur ex ea commodo.</p>
-					</div>
-				</div>
+				<article id="reviewBoardContent">
+					<jsp:include page="${anonymityBoardContent}" />
+				</article>
 			</div>
 		</div>
 	</div>
@@ -713,61 +677,59 @@
 </footer>
 
 <script type="text/javascript">
-    jQuery(function($) {
-        // Mix It Up Gallery and Magnific Popup setup
-        $('.container-gallery').mixItUp({
-         load: {
-            filter: '.dishes'
-         }
-      });
-        $('.container-gallery').magnificPopup({
-            delegate: 'a',
-            type: 'image'
-        });
- 
-        // ShieldUI Calendar setup
-        $("#calendar").shieldCalendar({
-            footer: {
-                enabled: true,
-                footerTemlpate: "{0:dd.MM.yy}"
-            },
-            min: new Date("2009/2/23"),
-            max: new Date("2039/3/1"),
-            value: new Date()
-        });
- 
-        // ShieldUI QRCode setup
-        $("#qrcode").shieldQRcode({
-            mode: "byte",
-            size: 150,
-            value: "https://demos.shieldui.com",
-            style: {
-                color: "#ed1b24"
-            }
-        });
- 
-        // Google Maps setup
-        var googlemap = new google.maps.Map(
-            document.getElementById('googlemap'),
-            {
-                center: new google.maps.LatLng(44.5403, -78.5463),
-                zoom: 8,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            }
-        );
-    });
-    
-    function showPassword() {
-        
-        var key_attr = $('#key').attr('type');
-        if(key_attr != 'text') {
-            $('.checkbox').addClass('show');
-            $('#key').attr('type', 'text');
-        } else {
-            $('.checkbox').removeClass('show');
-            $('#key').attr('type', 'password');
-        }
-    }
+	jQuery(function($) {
+		// Mix It Up Gallery and Magnific Popup setup
+		$('.container-gallery').mixItUp({
+			load : {
+				filter : '.dishes'
+			}
+		});
+		$('.container-gallery').magnificPopup({
+			delegate : 'a',
+			type : 'image'
+		});
+
+		// ShieldUI Calendar setup
+		$("#calendar").shieldCalendar({
+			footer : {
+				enabled : true,
+				footerTemlpate : "{0:dd.MM.yy}"
+			},
+			min : new Date("2009/2/23"),
+			max : new Date("2039/3/1"),
+			value : new Date()
+		});
+
+		// ShieldUI QRCode setup
+		$("#qrcode").shieldQRcode({
+			mode : "byte",
+			size : 150,
+			value : "https://demos.shieldui.com",
+			style : {
+				color : "#ed1b24"
+			}
+		});
+
+		// Google Maps setup
+		var googlemap = new google.maps.Map(document
+				.getElementById('googlemap'), {
+			center : new google.maps.LatLng(44.5403, -78.5463),
+			zoom : 8,
+			mapTypeId : google.maps.MapTypeId.ROADMAP
+		});
+	});
+
+	function showPassword() {
+
+		var key_attr = $('#key').attr('type');
+		if (key_attr != 'text') {
+			$('.checkbox').addClass('show');
+			$('#key').attr('type', 'text');
+		} else {
+			$('.checkbox').removeClass('show');
+			$('#key').attr('type', 'password');
+		}
+	}
 </script>
 
 </body>
