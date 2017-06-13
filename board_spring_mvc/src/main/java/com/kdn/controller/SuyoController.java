@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kdn.model.biz.DietService;
 import com.kdn.model.biz.SuyoService;
+import com.kdn.model.domain.Diet;
 import com.kdn.model.domain.Suyo;
  
 @Controller
@@ -28,10 +30,14 @@ public class SuyoController {
 	@Autowired
 	private SuyoService suyoService;
 	
+	@Autowired
+	private DietService dietService;
+	
 	
 	@RequestMapping(value="addSuyo.do", method=RequestMethod.GET)
 	public String addSuyo(int dietNo, int mno, Model model) {
 		Suyo suyo = new Suyo(dietNo, mno);
+		
 		suyoService.add(suyo);
 		return "redirect:listWeeklyMenu.do";
 	}

@@ -17,13 +17,11 @@ public class SuyoDaoImpl implements SuyoDao {
 	
 	@Override
 	public void add(Suyo suyo) {
-		System.out.println("suyoAdd>>>>>>>>>>>>>>>>>>>>@dao"+suyo);
 		sql.insert("suyo.insert",suyo);
 	}
 
 	@Override
 	public void minus(Suyo suyo) {
-		System.out.println("suyoMinus>>>>>>>>>>>>>>>>>>@dao"+suyo);
 		sql.delete("suyo.delete", suyo);
 	}
 
@@ -39,7 +37,6 @@ public class SuyoDaoImpl implements SuyoDao {
 	
 	@Override
 	public Suyo searchSuyo(Suyo suyo) {
-		System.out.println("suyoSeach>>>>>>>>>>>>>>>>>>>>>>@dao"+suyo);
 		return sql.selectOne("suyo.searchSuyo", suyo);
 	}
 
