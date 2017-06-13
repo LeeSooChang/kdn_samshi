@@ -30,9 +30,9 @@
 		frm.submit();
 	}
 
-	function openPop() {
+/* 	function openPop() {
 		window.open("open.jsp", "openPop", "width=400, height=400");
-	}
+	} */
 </script>
 
 <!-- CSS includes -->
@@ -144,9 +144,39 @@
 }
 </style>
 
-<c:if test="${!empty mno}">
-	<body onload="openPop();">
+<script type="text/javascript">
+function getCookie(name)
+{
+ var nameOfCookie = name + "=";
+ var x = 0;
+ while (x <= document.cookie.length)
+ {
+  var y = (x+nameOfCookie.length);
+  if ( document.cookie.substring( x, y ) == nameOfCookie )
+  {
+   if ((endOfCookie=document.cookie.indexOf( ";", y )) == -1)
+    endOfCookie = document.cookie.length;
+   return unescape(document.cookie.substring( y, endOfCookie ));
+  }
+  x = document.cookie.indexOf( " ", x ) + 1;
+  if ( x == 0 )
+   break;
+ }
+  return "";
+}
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function openpopup(){
+ if (getCookie('event') != 'checked') {
+  window.open("open.jsp","openPop","width=400, height=400");
+ }
+}
+</script>
+<c:if test = "${!empty mno}">
+	<body onload="openpopup();">
 </c:if>
+
 
 <!-- Navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
