@@ -55,8 +55,6 @@ public class SuyoController {
 			if(isSuyo == null){
 				suyoService.add(suyo);
 			} else {
-				System.out.println("이미 한식 먹잖아요~");
-//				JOptionPane.showMessageDialog(null, "한식을 이미 선택하셨습니다. 한식을 취소하고 다시 선택해주세요.");
 				try {
 					 response.setContentType("text/html; charset=UTF-8");
 					 PrintWriter writer = response.getWriter();
@@ -79,9 +77,6 @@ public class SuyoController {
 			if(isSuyo == null){
 				suyoService.add(suyo);
 			} else {
-				System.out.println("이미 한식 먹잖아요~");
-//				JOptionPane.showMessageDialog(null, "일품을 이미 선택하셨습니다. 일품을 취소하고 다시 선택해주세요.");
-				response.setContentType("text/html; charset=UTF-8");
 				try {
 					response.setContentType("text/html; charset=UTF-8");
 					 PrintWriter writer = response.getWriter();
@@ -98,10 +93,25 @@ public class SuyoController {
 			break;
 
 		default:
-			suyoService.add(suyo);
+			isSuyo = suyoService.searchSuyo(suyo);
+			if (isSuyo == null) {
+				suyoService.add(suyo);
+			} else {
+				try {
+					response.setContentType("text/html; charset=UTF-8");
+					 PrintWriter writer = response.getWriter();
+				     writer.println("<script type='text/javascript'>");
+				     writer.println("alert('한번에 많이 퍼세요...');");
+				     writer.println("history.go(-1);");
+				     writer.println("</script>");
+				     writer.flush();
+				     return "index";
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 			break;
 		}
-		System.out.println(findDiet);
 		List<Suyo> list = suyoService.getSuyoCountAll(); 
 		int count = 0;
 		for (Suyo suyo_ : list) {
@@ -120,9 +130,26 @@ public class SuyoController {
 	}
 	
 	@RequestMapping(value="minusSuyo.do", method=RequestMethod.GET)
-	public String minusSuyo(int dietNo, int mno, Model model){
+	public String minusSuyo(int dietNo, int mno, Model model, HttpServletRequest request, HttpServletResponse response){
 		Suyo suyo = new Suyo(dietNo, mno);
-		suyoService.minus(suyo);
+		Suyo isSuyo = null;
+		isSuyo = suyoService.searchSuyo(suyo);
+		if (isSuyo != null) {
+			suyoService.minus(suyo);
+		} else {
+			try {
+				response.setContentType("text/html; charset=UTF-8");
+				 PrintWriter writer = response.getWriter();
+			     writer.println("<script type='text/javascript'>");
+			     writer.println("alert('두번 안 먹을 순 없어요...');");
+			     writer.println("history.go(-1);");
+			     writer.println("</script>");
+			     writer.flush();
+			     return "index";
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		return "redirect:listWeeklyMenu.do";
 	}
  
