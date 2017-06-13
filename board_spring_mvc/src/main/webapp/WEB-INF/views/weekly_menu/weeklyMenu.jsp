@@ -30,7 +30,12 @@
 		font-size : 12px;
 	}
 	.menulist a {
-		color : magenta;
+		color : red;
+	}
+	
+	.menulist a:hover {
+		color : gray;
+		text-decoration: none;
 	}
 	
 </style>
@@ -51,15 +56,15 @@
 		<body onload="openWinnerPopUp()">
 	</c:if>
 	
-	<div style ="float:left;">
+	<div align="center">
 		<c:if test = "${!empty mno && grade=='Y' }">
-			<a href = "addWeeklyMenuForm.do" >Add Menu</a>
-			<span>&nbsp&nbsp</span>
-			<a href = "updateWeeklyMenuForm.do" >update Menu</a>
+			<a href = "addWeeklyMenuForm.do" class="btn btn-default">등록</a>
+			<a href = "updateWeeklyMenuForm.do" class="btn btn-danger">수정</a>
     	</c:if>
-    </div> 
+    <br/><br/>
+    </div>
 	<div class="menulist">
-		<table class="menutable" width = "1100px" border="1">
+		<table class="table" id="tableid" width = "1100px">
 			<thead>
 				<tr>
 					<th rowspan = 2></th><th colspan = 2>월</th><th colspan = 2>화</th><th colspan = 2>수</th><th colspan = 2>목</th><th colspan = 2>금</th>

@@ -8,7 +8,7 @@ public class AnonymityPageBean implements Serializable {
 	 * anonymityPagelink : 목록의 페이지 링크를 표시
 	 */
 	private String anonymityKey, anonymityWord, anonymityPagelink;
-	private int anonymityPageNo, anonymityInterval = 3, anonymityStart=1 , anonymityEnd=anonymityInterval ;
+	private int anonymityPageNo, anonymityInterval = 7, anonymityStart=1 , anonymityEnd=anonymityInterval ;
 	
 	
 	public AnonymityPageBean(String anonymityKey, String anonymityWord,

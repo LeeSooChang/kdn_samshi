@@ -8,7 +8,7 @@ public class ReviewPageBean implements Serializable {
 	 * reviewPagelink : 목록의 페이지 링크를 표시
 	 */
 	private String reviewKey, reviewWord, reviewPagelink;
-	private int reviewPageNo, reviewInterval = 5, reviewStart=1 , reviewEnd=reviewInterval ;
+	private int reviewPageNo, reviewInterval = 7, reviewStart=1 , reviewEnd=reviewInterval ;
 	
 	
 	
@@ -54,7 +54,7 @@ public class ReviewPageBean implements Serializable {
 	public void setReviewEnd(int reviewEnd) {
 		this.reviewEnd = reviewEnd;
 	}
-	//////////////////////////////////////////
+
 	public String getKey() {
 		return reviewKey;
 	}

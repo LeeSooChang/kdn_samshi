@@ -364,27 +364,24 @@ function openpopup(){
 						<img src="images/carousel1.jpg" alt="carousel1"
 							style="width: 100%" />
 						<div class="carousel-caption">
-							<h2>"People who love to eat are always the best people"</h2>
-							<p>Julia Child</p>
+							<h2>"One man with courage makes a majority."</h2>
+							<p>Andrew Jackson</p>
 						</div>
 					</div>
 					<div class="item">
 						<img src="images/carousel2.jpg" alt="carousel2"
 							style="width: 100%" />
 						<div class="carousel-caption">
-							<h2>What does it come from?</h2>
-							<p>Contrary to popular belief, Lorem Ipsum is not simply
-								random text.</p>
+							<h2>"When men are employed, they are best contented."</h2>
+							<p>Benjamin Franklin</p>
 						</div>
 					</div>
 					<div class="item">
 						<img src="images/carousel3.jpg" alt="carousel3"
 							style="width: 100%">
 						<div class="carousel-caption">
-							<h2>Why do we use it?</h2>
-							<p>It is a long established fact that a reader will be
-								distracted by the readable content of a page when looking at its
-								layout.</p>
+							<h2>"Happiness is a warm puppy."</h2>
+							<p>Charles M. Schulz</p>
 						</div>
 					</div>
 				</div>

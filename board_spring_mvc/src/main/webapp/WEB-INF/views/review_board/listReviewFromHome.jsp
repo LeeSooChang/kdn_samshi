@@ -155,7 +155,7 @@
 								<div class="row">
 									<div class="col col-xs-6">
 										<select name="key" id="key">
-											<option value="all">-----all-----</option>
+											<option value="all">-----선택-----</option>
 											<option value="rno" <%=reviewPageBean.getKey("rno")%>>리뷰번호</option>
 											<option value="mno" <%=reviewPageBean.getKey("mno")%>>사원번호</option>
 											<option value="fname" <%=reviewPageBean.getKey("fname")%>>음식이름</option>
@@ -179,7 +179,7 @@
 
 
 							<div class="panel-body">
-								<table class="table table-striped table-bordered table-list">
+								<table class="table table-hover">
 									<thead>
 										<tr>
 											<th><em class="fa fa-cog"></em></th>

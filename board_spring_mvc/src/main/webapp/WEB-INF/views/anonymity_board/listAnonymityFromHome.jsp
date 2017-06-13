@@ -62,7 +62,7 @@
 			<div class="modal-content" style="width: 400px;">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 style="color: blue">
+					<h4 style="color: green">
 						<span class="glyphicon glyphicon-exclamation-sign"></span><label
 							id="modal-title">익명게시판 글 작성</label>
 					</h4>
@@ -159,7 +159,7 @@
 			<div class="modal-content" style="width: 400px;">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 style="color: blue">
+					<h4 style="color: red">
 						<span class="glyphicon glyphicon-exclamation-sign"></span><label
 							id="modal-title">삭제 경고</label>
 					</h4>
@@ -193,8 +193,8 @@
 								<div class="row">
 									<div class="col col-xs-6">
 										<select name="key" id="key">
-											<option value="all">-----all-----</option>
-											<option value="ano" <%=anonymityPageBean.getKey("ano")%>>게시글번호</option>
+											<option value="all">-----선택-----</option>
+											<option value="ano" <%=anonymityPageBean.getKey("ano")%>>게시번호</option>
 											<option value="anotitle" <%=anonymityPageBean.getKey("anotitle")%>>제목</option>
 											<option value="anocontents" <%=anonymityPageBean.getKey("anocontents")%>>내용</option>
 										</select> <input type="text" id="word" name="word"
@@ -211,7 +211,7 @@
 
 
 							<div class="panel-body">
-								<table class="table table-striped table-bordered table-list">
+								<table class="table table-hover">
 									<thead>
 										<tr>
 											<th><em class="fa fa-cog"></em></th>
