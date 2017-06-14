@@ -61,7 +61,7 @@ public class SuyoController {
 		if(findEvent == null){
 			eventService.add(mno);
 			response.setContentType("text/html; charset=UTF-8");
-			 PrintWriter writer = null;
+			PrintWriter writer = null;
 			try {
 				writer = response.getWriter();
 			} catch (IOException e) {
@@ -73,7 +73,6 @@ public class SuyoController {
 		     writer.println("history.go(-1);");
 		     writer.println("</script>");
 		     writer.flush();
-		     return "index";
 		}
 		
 		Suyo suyo = new Suyo(dietNo, mno);
