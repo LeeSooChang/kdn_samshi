@@ -147,7 +147,6 @@ function openpopup(){
 		</div>
 	</div>
 </div>
-<!-- /.modal -->
 <div class="modal fade forget-modal" tabindex="-1" role="dialog"
 	aria-labelledby="myForgetModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-sm">
@@ -170,7 +169,6 @@ function openpopup(){
 		</div>
 	</div>
 </div>
-<!-- /.modal -->
 <!-- insert review 모달 팝업 -->
 <div class="modal fade forget-modal" id="reviewModal" tabindex="-1"
 	role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
@@ -375,6 +373,7 @@ function openpopup(){
 	</div>
 	<div class="clearfix hidden-xs" style="width: 100%; height: 50px;"></div>
 </div>
+
 <div class="container-dishes" style="background-color:white">
 	<div class="clearfix hidden-xs" style="width: 100%; height: 10px;"></div>
 	<div class="container">
