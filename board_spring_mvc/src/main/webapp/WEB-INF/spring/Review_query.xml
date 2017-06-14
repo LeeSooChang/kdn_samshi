@@ -18,7 +18,7 @@
 	
 	<update id="update" parameterType="review">
 	update reviewboard set SPOINT=#{spoint:INTEGER}, fname=#{fname:VARCHAR}, COMMENTS=#{comments:VARCHAR}
-	where rno= #{rno}
+	where rno= #{rno} or(rno= #{rno} and #{mno} in (select mno from member where grade='Y'))
 	</update>
 	
 	<delete id="delete" parameterType="int">
