@@ -35,8 +35,26 @@
 		}
 		
 		document.getElementById('sideDish').value = dishes;
-		console.log(dishes);
+		console.log(document.getElementById('dietDate').value);
+		
+		if(document.getElementById('dietDate').value == ""){
+			alert('날짜를 입력하세요.');
+			location.href= 'http://localhost:8088/board/addWeeklyMenuForm.do#services';
+			return false;
+		}
+		if(document.getElementById('scode').value == ""){
+			alert('식사시간을 입력하세요.');
+			location.href= 'http://localhost:8088/board/addWeeklyMenuForm.do#services';
+			return false;
+		}
+		if(document.getElementById('mainDish').value == ""){
+			alert('메인음식을 입력하세요.');
+			location.href= 'http://localhost:8088/board/addWeeklyMenuForm.do#services';
+			return false;
+		}
+
 		$("#frm").submit();
+		
 	}
 	
 	function addMenuBack(){
