@@ -85,20 +85,20 @@ public class SuyoController {
 					if (isSuyo == null) {
 						suyoService.add(suyo);
 						if(findEvent == null){
-								counter.setIcnt(counter.getIcnt() + 1);
-								count = counter.getIcnt();
+							eventService.add(mno);
+							counter.setIcnt(counter.getIcnt() + 1);
+							try {
 								response.setContentType("text/html; charset=UTF-8");
 								PrintWriter writer = null;
-								try {
-									writer = response.getWriter();
-								} catch (IOException e) {
-									e.printStackTrace();
-								}
-							     writer.println("<script type='text/javascript'>");
-							     writer.println("alert('식사 이벤트에 참여 하셨습니다.');");
-							     writer.println("history.go(-1);");
-							     writer.println("</script>");
-							     writer.flush();
+								writer = response.getWriter();
+								writer.println("<script type='text/javascript'>");
+								writer.println("alert('식사 이벤트에 참여 하셨습니다.');");
+								writer.println("history.go(-1);");
+								writer.println("</script>");
+								writer.flush();
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
 						}
 					} else {
 						try {
@@ -138,20 +138,20 @@ public class SuyoController {
 					if (isSuyo == null) {
 						suyoService.add(suyo);
 						if(findEvent == null){
-								counter.setHcnt(counter.getHcnt() + 1);
-								count = counter.getHcnt();
+							eventService.add(mno);
+							counter.setHcnt(counter.getHcnt() + 1);
+							try {
 								response.setContentType("text/html; charset=UTF-8");
 								PrintWriter writer = null;
-								try {
-									writer = response.getWriter();
-								} catch (IOException e) {
-									e.printStackTrace();
-								}
-							     writer.println("<script type='text/javascript'>");
-							     writer.println("alert('식사 이벤트에 참여 하셨습니다.');");
-							     writer.println("history.go(-1);");
-							     writer.println("</script>");
-							     writer.flush();
+								writer = response.getWriter();
+								writer.println("<script type='text/javascript'>");
+								writer.println("alert('식사 이벤트에 참여 하셨습니다.');");
+								writer.println("history.go(-1);");
+								writer.println("</script>");
+								writer.flush();
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
 						}
 					} else {
 						try {
@@ -187,18 +187,18 @@ public class SuyoController {
 				System.out.println("아침 아니면 저녁");
 				if(findEvent == null){
 					eventService.add(mno);
-					response.setContentType("text/html; charset=UTF-8");
-					PrintWriter writer = null;
 					try {
+						response.setContentType("text/html; charset=UTF-8");
+						PrintWriter writer = null;
 						writer = response.getWriter();
-					} catch (IOException e) {
+						writer.println("<script type='text/javascript'>");
+						writer.println("alert('식사 이벤트에 참여 하셨습니다.');");
+						writer.println("history.go(-1);");
+						writer.println("</script>");
+						writer.flush();
+					} catch (Exception e) {
 						e.printStackTrace();
 					}
-				     writer.println("<script type='text/javascript'>");
-				     writer.println("alert('식사 이벤트에 참여 하셨습니다.');");
-				     writer.println("history.go(-1);");
-				     writer.println("</script>");
-				     writer.flush();
 				}
 				System.out.println("이벤트 처리 완료");
 				
@@ -281,19 +281,19 @@ public class SuyoController {
 		int tCount = counter.getIcnt() + counter.getHcnt() + counter.getEcnt() + counter.getMcnt();
 		
 		if(tCount == 100){
-			 response.setContentType("text/html; charset=UTF-8");
-			 PrintWriter writer = null;
 			try {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter writer = null;
 				writer = response.getWriter();
-			} catch (IOException e) {
+				writer.println("<script type='text/javascript'>");
+				writer.println("alert('당첨되셨습니다 . 축하합니다.');");
+				writer.println("history.go(-1);");
+				writer.println("</script>");
+				writer.flush();
+				return "index";
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		     writer.println("<script type='text/javascript'>");
-		     writer.println("alert('당첨되셨습니다 . 축하합니다.');");
-		     writer.println("history.go(-1);");
-		     writer.println("</script>");
-		     writer.flush();
-		     return "index";
 		}
 		
 		return "redirect:listWeeklyMenu.do";
