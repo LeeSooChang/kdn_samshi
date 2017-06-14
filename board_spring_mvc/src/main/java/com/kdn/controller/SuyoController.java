@@ -2,6 +2,9 @@ package com.kdn.controller;
  
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,6 +50,7 @@ public class SuyoController {
 	@RequestMapping(value="addSuyo.do", method=RequestMethod.GET)
 	public String addSuyo(int dietNo, int mno, Model model, HttpSession session, 
 						HttpServletResponse response, HttpServletRequest request) {
+		
 		Suyo suyo = new Suyo(dietNo, mno);
 		int findDietNo = dietNo;
 		Diet findDiet = dietService.searchDiet(dietNo);
@@ -177,25 +181,65 @@ public class SuyoController {
 	
 	@RequestMapping(value="minusSuyo.do", method=RequestMethod.GET)
 	public String minusSuyo(int dietNo, int mno, Model model, HttpServletRequest request, HttpServletResponse response){
+		
 		Suyo suyo = new Suyo(dietNo, mno);
 		Suyo isSuyo = null;
 		isSuyo = suyoService.searchSuyo(suyo);
-		if (isSuyo != null) {
-			suyoService.minus(suyo);
-		} else {
+		
+		int diffTwoDays = diffDays(dietNo);
+		System.out.println("back in minusSuyo selectNum is : "+diffTwoDays);
+		
+		if (diffTwoDays == -1) {
+			
+			if (isSuyo != null) {
+				suyoService.minus(suyo);
+			} else {
+				try {
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter writer = response.getWriter();
+					writer.println("<script type='text/javascript'>");
+					writer.println("alert('두번 안 먹을 순 없어요...');");
+					writer.println("history.go(-1);");
+					writer.println("</script>");
+					writer.flush();
+					return "index";
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			
+		} else if (diffTwoDays <= 0) {
 			try {
 				response.setContentType("text/html; charset=UTF-8");
-				 PrintWriter writer = response.getWriter();
-			     writer.println("<script type='text/javascript'>");
-			     writer.println("alert('두번 안 먹을 순 없어요...');");
-			     writer.println("history.go(-1);");
-			     writer.println("</script>");
-			     writer.flush();
-			     return "index";
+				PrintWriter writer = response.getWriter();
+				writer.println("<script type='text/javascript'>");
+				writer.println("alert('내일 날짜만 수정 가능합니다.');");
+				writer.println("history.go(-1);");
+				writer.println("</script>");
+				writer.flush();
+				return "index";
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (diffTwoDays > 0) {
+			try {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter writer = response.getWriter();
+				writer.println("<script type='text/javascript'>");
+				writer.println("alert('지나간 날짜는 수정할 수 없습니다.');");
+				writer.println("history.go(-1);");
+				writer.println("</script>");
+				writer.flush();
+				return "index";
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+		
+		
+		
+		
+		
 		return "redirect:listWeeklyMenu.do";
 	}
  
@@ -213,4 +257,36 @@ public class SuyoController {
 		session.setAttribute("suyo", suyoCount);
 		return "index";
 	}
+	
+	
+	public int diffDays(int dietNo){
+		
+		Diet findDiet = dietService.searchDiet(dietNo);
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date toFindToday = new Date();
+		String findToday = transFormat.format(toFindToday);
+		
+		try {
+			Date dietDate = transFormat.parse(findDiet.getDietDate());
+			Date today = transFormat.parse(findToday);
+			
+			long diff = today.getTime() - dietDate.getTime();
+		    long diffDays = diff / (24 * 60 * 60 * 1000);
+			
+			System.out.println("today>>>>>>>>>>>>>>>>>>>>>>>"+today);
+			System.out.println("dietDate>>>>>>>>>>>>>>>>>>>>"+dietDate);
+			
+			System.out.println("differeces betwen today and dietDate>>>>>>>>>>>>>>>" + diffDays);
+			
+			int returnNum = (int)diffDays;
+			System.out.println(returnNum);
+			
+			return returnNum;
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
 }
