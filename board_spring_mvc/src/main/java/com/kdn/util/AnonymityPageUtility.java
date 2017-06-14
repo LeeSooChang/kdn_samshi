@@ -20,22 +20,22 @@ public class AnonymityPageUtility {
     int anonymitytotalpagecount=0;				//총 페이지 수
     int anonymitydisplayrowcount=0;				//한 페이지당 보여줄 개수
     int anonymitypagePercount = 5;
-    String anonymityimagepath;
+    String imagepath;
     String anonymitysearch;
     /**
      * 현재페이지와 경로 한번에 보여줄 열의 갯수를 세팅하는 생성자
      * @param anonymitydisplayrowcount 한 페이지에 보여줄 게시글 수
      * @param anonymitytotalrowcount   조회해온 데이터의 전체 row수
      * @param anonymitycurrentpagecount 현재 페이지 
-     * @param anonymityimagepath        이미지 경로 
+     * @param imagepath        이미지 경로 
      * @exception java.lang.Exception
      */
-    public AnonymityPageUtility(int anonymitydisplayrowcount, int anonymitytotalrowcount, int anonymitycurrentpagecount, String anonymityimagepath)
+    public AnonymityPageUtility(int anonymitydisplayrowcount, int anonymitytotalrowcount, int anonymitycurrentpagecount, String imagepath)
     {
         this.anonymitydisplayrowcount = anonymitydisplayrowcount;
         this.anonymitytotalrowcount = anonymitytotalrowcount;
         this.anonymitycurrentpagecount = anonymitycurrentpagecount;
-        this.anonymityimagepath = anonymityimagepath	;
+        this.imagepath = imagepath	;
         this.anonymitytotalpagecount=anonymitytotalrowcount/anonymitydisplayrowcount;
         if(anonymitytotalrowcount%anonymitydisplayrowcount!=0){
           this.anonymitytotalpagecount++;
@@ -74,14 +74,14 @@ public class AnonymityPageUtility {
             anonymitylastpagecount = anonymitytotalpagecount+1;
 		
         if(anonymityfirstpagecount>anonymitypagePercount)
-            sb.append(" <a href='javascript:anonymityPagelist("+anonymitybeforetenpage+")'><img src=\""+anonymityimagepath+"btn_first.gif\" border='0'  hspace='3' align='absmiddle'></a>&nbsp;&nbsp;");
+            sb.append(" <a href='javascript:anonymityPagelist("+anonymitybeforetenpage+")' class='glyphicon glyphicon-chevron-left'></a>&nbsp;&nbsp;");
         else
-            sb.append("<img src=\""+anonymityimagepath+"btn_first.gif\" border='0'  align=absmiddle>&nbsp;&nbsp;");
+            sb.append("<a href='#dishes' border='0' class='glyphicon glyphicon-chevron-left' align=absmiddle></a>&nbsp;&nbsp;");
 
         if(((anonymitycurrentpagecount-1)/anonymitypagePercount*anonymitypagePercount)+1>anonymitybeforetenpage)
-            sb.append("<a href='javascript:anonymityPagelist("+ anonymitybeforetenpage+")'><img src=\""+anonymityimagepath+"btn_prev.gif\" border='0' hspace='3' align=absmiddle></a>&nbsp;&nbsp;");
+            sb.append("<a href='javascript:anonymityPagelist("+ anonymitybeforetenpage+")' class='glyphicon glyphicon-triangle-left' ></a>&nbsp;&nbsp;");
         else
-            sb.append("<img src=\""+anonymityimagepath+"btn_prev.gif\" border='0'   align=absmiddle>&nbsp;&nbsp;");
+            sb.append("<a href='#dishes' border='0' class='glyphicon glyphicon-triangle-left' align=absmiddle></a>&nbsp;&nbsp; ");
 
         for (int i = anonymityfirstpagecount; i < anonymitylastpagecount; i++)
         {
@@ -97,14 +97,14 @@ public class AnonymityPageUtility {
         }
 
         if(anonymitynexttenpage<((anonymitytotalpagecount-1)/anonymitypagePercount+1)*anonymitypagePercount)
-            sb.append("&nbsp;&nbsp;<a href='javascript:anonymityPagelist("+ (anonymitynexttenpage)+ ")'><img src=\""+anonymityimagepath+"btn_next.gif\" border='0' hspace='3' align=absmiddle></a>");
+            sb.append("&nbsp;&nbsp;<a href='javascript:anonymityPagelist("+ (anonymitynexttenpage)+ ")' class='glyphicon glyphicon-triangle-right'></a>");
         else
-            sb.append("&nbsp;&nbsp;<img src=\""+anonymityimagepath+"btn_next.gif\" border='0' hspace='3' align=absmiddle>");
+            sb.append("&nbsp;&nbsp;<a href='#dishes' border='0' hspace='3' align=absmiddle class='glyphicon glyphicon-triangle-right'></a>");
 
         if((((anonymitycurrentpagecount-1)/anonymitypagePercount)+1)*anonymitypagePercount < anonymitynexttenpage)
-            sb.append("&nbsp;&nbsp;<a href='javascript:anonymityPagelist("+ (anonymitynexttenpage)+")'><img src=\""+anonymityimagepath+"btn_end.gif\" border='0' align=absmiddle></a>");
+            sb.append("&nbsp;&nbsp;<a href='javascript:anonymityPagelist("+ (anonymitynexttenpage)+")' class='glyphicon glyphicon-chevron-right'></a>");
         else
-            sb.append("&nbsp;&nbsp;<img src=\""+anonymityimagepath+"btn_end.gif\" border='0' align=absmiddle>");
+            sb.append("&nbsp;&nbsp;<a href='#dishes' border='0' align=absmiddle class='glyphicon glyphicon-chevron-right'></a>");
         return sb.toString();
     }
     public String getTotalpagecount() {       
