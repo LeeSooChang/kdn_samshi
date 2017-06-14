@@ -11,41 +11,41 @@
 <link href="css/kdn-table.css" rel="stylesheet">
 <title>Insert title here</title>
 <script type="text/javascript">
-	//조건 검색, 페이지 번호로 게시글 요청을 위한 메서드  
-	function anonymityPagelist(cpage) {
-		//input 양식의 hidden으로 선언된 page에 요청된 페이지 정보 셋팅 
-		document.getElementById("anonymityPageNo").value = cpage;
-		var afrm = document.getElementById("afrm");
-		afrm.action = "listAnonymity.do";
-		afrm.submit();
-	}
-	//게시글 번호나 타이틀을 클릭하면 해당 게시글 요청을 위한 메서드 
-	function getReivewBoard(ano) {
-		//input 양식의 hidden으로 선언된 no(게시글 번호)에 요청된 게시글 번호를 셋팅
-		document.getElementById("ano").value = ano;
-		var afrm = document.getElementById("afrm");
-		afrm.action = "searchReview.do";
-		afrm.submit();
-	}
+//조건 검색, 페이지 번호로 게시글 요청을 위한 메서드  
+function anonymityPagelist(cpage) {
+	//input 양식의 hidden으로 선언된 page에 요청된 페이지 정보 셋팅 
+	document.getElementById("anonymityPageNo").value = cpage;
+	var afrm = document.getElementById("afrm");
+	afrm.action = "listAnonymity.do";
+	afrm.submit();
+}
+//게시글 번호나 타이틀을 클릭하면 해당 게시글 요청을 위한 메서드 
+function getReivewBoard(ano) {
+	//input 양식의 hidden으로 선언된 no(게시글 번호)에 요청된 게시글 번호를 셋팅
+	document.getElementById("ano").value = ano;
+	var afrm = document.getElementById("afrm");
+	afrm.action = "searchReview.do";
+	afrm.submit();
+}
+
+	function removeanoform(ano, anopw, mno){
+	$('#rano').val(ano);	
+	$('#ranopw').val(anopw);	
+	$('#checkAnonymityForm').modal();
+} 
 	
- 	function removeanoform(ano, anopw){
-		$('#rano').val(ano);	
-		$('#ranopw').val(anopw);	
-		$('#checkAnonymityForm').modal();
-	} 
- 	
-	function updateanoform(ano){
-		console.log('ano updateForm');
-		$("#uano").val(ano);
-		$('#updateAnonymityForm').modal();
-		
-	}
+function updateanoform(ano, mno){
+	console.log('ano updateForm');
+	$("#uano").val(ano);
+	$('#updateAnonymityForm').modal();
 	
-	function insertanoform(){
-		console.log('ano insertForm');
-		$('#insertAnonymityForm').modal();
-		
-	}
+}
+
+function insertanoform(){
+	console.log('ano insertForm');
+	$('#insertAnonymityForm').modal();
+	
+}
 </script>
 <link rel="stylesheet" type="text/css" href="css/basic.css" />
 <link
@@ -121,6 +121,7 @@
 					<form method="post" action="updateAnonymity.do"
 						enctype="multipart/form-data">
 						<input type="hidden" name="ano" id="uano" />
+						<input type="hidden" name="mno" id="umno" value="${mno }"/>
 						<table align="center" width="300">
 							<tr height="50">
 								<td><label for="title">비밀번호</label></td>
@@ -172,6 +173,7 @@
 				<div class="modal-body" id="modal-body">
 					<form role="form" method="post" action="deleteAnonymity.do">
 						<input type="hidden" id="rano" name="ano" value="${ano }" />비밀번호
+						<input type="hidden" id="rmno" name="mno" value="${mno }" />
 						<input type="text" id="ranopw" name="anopw" />
 						<button type="submit" class="close">
 							<span class="glyphicon glyphicon-ok"></span>삭제

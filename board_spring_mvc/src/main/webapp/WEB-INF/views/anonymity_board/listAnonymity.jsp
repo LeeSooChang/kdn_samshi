@@ -29,13 +29,13 @@
 		afrm.submit();
 	}
 	
- 	function removeanoform(ano, anopw){
+ 	function removeanoform(ano, anopw, mno){
 		$('#rano').val(ano);	
 		$('#ranopw').val(anopw);	
 		$('#checkAnonymityForm').modal();
 	} 
  	
-	function updateanoform(ano){
+	function updateanoform(ano, mno){
 		console.log('ano updateForm');
 		$("#uano").val(ano);
 		$('#updateAnonymityForm').modal();
@@ -121,6 +121,7 @@
 					<form method="post" action="updateAnonymity.do"
 						enctype="multipart/form-data">
 						<input type="hidden" name="ano" id="uano" />
+						<input type="hidden" name="mno" id="umno" value="${mno }"/>
 						<table align="center" width="300">
 							<tr height="50">
 								<td><label for="title">비밀번호</label></td>
@@ -172,6 +173,7 @@
 				<div class="modal-body" id="modal-body">
 					<form role="form" method="post" action="deleteAnonymity.do">
 						<input type="hidden" id="rano" name="ano" value="${ano }" />비밀번호
+						<input type="hidden" id="rmno" name="mno" value="${mno }" />
 						<input type="text" id="ranopw" name="anopw" />
 						<button type="submit" class="close">
 							<span class="glyphicon glyphicon-ok"></span>삭제
@@ -232,10 +234,10 @@
 										<c:forEach var="anonymity" items="${anonymityList}">
 											<tr id=${anonymity }>
 												<td><a href="#" class="btn btn-default"
-													onclick="updateanoform(${anonymity.ano})"> <em
+													onclick="updateanoform(${anonymity.ano}, ${anonymity.mno})"> <em
 														class="fa fa-pencil"></em></a> <a href="#"
 													class="btn btn-danger"
-													onclick="removeanoform(${anonymity.ano})"><em
+													onclick="removeanoform(${anonymity.ano}, ${anonymity.mno})"><em
 														class="fa fa-trash"></em></a></td>
 
 												<td class="hidden-xs">${anonymity.ano}</td>
