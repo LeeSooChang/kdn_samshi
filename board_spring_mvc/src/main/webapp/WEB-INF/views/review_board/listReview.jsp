@@ -131,6 +131,7 @@
 				<div class="modal-body" id="modal-body">
 					<form role="form" method="post" action="deleteReview.do">
 						정말 삭제하시겠습니까? <input type="hidden" id="rno" name="rno" value="" />
+										 <input type="hidden" id="mno" name="mno" value="" />
 						<button type="submit" class="btn btn-default btn-success">
 							<span class="glyphicon glyphicon-ok"></span> 삭제
 						</button>
@@ -197,7 +198,7 @@
 											<tr id=${reviewBoard.rno }>
 
 												<td align="center"><c:if
-														test="${ mno == reviewBoard.mno }">
+														test="${ mno == reviewBoard.mno || grade == 'Y' }">
 														<a href="#" class="btn btn-default" data-toggle="modal"
 															data-target="#updateReviewModal"
 															onclick="updateform(${reviewBoard.rno },${reviewBoard.mno },'${reviewBoard.fname }', ${reviewBoard.spoint },'${reviewBoard.comments}')">
