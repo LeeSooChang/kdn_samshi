@@ -22,6 +22,7 @@ public class CounterDaoImpl implements CounterDao {
 	@Override
 	public void update(Counter counter) {
 		// TODO Auto-generated method stub
+		System.out.println("this is counter : " + counter);
 		session.update("counter.update", counter);
 	}
 
