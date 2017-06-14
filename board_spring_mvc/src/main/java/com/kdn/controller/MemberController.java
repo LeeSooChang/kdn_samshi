@@ -104,7 +104,39 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="registerMember.do", method=RequestMethod.POST)
-	public String insertMember(Member member, Model model) {
+	public String insertMember(NoticePageBean noticebean, Model model, ReviewPageBean bean, AnonymityPageBean anonymitybean, Member member) {
+		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
+		model.addAttribute("noticeList", noticeList);
+		model.addAttribute("noticeBoardContent", "notice_board/listBoardFromHome.jsp");
+		
+		List<Review> list = reviewService.searchAll(bean);
+		model.addAttribute("list", list);
+		model.addAttribute("reviewBoardContent", "review_board/listReviewFromHome.jsp");
+		
+		List<Diet> dietList = dietService.searchAll();
+		model.addAttribute("dietList", dietList);
+		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenuFromHome.jsp");
+		
+		model.addAttribute("content", "member/register.jsp");
+		
+		List<Ranking> rankingList = rankingService.searchN();
+		model.addAttribute("rankingList", rankingList);
+		List<Ranking> rankingM = rankingService.searchM();
+		model.addAttribute("rankingM", rankingM);
+		List<Ranking> rankingH = rankingService.searchH();
+		model.addAttribute("rankingH", rankingH);
+		List<Ranking> rankingI = rankingService.searchI();
+		model.addAttribute("rankingI", rankingI);
+		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
+		
+		List<Suyo> suyoCountList = suyoService.getSuyoCountAll();
+		model.addAttribute("suyoCountList", suyoCountList);
+		
+//		익명게시판
+		List<Anonymity> anonymityList = anonymityService.searchAll(anonymitybean);
+		model.addAttribute("anonymityList", anonymityList);
+		model.addAttribute("anonymityPageBean", anonymitybean);
+		model.addAttribute("anonymityBoardContent",  "anonymity_board/listAnonymityFromHome.jsp");
 		System.out.println(member);
 		memberService.add(member);
 		return "index";

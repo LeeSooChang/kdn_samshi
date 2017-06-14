@@ -215,7 +215,7 @@
 									<thead>
 										<tr>
 											<th><em class="fa fa-cog"></em></th>
-											<th class="hidden-xs">게시번호</th>
+											<th class="hidden-xs" style="width: 60px">번호</th>
 											<th>제목</th>
 											<th>내용</th>
 											<th>등록일</th>

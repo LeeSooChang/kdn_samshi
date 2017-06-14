@@ -39,9 +39,10 @@
 </head>
 <body>
 	<div class="main">
-		<div class="check_member_grade" align="right">
+		<div class="check_member_grade">
 			<c:if test="${!empty grade and grade=='Y' }">
-				<a href="insertNoticeBoardForm.do"  class="btn btn-default">등록</a>
+				<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				<a href="insertNoticeBoardForm.do"  class="btn btn-primary">등록</a>
 			</c:if>
 		</div>
 		<form id="nfrm">
