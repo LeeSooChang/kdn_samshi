@@ -21,9 +21,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kdn.model.biz.CounterService;
 import com.kdn.model.biz.DietService;
+import com.kdn.model.biz.EventService;
 import com.kdn.model.biz.SuyoService;
 import com.kdn.model.domain.Counter;
 import com.kdn.model.domain.Diet;
+import com.kdn.model.domain.Event;
 import com.kdn.model.domain.Suyo;
  
 @Controller
@@ -47,9 +49,32 @@ public class SuyoController {
 	@Autowired
 	private CounterService counterService;
 	
+	@Autowired
+	private EventService eventService;
+	
 	@RequestMapping(value="addSuyo.do", method=RequestMethod.GET)
 	public String addSuyo(int dietNo, int mno, Model model, HttpSession session, 
 						HttpServletResponse response, HttpServletRequest request) {
+		
+		Event findEvent = eventService.search(mno); 
+		
+		if(findEvent == null){
+			eventService.add(mno);
+			response.setContentType("text/html; charset=UTF-8");
+			 PrintWriter writer = null;
+			try {
+				writer = response.getWriter();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		     writer.println("<script type='text/javascript'>");
+		     writer.println("alert('식사 이벤트에 참여 하셨습니다!! 100번째 손님께는 선물을 드립니다.');");
+		     writer.println("history.go(-1);");
+		     writer.println("</script>");
+		     writer.flush();
+		     return "index";
+		}
 		
 		Suyo suyo = new Suyo(dietNo, mno);
 		int findDietNo = dietNo;
@@ -70,8 +95,10 @@ public class SuyoController {
 			isSuyo = suyoService.searchSuyo(findSuyo2);
 			if(isSuyo == null){
 				suyoService.add(suyo);
-				counter.setIcnt(counter.getIcnt() + 1);
-				count = counter.getIcnt();
+				if(findEvent == null){
+					counter.setIcnt(counter.getIcnt() + 1);
+					count = counter.getIcnt();
+				}
 			} else {
 				try {
 					 response.setContentType("text/html; charset=UTF-8");
@@ -94,8 +121,10 @@ public class SuyoController {
 			isSuyo = suyoService.searchSuyo(findSuyo3);
 			if(isSuyo == null){
 				suyoService.add(suyo);
-				counter.setHcnt(counter.getHcnt() + 1);
-				count = counter.getHcnt();
+				if(findEvent == null){
+					counter.setHcnt(counter.getHcnt() + 1);
+					count = counter.getHcnt();
+				}
 			} else {
 				try {
 					response.setContentType("text/html; charset=UTF-8");
@@ -116,13 +145,15 @@ public class SuyoController {
 			isSuyo = suyoService.searchSuyo(suyo);
 			if (isSuyo == null) {
 				suyoService.add(suyo);
-				if(dietScode == 1){
-					counter.setMcnt(counter.getMcnt() + 1);
-					count = counter.getMcnt();
-				}
-				else{
-					counter.setEcnt(counter.getEcnt() + 1);
-					count = counter.getEcnt();
+				if(findEvent == null){
+					if(dietScode == 1){
+						counter.setMcnt(counter.getMcnt() + 1);
+						count = counter.getMcnt();
+					}
+					else{
+						counter.setEcnt(counter.getEcnt() + 1);
+						count = counter.getEcnt();
+					}
 				}
 			} else {
 				try {
