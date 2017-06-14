@@ -35,7 +35,6 @@ public class NoticeBoardDaoImpl implements NoticeBoardDao {
 
 	@Override
 	public NoticeBoard search(int nno) {
-		System.out.println(nno);
 		return sql.selectOne("noticeBoard.search", nno);
 	}
 

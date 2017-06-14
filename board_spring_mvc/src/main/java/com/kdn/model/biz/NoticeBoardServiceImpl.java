@@ -101,8 +101,6 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 		try {
 			int noticetotal = dao.getCount(noticebean);
 			
-			System.out.println("notice pagebean : " +noticetotal);
-			
 			NoticePageUtility noticebar = 
 			  new NoticePageUtility(noticebean.getInterval()
 					  		, noticetotal

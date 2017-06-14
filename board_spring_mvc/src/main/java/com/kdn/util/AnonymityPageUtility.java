@@ -61,12 +61,6 @@ public class AnonymityPageUtility {
         anonymitybeforetenpage= anonymitybeforetenpage<1?1:anonymitybeforetenpage;
         anonymitynexttenpage=anonymitylastpagecount;
         
-        System.out.println("anonymityfirstpagecount:"+anonymityfirstpagecount);
-        System.out.println("anonymitylastpagecount:"+anonymitylastpagecount);
-        System.out.println("anonymitybeforetenpage:"+anonymitybeforetenpage);
-        System.out.println("anonymitynexttenpage:"+anonymitynexttenpage);
-        
-        
         if(anonymitybeforetenpage<1)     anonymitybeforetenpage=1;
         if(anonymitynexttenpage>anonymitytotalpagecount)
             anonymitynexttenpage=(((anonymitytotalpagecount-1)/anonymitypagePercount)+1)*anonymitypagePercount;
