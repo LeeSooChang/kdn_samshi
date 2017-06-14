@@ -169,28 +169,40 @@ function openpopup(){
 		</div>
 	</div>
 </div>
-<!-- insert review 모달 팝업 -->
+<!-- 리뷰 등록 모달  -->
 <div class="modal fade forget-modal" id="reviewModal" tabindex="-1"
 	role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
+		<div class="modal-content" style="width:400px">
 			<div class="modal-header">
-				<h4>Insert Review</h4>
-				<br />
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 style="color:green">
+					<span class="glyphicon glyphicon-envelope"></span>
+					<label id="modal-title">리뷰 작성</label>
+				</h4>
+				<small>식사하신 메뉴에 대한 평점과 의견을 남겨주세요.</small>
+				<br/>
+			</div>
+			<div class="modal-body" id="modal-body">
 				<c:if test="${!empty mno}">
 					<form method="post" action="insertReview.do"
 						enctype="multipart/form-data">
 						<table align="center" width="300">
-							<tr>
-								<th colspan="2">게시글 작성</th>
-							</tr>
+							
 							<tr height="50">
 								<td><label for="title">아이디</label></td>
-								<td><input type="text" name="mno" id="mno" value="${mno }" /></td>
+								<td><input type="text" name="mno" id="mno" value="${mno }"/></td>
 							</tr>
 							<tr height="50">
 								<td><label for="title">별점</label></td>
-								<td><input type="text" name="spoint" id="spoint" /></td>
+								<td><select name="spoint" id="spoint" >
+										<option value="5">5</option>
+										<option value="4">4</option>
+										<option value="3">3</option>
+										<option value="2">2</option>
+										<option value="1">1</option>
+									</select>	
+								</td>
 							</tr>
 							<tr height="50">
 								<td><label for="title">코너</label></td>
@@ -202,34 +214,38 @@ function openpopup(){
 								</select></td>
 							</tr>
 							<tr height="50">
-								<td><label for="title">음식이름</label></td>
+								<td><label for="title">메뉴</label></td>
 								<td><input type="text" name="fname" id="fname" /></td>
 							</tr>
 							<tr>
-								<td colspan="2"><label for="contents">코멘트</label></td>
+								<td colspan="2" align="center"><label for="contents">코멘트</label></td>
 							</tr>
 							<tr>
 								<td colspan="2" align="center"><textarea name="comments"
-										id="comments" cols="30" rows="5"></textarea></td>
+										id="comments" cols="40" rows="5" style="resize:none;"></textarea></td>
 							</tr>
 							<tr>
-								<td colspan="2" align="center"><input type="submit"
-									value="작성" /> <input type="reset" value="취소" /></td>
+								<td colspan="2" align="center">
+									<button type="button" class="close" data-dismiss="modal">
+										<span class="glyphicon glyphicon-remove"></span> 취소
+									</button>
+									<button type="submit" class="close">
+										<span class="glyphicon glyphicon-ok"></span>작성
+									</button>
+								</td>
 							</tr>
 						</table>
 					</form>
 				</c:if>
 				<c:if test="${empty mno }">
-					<span> 로그인 후에 리뷰를 작성할 수 있습니다. </span>
+					<span>로그인 후에 리뷰를 작성하실 수 있습니다.</span>
 				</c:if>
 				<hr>
 			</div>
 		</div>
-		<!-- /.modal-content -->
 	</div>
-	<!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->
+
 
 <!-- Carousel -->
 <article id="mainContent">
