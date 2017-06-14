@@ -80,6 +80,9 @@ public class DietController {
 		List<Ranking> rankingI = rankingService.searchI();
 		model.addAttribute("rankingI", rankingI);
 		
+		List<Suyo> suyoCountList = suyoService.getSuyoCountAll();
+		model.addAttribute("suyoCountList", suyoCountList);
+		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoardFromHome.jsp");
 		return "index";
 	}
@@ -133,6 +136,9 @@ public class DietController {
 		List<Ranking> rankingI = rankingService.searchI();
 		model.addAttribute("rankingI", rankingI);
 		
+		List<Suyo> suyoCountList = suyoService.getSuyoCountAll();
+		model.addAttribute("suyoCountList", suyoCountList);
+		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoardFromHome.jsp");
 		return "index";
 	}
@@ -156,6 +162,9 @@ public class DietController {
 		model.addAttribute("rankingH", rankingH);
 		List<Ranking> rankingI = rankingService.searchI();
 		model.addAttribute("rankingI", rankingI);
+		
+		List<Suyo> suyoCountList = suyoService.getSuyoCountAll();
+		model.addAttribute("suyoCountList", suyoCountList);
 		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoardFromHome.jsp");
 		
@@ -183,6 +192,9 @@ public class DietController {
 		model.addAttribute("rankingH", rankingH);
 		List<Ranking> rankingI = rankingService.searchI();
 		model.addAttribute("rankingI", rankingI);
+		
+		List<Suyo> suyoCountList = suyoService.getSuyoCountAll();
+		model.addAttribute("suyoCountList", suyoCountList);
 		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoardFromHome.jsp");
 		
@@ -213,6 +225,9 @@ public class DietController {
 		model.addAttribute("rankingH", rankingH);
 		List<Ranking> rankingI = rankingService.searchI();
 		model.addAttribute("rankingI", rankingI);
+		
+		List<Suyo> suyoCountList = suyoService.getSuyoCountAll();
+		model.addAttribute("suyoCountList", suyoCountList);
 		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoardFromHome.jsp");
 		

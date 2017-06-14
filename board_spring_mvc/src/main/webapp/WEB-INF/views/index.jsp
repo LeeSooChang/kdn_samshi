@@ -53,7 +53,7 @@ function MM_openBrWindow(theURL,winName,features) { //v2.0
 }
 function openpopup(){
  if (getCookie('event') != 'checked') {
-  window.open("open.jsp","openPop", "width=400, height=300");
+  window.open("open.jsp","openPop", "width=400, height=400");
  }
 }
 </script>
@@ -227,7 +227,7 @@ function openpopup(){
 							<tr>
 								<td colspan="2" align="center">
 									<button type="button" class="close" data-dismiss="modal">
-										<span class="glyphicon glyphicon-remove"></span> 취소
+										<span class="glyphicon glyphicon-remove"></span>취소
 									</button>
 									<button type="submit" class="close">
 										<span class="glyphicon glyphicon-ok"></span>작성

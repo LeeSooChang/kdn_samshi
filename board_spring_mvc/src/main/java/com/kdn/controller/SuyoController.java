@@ -165,7 +165,7 @@ public class SuyoController {
 						response.setContentType("text/html; charset=UTF-8");
 						 PrintWriter writer = response.getWriter();
 					     writer.println("<script type='text/javascript'>");
-					     writer.println("alert('한번에 많이 퍼세요...');");
+					     writer.println("alert('이미 예상 식사인원에 포함되어 있습니다.');");
 					     writer.println("history.go(-1);");
 					     writer.println("</script>");
 					     writer.flush();
@@ -177,7 +177,21 @@ public class SuyoController {
 				break;
 			}
 			
-		} else if (diffTwoDays <= 0) {
+		} else if (diffTwoDays == 0) {
+			try {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter writer = response.getWriter();
+				writer.println("<script type='text/javascript'>");
+				writer.println("alert('오늘 식사 인원 집계가 완료되었습니다.');");
+				writer.println("history.go(-1);");
+				writer.println("</script>");
+				writer.flush();
+				return "index";
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} else if (diffTwoDays < -1) {
 			try {
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter writer = response.getWriter();
@@ -190,6 +204,7 @@ public class SuyoController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		} else if (diffTwoDays > 0) {
 			try {
 				response.setContentType("text/html; charset=UTF-8");
@@ -236,8 +251,116 @@ public class SuyoController {
 		isSuyo = suyoService.searchSuyo(suyo);
 		
 		int diffTwoDays = diffDays(dietNo);
+		int findDietNo = dietNo;
+		Diet anotherSuyoExist = null;
+		Diet findDiet = dietService.searchDiet(findDietNo);
+		int dietScode = findDiet.getScode();
 		
 		if (diffTwoDays == -1) {
+			
+			switch (dietScode) {
+			case 2:
+				
+				findDietNo++;
+				anotherSuyoExist = dietService.searchDiet(findDietNo);
+				
+				if (anotherSuyoExist == null) {
+					
+					if (isSuyo != null) {
+						suyoService.minus(suyo);
+					} else {
+						try {
+							response.setContentType("text/html; charset=UTF-8");
+							PrintWriter writer = response.getWriter();
+							writer.println("<script type='text/javascript'>");
+							writer.println("alert('예상 식사 인원에 포함되어있지 않아 해당 선택이 불가합니다.');");
+							writer.println("history.go(-1);");
+							writer.println("</script>");
+							writer.flush();
+							return "index";
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+					
+				} else {
+					try {
+						response.setContentType("text/html; charset=UTF-8");
+						PrintWriter writer = response.getWriter();
+						writer.println("<script type='text/javascript'>");
+						writer.println("alert('한식을 선택하셨습니다.');");
+						writer.println("history.go(-1);");
+						writer.println("</script>");
+						writer.flush();
+						return "index";
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				
+				break;
+				
+			case 3:
+				
+				findDietNo--;
+				anotherSuyoExist = dietService.searchDiet(findDietNo);
+				if (anotherSuyoExist == null) {
+					
+					if (isSuyo != null) {
+						suyoService.minus(suyo);
+					} else {
+						try {
+							response.setContentType("text/html; charset=UTF-8");
+							PrintWriter writer = response.getWriter();
+							writer.println("<script type='text/javascript'>");
+							writer.println("alert('예상 식사 인원에 포함되어있지 않아 해당 선택이 불가합니다.');");
+							writer.println("history.go(-1);");
+							writer.println("</script>");
+							writer.flush();
+							return "index";
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+					
+				} else {
+					try {
+						response.setContentType("text/html; charset=UTF-8");
+						PrintWriter writer = response.getWriter();
+						writer.println("<script type='text/javascript'>");
+						writer.println("alert('일품을 선택하셨습니다.');");
+						writer.println("history.go(-1);");
+						writer.println("</script>");
+						writer.flush();
+						return "index";
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				
+				break;
+
+			default:
+				
+				if (isSuyo != null) {
+					suyoService.minus(suyo);
+				} else {
+					try {
+						response.setContentType("text/html; charset=UTF-8");
+						PrintWriter writer = response.getWriter();
+						writer.println("<script type='text/javascript'>");
+						writer.println("alert('예상 식사 인원에 포함되어있지 않아 해당 선택이 불가합니다.');");
+						writer.println("history.go(-1);");
+						writer.println("</script>");
+						writer.flush();
+						return "index";
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				
+				break;
+			}
 			
 			if (isSuyo != null) {
 				suyoService.minus(suyo);
@@ -246,7 +369,7 @@ public class SuyoController {
 					response.setContentType("text/html; charset=UTF-8");
 					PrintWriter writer = response.getWriter();
 					writer.println("<script type='text/javascript'>");
-					writer.println("alert('두번 안 먹을 순 없어요...');");
+					writer.println("alert('예상 식사 인원에 포함되어있지 않아 해당 선택이 불가합니다.');");
 					writer.println("history.go(-1);");
 					writer.println("</script>");
 					writer.flush();
@@ -256,7 +379,20 @@ public class SuyoController {
 				}
 			}
 			
-		} else if (diffTwoDays <= 0) {
+		} else if (diffTwoDays == 0) {
+			try {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter writer = response.getWriter();
+				writer.println("<script type='text/javascript'>");
+				writer.println("alert('오늘 식사 인원 집계가 완료되었습니다.');");
+				writer.println("history.go(-1);");
+				writer.println("</script>");
+				writer.flush();
+				return "index";
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (diffTwoDays < -1) {
 			try {
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter writer = response.getWriter();
