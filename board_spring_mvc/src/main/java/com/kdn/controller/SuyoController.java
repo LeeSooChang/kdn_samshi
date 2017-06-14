@@ -58,8 +58,6 @@ public class SuyoController {
 		
 		Event findEvent = eventService.search(mno); 
 		
-		
-		
 		Suyo suyo = new Suyo(dietNo, mno);
 		int findDietNo = dietNo;
 		Diet findDiet = dietService.searchDiet(dietNo);
@@ -68,24 +66,47 @@ public class SuyoController {
 		int count = 0;
 		String date = findDiet.getDietDate();
 		Counter counter = counterService.search(date);
-		int dietScode = findDiet.getScode();
-		
-		Suyo isSuyo = null;
-		
 		int diffTwoDays = diffDays(dietNo);
+		
+		int dietScode = findDiet.getScode();
+		Suyo isSuyo = suyoService.searchSuyo(suyo);
+		Suyo isAnotherSuyoExist = null;
+		Suyo toFindSuyo = null;
+		
 		
 		if (diffTwoDays == -1) {
 			
 			switch (dietScode) {
 			case 2:
 				findDietNo++;
-				Suyo findSuyo2 = new Suyo(findDietNo, mno);
-				isSuyo = suyoService.searchSuyo(findSuyo2);
-				if(isSuyo == null){
-					suyoService.add(suyo);
-					if(findEvent == null){
-						counter.setIcnt(counter.getIcnt() + 1);
-						count = counter.getIcnt();
+				toFindSuyo = new Suyo(findDietNo, mno);
+				isAnotherSuyoExist = suyoService.searchSuyo(toFindSuyo);
+				if(isAnotherSuyoExist == null){
+					if (isSuyo == null) {
+						suyoService.add(suyo);
+						if(findEvent == null){
+							if(dietScode == 1){
+								counter.setMcnt(counter.getMcnt() + 1);
+								count = counter.getMcnt();
+							}
+							else{
+								counter.setEcnt(counter.getEcnt() + 1);
+								count = counter.getEcnt();
+							}
+						}
+					} else {
+						try {
+							response.setContentType("text/html; charset=UTF-8");
+							 PrintWriter writer = response.getWriter();
+						     writer.println("<script type='text/javascript'>");
+						     writer.println("alert('이미 예상 식사인원에 포함되어 있습니다.');");
+						     writer.println("history.go(-1);");
+						     writer.println("</script>");
+						     writer.flush();
+						     return "index";
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 					}
 				} else {
 					try {
@@ -105,13 +126,34 @@ public class SuyoController {
 				
 			case 3:
 				findDietNo--;
-				Suyo findSuyo3 = new Suyo(findDietNo, mno);
-				isSuyo = suyoService.searchSuyo(findSuyo3);
-				if(isSuyo == null){
-					suyoService.add(suyo);
-					if(findEvent == null){
-						counter.setHcnt(counter.getHcnt() + 1);
-						count = counter.getHcnt();
+				toFindSuyo = new Suyo(findDietNo, mno);
+				isAnotherSuyoExist = suyoService.searchSuyo(toFindSuyo);
+				if(isAnotherSuyoExist == null){
+					if (isSuyo == null) {
+						suyoService.add(suyo);
+						if(findEvent == null){
+							if(dietScode == 1){
+								counter.setMcnt(counter.getMcnt() + 1);
+								count = counter.getMcnt();
+							}
+							else{
+								counter.setEcnt(counter.getEcnt() + 1);
+								count = counter.getEcnt();
+							}
+						}
+					} else {
+						try {
+							response.setContentType("text/html; charset=UTF-8");
+							 PrintWriter writer = response.getWriter();
+						     writer.println("<script type='text/javascript'>");
+						     writer.println("alert('이미 예상 식사인원에 포함되어 있습니다.');");
+						     writer.println("history.go(-1);");
+						     writer.println("</script>");
+						     writer.flush();
+						     return "index";
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 					}
 				} else {
 					try {
@@ -251,10 +293,13 @@ public class SuyoController {
 		isSuyo = suyoService.searchSuyo(suyo);
 		
 		int diffTwoDays = diffDays(dietNo);
-		int findDietNo = dietNo;
-		Diet anotherSuyoExist = null;
-		Diet findDiet = dietService.searchDiet(findDietNo);
+		Diet findDiet = dietService.searchDiet(dietNo);
 		int dietScode = findDiet.getScode();
+		
+		
+		int findDietNo = dietNo;
+		Suyo anotherSuyoExist = null;
+		Suyo toFindSuyo=null;
 		
 		if (diffTwoDays == -1) {
 			
@@ -262,7 +307,8 @@ public class SuyoController {
 			case 2:
 				
 				findDietNo++;
-				anotherSuyoExist = dietService.searchDiet(findDietNo);
+				toFindSuyo = new Suyo(findDietNo, mno);
+				anotherSuyoExist = suyoService.searchSuyo(toFindSuyo);
 				
 				if (anotherSuyoExist == null) {
 					
@@ -303,7 +349,8 @@ public class SuyoController {
 			case 3:
 				
 				findDietNo--;
-				anotherSuyoExist = dietService.searchDiet(findDietNo);
+				toFindSuyo = new Suyo(findDietNo, mno);
+				anotherSuyoExist = suyoService.searchSuyo(toFindSuyo);
 				if (anotherSuyoExist == null) {
 					
 					if (isSuyo != null) {
