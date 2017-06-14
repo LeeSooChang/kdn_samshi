@@ -136,7 +136,7 @@ public class DietController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "searchUpdateMenu.do", method = RequestMethod.GET)
+	@RequestMapping(value = "searchUpdateMenu.do", method = RequestMethod.POST)
 	public String searchUpdateMenu(Model model, NoticePageBean noticebean, ReviewPageBean bean, String dietDate, int scode){
 		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
 		model.addAttribute("noticeList", noticeList);

@@ -48,18 +48,18 @@ function removeForm(count){
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="hidden" class="form-control" name="mno" id="mno" value="${mno}" placeholder="Register Number" />
+                                <input type="hidden" class="form-control" name="mno" id="mno" value="${mno}" placeholder="관리자 번호" />
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="title" id="title" placeholder="Title" />
+                                <input type="text" class="form-control" name="title" id="title" placeholder="제목" />
                             </div>
                         </div>
                         <div class="col-md-12 text-center">
                             <div class="form-group">
-                                <textarea class="form-control" name="contents" id="contents" placeholder="Enter announcement to be notified" rows="6"></textarea>
+                                <textarea class="form-control" name="contents" id="contents" placeholder="내용" rows="6"></textarea>
                             </div>
-                            <a href="listNoticeBoard.do" class="btn btn-default">Cancel</a>
-                            <button type="submit" class="btn btn-danger">Submit</button><br/><br/>
+                            <button type="submit" class="btn btn-danger">등록</button>
+                            <a href="listNoticeBoard.do" class="btn btn-default">취소</a><br/><br/>
                         </div>
                     </div>
                 </form>

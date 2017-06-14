@@ -46,25 +46,23 @@
 </head>
 <body>
 	<div class="col-md-4 col-md-offset-4">
-      <form class="form-horizontal" action = "addWeeklyMenu.do" id = "frm" method = "POST">
+      <form class="form-horizontal" action = "addWeeklyMenu.do" id ="frm" method ="POST">
         <fieldset>
-		  <input type = "hidden" id = "sideDish" name = "sideDish"/>
+		  <input type="hidden" id = "sideDish" name = "sideDish"/>
           <!-- Form Name -->
-          <legend style = "color : white;">Insert Weekly Menu</legend>
-
-          <!-- Date input-->
+          <legend style="color:white;">Insert Weekly Menu</legend>
+		
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">날 짜</label>
-            <div class="col-sm-10  blackColor" style = "float : left ;">
-              	<input type = "date" name = "dietDate" id = "dietDate" required>
+            <label class="col-sm-2 control-label" for="textinput">날짜</label>
+            <div class="col-sm-10 blackColor">
+              	<input class="form-control" type ="date" name = "dietDate" id = "dietDate" required>
             </div>
           </div>
 
-		  <!-- foodTime input-->
-		    <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">시 간</label>
-            <div class="col-sm-10  blackColor" style = "float : left ;">
-              	<select	id = "scode" name = "scode">
+		  <div class="form-group">
+            <label class="col-sm-2 control-label" for="textinput">시간</label>
+            <div class="col-sm-10  blackColor">
+              	<select	class="form-control" id = "scode" name = "scode">
               		<option value = '1'>아 침</option>
               		<option value = '2'>일 품</option>
               		<option value = '3'>한 식</option>
@@ -73,28 +71,25 @@
             </div>
           </div>
           
-          <!-- mainDish input-->
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">메 인</label>
-            <div class="col-sm-10 blackColor" style = "float : left ;">
-              <input type = "text"  name = "mainDish" id = "mainDish" required>
+            <label class="col-sm-2 control-label" for="textinput">메인메뉴</label>
+            <div class="col-sm-10 blackColor">
+              <input class="form-control" type ="text" name = "mainDish" id = "mainDish" required>
             </div>
           </div>
           
-
-          <!-- sideDish input-->
           <div class="form-group" >
-            <label class="col-sm-2 control-label" for="textinput">반 찬</label>
-            <div class="col-sm-10 blackColor" id = "foodDiv" style = "float : left ;">
-              <input type = 'text'  name = 'tempSide' required><a href = "javascript:void(0);" class = "btn btn-sm btn-primary btn-create" id = "addButton" >추가</a>
+            <label class="col-sm-2 control-label" for="textinput">서브메뉴</label>
+            <div class="col-sm-10 blackColor" id = "foodDiv">
+              <input class="form-control" type = 'text' name = 'tempSide' required><br/>
+              <a href = "javascript:void(0);" class = "btn btn-default btn-sm btn-create" id = "addButton" >+</a>
             </div>
           </div>
-
 
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <div class = "blackColor">
-                <a href = "javascript:void(0);" class = "btn btn-sm btn-primary btn-create" onclick = "mergeMenu()">작성</a>
+                <a href = "javascript:void(0);" class = "btn btn-primary btn-create" onclick = "mergeMenu()">등록</a>
                 <a href = "javascript:void(0);" class="btn btn-danger btn-filter"  onclick = "addMenuBack()" >취소</a>
               </div>
             </div>

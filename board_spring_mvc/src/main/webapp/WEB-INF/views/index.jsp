@@ -7,13 +7,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>KDN Restaurant</title>
-
+<!-- Script includes -->
 <script src="js/jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="js/jquery.mixitup.min.js"></script>
-<link href="css/magnific-popup.css" rel="stylesheet">
 <script src="js/jquery.magnific-popup.min.js"></script>
 <script src="js/theme.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js"></script>
@@ -29,118 +27,7 @@
 		frm.action = "test2.do";
 		frm.submit();
 	}
-
 </script>
-
-<!-- CSS includes -->
-<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-<link href="fonts/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet">
-<link href="https://www.shieldui.com/shared/components/latest/css/light/all.min.css"
-	rel="stylesheet" />
-<link href="css/theme.css" rel="stylesheet">
-
-</head>
-<style type="text/css">
-#login {
-	padding-top: 50px
-}
-
-#login .form-wrap {
-	width: 30%;
-	margin: 0 auto;
-}
-
-#login h1 {
-	color: #1fa67b;
-	font-size: 18px;
-	text-align: center;
-	font-weight: bold;
-	padding-bottom: 20px;
-}
-
-#login .form-group {
-	margin-bottom: 25px;
-}
-
-#login .checkbox {
-	margin-bottom: 20px;
-	position: relative;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	-o-user-select: none;
-	user-select: none;
-}
-
-#login .checkbox.show:before {
-	content: '\e013';
-	color: #1fa67b;
-	font-size: 17px;
-	margin: 1px 0 0 3px;
-	position: absolute;
-	pointer-events: none;
-	font-family: 'Glyphicons Halflings';
-}
-
-#login .checkbox .character-checkbox {
-	width: 25px;
-	height: 25px;
-	cursor: pointer;
-	border-radius: 3px;
-	border: 1px solid #ccc;
-	vertical-align: middle;
-	display: inline-block;
-}
-
-#login .checkbox .label {
-	color: #6d6d6d;
-	font-size: 13px;
-	font-weight: normal;
-}
-
-#login .btn.btn-custom {
-	font-size: 14px;
-	margin-bottom: 20px;
-}
-
-#login .forget {
-	font-size: 13px;
-	text-align: center;
-	display: block;
-}
-
-.form-control {
-	color: #212121;
-}
-
-.btn-custom {
-	color: #fff;
-	background-color: red;
-}
-
-.btn-custom:hover, .btn-custom:focus {
-	color: #fff;
-}
-
-#loginFooter {
-	color: #6d6d6d;
-	font-size: 12px;
-	text-align: center;
-}
-
-#loginFooter p {
-	margin-bottom: 0;
-}
-
-#loginFooter a {
-	color: inherit;
-}
-
-</style>
-
 <script type="text/javascript">
 function getCookie(name)
 {
@@ -166,14 +53,27 @@ function MM_openBrWindow(theURL,winName,features) { //v2.0
 }
 function openpopup(){
  if (getCookie('event') != 'checked') {
-  window.open("open.jsp","openPop","width=400, height=200");
+  window.open("open.jsp","openPop", "width=400, height=300");
  }
 }
 </script>
+<!-- CSS includes -->
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="fonts/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet">
+<link href="https://www.shieldui.com/shared/components/latest/css/light/all.min.css"
+	rel="stylesheet" />
+<link href="css/theme.css" rel="stylesheet">
+<link href="css/magnific-popup.css" rel="stylesheet">
+<link href="css/login.css" rel="stylesheet">
+</head>
+
+<!-- Body Start!! -->
 <c:if test = "${!empty mno}">
 	<body onload="openpopup();">
 </c:if>
-
 
 <!-- Navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -217,44 +117,60 @@ function openpopup(){
 	<!-- /.container-fluid -->
 </nav>
 
-<!-- login 모달 팝업 -->
+<!-- 로그인 모달 팝업 -->
 <div class="modal fade forget-modal" id="myModal" tabindex="-1"
 	role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4>LOGIN</h4>
+				<h4>로그인</h4>
 				<br />
 				<form role="form" action="login.do" method="post" id="login-form"
 					autocomplete="off">
 					<div class="form-group">
 						<label for="email" class="sr-only">Email</label> <input
 							type="text" name="mno" id="mno" class="form-control"
-							placeholder="Employee Number">
+							placeholder="사원번호">
 					</div>
 					<div class="form-group">
 						<label for="key" class="sr-only">Password</label> <input
 							type="password" name="pw" id="pw" class="form-control"
-							placeholder="Password">
-					</div>
-					<div class="checkbox">
-						<span class="character-checkbox" onclick="showPassword()"></span>
-						<span class="label">Show password</span>
+							placeholder="비밀번호">
 					</div>
 					<input type="submit" id="btn-login"
-						class="btn btn-custom btn-lg btn-block" value="Log in">
+						class="btn btn-custom btn-lg btn-block" value="LOGIN">
 				</form>
-				<a href="javascript:;" class="forget" data-toggle="modal"
-					data-target=".forget-modal">Forgot your password?</a>
+			    <a href="javascript:;" class="forget" data-toggle="modal"
+					data-target=".forget-modal">비밀번호를 잊어버리셨나요?</a>
 				<hr>
 			</div>
 		</div>
-		<!-- /.modal-content -->
 	</div>
-	<!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-
+<div class="modal fade forget-modal" tabindex="-1" role="dialog"
+	aria-labelledby="myForgetModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">X</span> <span class="sr-only">닫기</span>
+				</button>
+				<h4 class="modal-title">비밀번호 찾기</h4>
+			</div>
+			<div class="modal-body">
+				<p>가입 시 등록한 메일주소를 입력하세요</p>
+				<input type="email" name="recovery-email" id="recovery-email"
+					class="form-control" autocomplete="off">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-custom">찾기</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /.modal -->
 <!-- insert review 모달 팝업 -->
 <div class="modal fade forget-modal" id="reviewModal" tabindex="-1"
 	role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
@@ -309,33 +225,6 @@ function openpopup(){
 					<span> 로그인 후에 리뷰를 작성할 수 있습니다. </span>
 				</c:if>
 				<hr>
-			</div>
-		</div>
-		<!-- /.modal-content -->
-	</div>
-	<!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-
-
-<div class="modal fade forget-modal" tabindex="-1" role="dialog"
-	aria-labelledby="myForgetModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">
-					<span aria-hidden="true">×</span> <span class="sr-only">Close</span>
-				</button>
-				<h4 class="modal-title">Recovery password</h4>
-			</div>
-			<div class="modal-body">
-				<p>Type your email account</p>
-				<input type="email" name="recovery-email" id="recovery-email"
-					class="form-control" autocomplete="off">
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-custom">Recovery</button>
 			</div>
 		</div>
 		<!-- /.modal-content -->
@@ -415,7 +304,7 @@ function openpopup(){
 				<h3>Calendar</h3>
 				<br />
 				<div id="calendar" class="calendar"></div>
-				<br /> <br />
+				<br/> <br/>
 			</div>
 		</div>
 	</div>

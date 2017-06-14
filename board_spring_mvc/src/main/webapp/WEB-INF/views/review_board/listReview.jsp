@@ -184,7 +184,7 @@
 									<thead>
 										<tr>
 											<th><em class="fa fa-cog"></em></th>
-											<th class="hidden-xs">리뷰번호</th>
+											<th class="hidden-xs" style="width:60px">번호</th>
 											<th>사원번호</th>
 											<th>음식이름</th>
 											<th>별점</th>
