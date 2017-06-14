@@ -61,25 +61,6 @@ public class SuyoController {
 		Counter counter = counterService.search(date);
 		int dietScode = findDiet.getScode();
 		
-		if(dietScode == 1){
-			counter.setMcnt(counter.getMcnt() + 1);
-			count = counter.getMcnt();
-		}
-		else if(dietScode == 2){
-			counter.setIcnt(counter.getIcnt() + 1);
-			count = counter.getIcnt();
-		}
-		else if(dietScode == 3){
-			counter.setHcnt(counter.getHcnt() + 1);
-			count = counter.getHcnt();
-		}
-		else{
-			counter.setEcnt(counter.getEcnt() + 1);
-			count = counter.getEcnt();
-		}
-		
-		counterService.update(counter);
-		
 		Suyo isSuyo = null;
 		
 		switch (dietScode) {
@@ -159,10 +140,10 @@ public class SuyoController {
 			}
 			break;
 		}
-
+		counterService.update(counter);
 		int tCount = counter.getIcnt() + counter.getHcnt() + counter.getEcnt() + counter.getMcnt();
-				
-		if(tCount == 19){
+		
+		if(tCount == 100){
 			 response.setContentType("text/html; charset=UTF-8");
 			 PrintWriter writer = null;
 			try {
