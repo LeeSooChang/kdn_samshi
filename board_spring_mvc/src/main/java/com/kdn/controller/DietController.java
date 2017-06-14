@@ -59,11 +59,11 @@ public class DietController {
 	public String addWeeklyMenuForm(Model model, NoticePageBean noticebean, ReviewPageBean bean){
 		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
 		model.addAttribute("noticeList", noticeList);
-		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
+		model.addAttribute("noticeBoardContent", "notice_board/listBoardFromHome.jsp");
 		
 		List<Review> list = reviewService.searchAll(bean);
 		model.addAttribute("list", list);
-		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
+		model.addAttribute("reviewBoardContent", "review_board/listReviewFromHome.jsp");
 		
 		model.addAttribute("addMenuContent", "weekly_menu/addMenu.jsp");
 		
@@ -76,7 +76,7 @@ public class DietController {
 		List<Ranking> rankingI = rankingService.searchI();
 		model.addAttribute("rankingI", rankingI);
 		
-		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
+		model.addAttribute("rankingBoardContent", "ranking_board/listBoardFromHome.jsp");
 		return "index";
 	}
 	
@@ -88,11 +88,11 @@ public class DietController {
 		
 		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
 		model.addAttribute("noticeList", noticeList);
-		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
+		model.addAttribute("noticeBoardContent", "notice_board/listBoardFromHome.jsp");
 		
 		List<Review> list = reviewService.searchAll(bean);
 		model.addAttribute("list", list);
-		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
+		model.addAttribute("reviewBoardContent", "review_board/listReviewFromHome.jsp");
 		
 		List<Diet> dietList = dietService.searchAll();
 		model.addAttribute("dietList", dietList);
@@ -107,7 +107,7 @@ public class DietController {
 		List<Ranking> rankingI = rankingService.searchI();
 		model.addAttribute("rankingI", rankingI);
 		
-		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
+		model.addAttribute("rankingBoardContent", "ranking_board/listBoardFromHome.jsp");
 		return "index";
 	}
 	
@@ -115,11 +115,11 @@ public class DietController {
 	public String updateWeeklyMenuForm(Model model, NoticePageBean noticebean, ReviewPageBean bean){
 		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
 		model.addAttribute("noticeList", noticeList);
-		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
+		model.addAttribute("noticeBoardContent", "notice_board/listBoardFromHome.jsp");
 		
 		List<Review> list = reviewService.searchAll(bean);
 		model.addAttribute("list", list);
-		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
+		model.addAttribute("reviewBoardContent", "review_board/listReviewFromHome.jsp");
 		model.addAttribute("updateMenuContent", "weekly_menu/updateMenuForm.jsp");
 		
 		List<Ranking> rankingList = rankingService.searchN();
@@ -131,7 +131,7 @@ public class DietController {
 		List<Ranking> rankingI = rankingService.searchI();
 		model.addAttribute("rankingI", rankingI);
 		
-		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
+		model.addAttribute("rankingBoardContent", "ranking_board/listBoardFromHome.jsp");
 		
 		return "index";
 	}
@@ -140,11 +140,11 @@ public class DietController {
 	public String searchUpdateMenu(Model model, NoticePageBean noticebean, ReviewPageBean bean, String dietDate, int scode){
 		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
 		model.addAttribute("noticeList", noticeList);
-		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
+		model.addAttribute("noticeBoardContent", "notice_board/listBoardFromHome.jsp");
 		
 		List<Review> list = reviewService.searchAll(bean);
 		model.addAttribute("list", list);
-		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
+		model.addAttribute("reviewBoardContent", "review_board/listReviewFromHome.jsp");
 		
 		model.addAttribute("updateMenuContent", "weekly_menu/updateMenu.jsp");
 		model.addAttribute("oneDiet", dietService.search(dietDate, scode));
@@ -158,7 +158,7 @@ public class DietController {
 		List<Ranking> rankingI = rankingService.searchI();
 		model.addAttribute("rankingI", rankingI);
 		
-		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
+		model.addAttribute("rankingBoardContent", "ranking_board/listBoardFromHome.jsp");
 		
 		return "index";
 	}
@@ -167,11 +167,11 @@ public class DietController {
 	public String UpdateMenu(Model model, NoticePageBean noticebean, ReviewPageBean bean, Diet diet){
 		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
 		model.addAttribute("noticeList", noticeList);
-		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
+		model.addAttribute("noticeBoardContent", "notice_board/listBoardFromHome.jsp");
 		
 		List<Review> list = reviewService.searchAll(bean);
 		model.addAttribute("list", list);
-		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
+		model.addAttribute("reviewBoardContent", "review_board/listReviewFromHome.jsp");
 		
 		dietService.update(diet);
 		
@@ -188,7 +188,7 @@ public class DietController {
 		List<Ranking> rankingI = rankingService.searchI();
 		model.addAttribute("rankingI", rankingI);
 		
-		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
+		model.addAttribute("rankingBoardContent", "ranking_board/listBoardFromHome.jsp");
 		
 		return "index";
 	}
@@ -216,7 +216,7 @@ public class DietController {
 		List<Ranking> rankingI = rankingService.searchI();
 		model.addAttribute("rankingI", rankingI);
 		
-		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
+		model.addAttribute("rankingBoardContent", "ranking_board/listBoardFromHome.jsp");
 		
 		List<Suyo> suyoCountList = suyoService.getSuyoCountAll();
 		model.addAttribute("suyoCountList", suyoCountList);

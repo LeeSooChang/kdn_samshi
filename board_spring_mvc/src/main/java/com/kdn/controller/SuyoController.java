@@ -238,10 +238,6 @@ public class SuyoController {
 			}
 		}
 		
-		
-		
-		
-		
 		return "redirect:listWeeklyMenu.do";
 	}
  
