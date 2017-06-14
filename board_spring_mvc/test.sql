@@ -4,10 +4,62 @@ create table counter(
 	icnt	number default 0,
 	hcnt	number default 0,
 	ecnt	number default 0
-)
+);
+
+create table event(
+	edate	date not null,
+	mno		number references member(mno)
+);
+
+insert into counter (cdate)
+values(to_char(sysdate, 'yyyy-mm-dd'));
+
+insert into counter (edate)
+values(to_char(sysdate - 1, 'yyyy-mm-dd'));
+
+insert into counter (cdate)
+values(to_char(sysdate - 2, 'yyyy-mm-dd'));
+
+insert into counter (cdate)
+values(to_char(sysdate - 3, 'yyyy-mm-dd'));
+
+insert into counter (cdate)
+values(to_char(sysdate - 4, 'yyyy-mm-dd'));
+
+insert into counter (cdate)
+values(to_char(sysdate - 5, 'yyyy-mm-dd'));
+
+insert into counter (cdate)
+values(to_char(sysdate - 6, 'yyyy-mm-dd'));
+
+insert into counter (cdate)
+values(to_char(sysdate - 7, 'yyyy-mm-dd'));
+
+insert into counter (cdate)
+values(to_char(sysdate + 1, 'yyyy-mm-dd'));
+
+insert into counter (cdate)
+values(to_char(sysdate + 2, 'yyyy-mm-dd'));
+
+insert into counter (cdate)
+values(to_char(sysdate + 3, 'yyyy-mm-dd'));
+insert into counter (cdate)
+values(to_char(sysdate + 4, 'yyyy-mm-dd'));
+insert into counter (cdate)
+values(to_char(sysdate + 5, 'yyyy-mm-dd'));
+insert into counter (cdate)
+values(to_char(sysdate + 6, 'yyyy-mm-dd'));
+insert into counter (cdate)
+values(to_char(sysdate + 7, 'yyyy-mm-dd'));
+
+
+drop table event
+
 select *
 from counter
 
+update counter  set mcnt = 0, icnt = 0 , hcnt = 0, ecnt = 0
+where cdate = to_char(sysdate + 1, 'yyyy-mm-dd');
 
 drop table counter;
 

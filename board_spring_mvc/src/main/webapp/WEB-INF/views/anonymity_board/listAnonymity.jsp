@@ -56,25 +56,24 @@
 </style>
 </head>
 <body>
+<!-- 익명게시글 작성 모달 -->
 	<div style="overflow: hidden" id="insertAnonymityForm"
 		class="modal fade" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
-			<div class="modal-content" style = "width : 400px ;">
+			<div class="modal-content" style="width: 400px;">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 style="color: green">
-						<span class="glyphicon glyphicon-exclamation-sign"></span><label
-							id="modal-title">익명게시판 글 작성</label>
+						<span class="glyphicon glyphicon-lock"></span>
+						<label id="modal-title">익명게시글 작성</label>
 					</h4>
 				</div>
 				<div class="modal-body" id="modal-body">
-
 					<form method="post" action="insertAnonymity.do">
-
-						<table align="center" width="300">
+					<table align="center" width="300">
 							<tr height="50">
-								<td><label for="title" >비밀번호</label></td>
+								<td><label for="title">비밀번호</label></td>
 								<td><input type="text" name="anopw" id="anopw"/></td>
 							</tr>
 							<tr height="50">
@@ -86,16 +85,16 @@
 							</tr>
 							<tr>
 								<td colspan="2" align="center"><textarea name="anocontents"
-										id="anocontents" cols="30" rows="5"></textarea></td>
+										id="anocontents" cols="30" rows="5" style="resize:none;"></textarea></td>
 							</tr>
 							<tr>
-								<td colspan = "2" align="right">
-								<button type="button" class="close" data-dismiss="modal">
-									<span class="glyphicon glyphicon-remove"></span> 취소
-								</button>
-								<button type="submit" class="close">
-									<span class="glyphicon glyphicon-ok"></span> 작성
-								</button>
+								<td colspan="2" align="center">
+									<button type="button" class="close" data-dismiss="modal">
+										<span class="glyphicon glyphicon-remove"></span> 취소
+									</button>
+									<button type="submit" class="close">
+										<span class="glyphicon glyphicon-ok"></span>작성
+									</button>
 								</td>
 							</tr>
 						</table>
@@ -104,47 +103,50 @@
 			</div>
 		</div>
 	</div>
+	
+<!-- 익명게시판 글 수정  -->
 	<div style="overflow: hidden" id="updateAnonymityForm"
 		class="modal fade" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
-			<div class="modal-content" style = "width : 400px ;">
+			<div class="modal-content" style="width: 400px;">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 style="color: blue">
-						<span class="glyphicon glyphicon-exclamation-sign"></span><label
-							id="modal-title">익명게시판 글 수정</label>
+					<h4 style="color: red">
+						<span class="glyphicon glyphicon-lock"></span>
+						<label id="modal-title">익명게시글 수정</label>
 					</h4>
 				</div>
 				<div class="modal-body" id="modal-body">
-
 					<form method="post" action="updateAnonymity.do"
 						enctype="multipart/form-data">
 						<input type="hidden" name="ano" id="uano" />
 						<table align="center" width="300">
 							<tr height="50">
 								<td><label for="title">비밀번호</label></td>
-								<td><input type="text" name="anopw" id="uanopw" value="" /></td>
+								<td><input type="text" name="anopw" id="uanopw" placeholder="불일치 시 수정불가"/></td>	
 							</tr>
 							<tr height="50">
 								<td><label for="title">제목</label></td>
-								<td><input type="text" name="anotitle" id="uanotitle" /></td>
+								<td><input type="text" name="anotitle" id="uanotitle" 
+											value="${anonymity.anotitle}"/></td>
 							</tr>
 							<tr>
 								<td colspan="2"><label for="contents">코멘트</label></td>
 							</tr>
 							<tr>
-								<td colspan="2" align="center"><textarea name="anocontents"
-										id="uanocontents" cols="30" rows="5"></textarea></td>
+								<td colspan="2" align="center">
+								<textarea name="anocontents" id="uanocontents" 
+								cols="30" rows="5" style="resize:none;">${anonymity.anocontents}</textarea></td>
 							</tr>
-							<tr>
-								<td colspan = "2" align="right">
-								<button type="button" class="close" data-dismiss="modal">
-									<span class="glyphicon glyphicon-remove"></span> 취소
-								</button>
-								<button type="submit" class="close">
-									<span class="glyphicon glyphicon-ok"></span> 작성
-								</button>
+							<tr align="center">
+								<td colspan="2" align="right">
+									<button type="button" class="close" data-dismiss="modal">
+										<span class="glyphicon glyphicon-remove"></span> 취소
+									</button>
+									<button type="submit" class="close">
+										<span class="glyphicon glyphicon-ok"></span>수정
+									</button>
 								</td>
 							</tr>
 						</table>
@@ -153,24 +155,26 @@
 			</div>
 		</div>
 	</div>
+	
+<!-- 삭제 경고 모달 -->
 	<div style="overflow: hidden" id="checkAnonymityForm"
 		class="modal fade" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
-			<div class="modal-content" style = "width : 400px ;">
+			<div class="modal-content" style="width: 400px;">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 style="color: red">
-						<span class="glyphicon glyphicon-exclamation-sign"></span><label
-							id="modal-title">삭제 경고</label>
+						<span class="glyphicon glyphicon-exclamation-sign"></span>
+						<label id="modal-title">삭제 경고</label>
 					</h4>
 				</div>
 				<div class="modal-body" id="modal-body">
 					<form role="form" method="post" action="deleteAnonymity.do">
-						<input type="hidden" id="rano" name="ano" value="${ano }" />
-						비밀번호 <input type="text" id="ranopw" name="anopw"/>
+						<input type="hidden" id="rano" name="ano" value="${ano }" />비밀번호
+						<input type="text" id="ranopw" name="anopw" />
 						<button type="submit" class="close">
-							<span class="glyphicon glyphicon-ok"></span> 삭제
+							<span class="glyphicon glyphicon-ok"></span>삭제
 						</button>
 					</form>
 				</div>
@@ -178,7 +182,7 @@
 		</div>
 	</div>
 
-
+<!-- 익명게시판 메인  -->
 	<div class="main">
 		<form id="afrm">
 			<input type="hidden" id="anonymityPageNo" name="anonymityPageNo"
@@ -196,20 +200,22 @@
 										<select name="key" id="key">
 											<option value="all">-----선택-----</option>
 											<option value="ano" <%=anonymityPageBean.getKey("ano")%>>게시번호</option>
-											<option value="anotitle" <%=anonymityPageBean.getKey("anotitle")%>>제목</option>
-											<option value="anocontents" <%=anonymityPageBean.getKey("anocontents")%>>내용</option>
+											<option value="anotitle"
+												<%=anonymityPageBean.getKey("anotitle")%>>제목</option>
+											<option value="anocontents"
+												<%=anonymityPageBean.getKey("anocontents")%>>내용</option>
 										</select> <input type="text" id="word" name="word"
-											value="${anonymityPageBean.word}"> 
-											<a href="#"onclick="anonymityPagelist(1)"class="btn btn-danger btn-filter">검색</a>
+											value="${anonymityPageBean.word}"> <a href="#"
+											onclick="anonymityPagelist(1)"
+											class="btn btn-danger btn-filter">검색</a>
 
 									</div>
 									<div class="col col-xs-6 text-right">
-										<a href="#" class="btn btn-sm btn-primary btn-create" onclick="insertanoform()">글쓰기</a>
+										<a href="#" class="btn btn-primary btn-create"
+											onclick="insertanoform()">글쓰기</a>
 									</div>
 								</div>
 							</div>
-
-
 
 							<div class="panel-body">
 								<table class="table table-hover">
@@ -225,8 +231,12 @@
 									<tbody>
 										<c:forEach var="anonymity" items="${anonymityList}">
 											<tr id=${anonymity }>
-												<td><a href="#" class="btn btn-default" onclick="updateanoform(${anonymity.ano})"> <em class="fa fa-pencil"></em></a> 
-													<a href="#" class="btn btn-danger" onclick="removeanoform(${anonymity.ano})"><em class="fa fa-trash"></em></a></td>
+												<td><a href="#" class="btn btn-default"
+													onclick="updateanoform(${anonymity.ano})"> <em
+														class="fa fa-pencil"></em></a> <a href="#"
+													class="btn btn-danger"
+													onclick="removeanoform(${anonymity.ano})"><em
+														class="fa fa-trash"></em></a></td>
 
 												<td class="hidden-xs">${anonymity.ano}</td>
 												<td>${anonymity.anotitle}</td>
@@ -240,9 +250,6 @@
 								</table>
 
 							</div>
-
-
-
 							<div class="panel-footer">
 								<div class="row">
 									<center>${anonymityPageBean.pagelink }</center>
@@ -253,10 +260,6 @@
 					</div>
 				</div>
 			</div>
-
-
-
-
 		</form>
 	</div>
 
@@ -293,16 +296,4 @@
 	</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -16,7 +16,7 @@
 	var count = 100;
 	$(document).ready(function(){
 		$("#addButton").click(function(){
-			var html = "<div id = sideDish" + count + "><input type = 'text'  name = 'tempSide' ><a href = 'javascript:void(0);' class = 'btn btn-sm btn-primary btn-create' onclick = deleteAttr('sideDish" + count + "')>삭제</a><br/></div>";
+			var html = "<div id = sideDish" + count + "><input type = 'text'  name = 'tempSide' ><a href = 'javascript:void(0);' class = 'btn btn-sm btn-primary btn-create' onclick = deleteAttr('sideDish" + count + "')>-</a><br/></div>";
 			$("#foodDiv").append(html);
 			count++;
 		});

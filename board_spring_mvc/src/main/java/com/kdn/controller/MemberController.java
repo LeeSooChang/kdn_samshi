@@ -1,4 +1,4 @@
-package com.kdn.controller;
+ package com.kdn.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -79,8 +79,6 @@ public class MemberController {
 		List<Diet> dietList = dietService.searchAll();
 		model.addAttribute("dietList", dietList);
 		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenuFromHome.jsp");
-		
-		model.addAttribute("content", "member/register.jsp");
 		
 		List<Ranking> rankingList = rankingService.searchN();
 		model.addAttribute("rankingList", rankingList);
