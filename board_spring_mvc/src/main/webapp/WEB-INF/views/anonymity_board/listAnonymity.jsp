@@ -74,11 +74,11 @@
 					<table align="center" width="300">
 							<tr height="50">
 								<td><label for="title">비밀번호</label></td>
-								<td><input type="text" name="anopw" id="anopw"/></td>
+								<td><input type="text" name="anopw" id="anopw" required/></td>
 							</tr>
 							<tr height="50">
 								<td><label for="title">제목</label></td>
-								<td><input type="text" name="anotitle" id="anotitle"/></td>
+								<td><input type="text" name="anotitle" id="anotitle" required/></td>
 							</tr>
 							<tr>
 								<td colspan="2"><label for="contents">코멘트</label></td>
@@ -125,12 +125,12 @@
 						<table align="center" width="300">
 							<tr height="50">
 								<td><label for="title">비밀번호</label></td>
-								<td><input type="text" name="anopw" id="uanopw" placeholder="불일치 시 수정불가"/></td>	
+								<td><input type="text" name="anopw" id="uanopw" placeholder="불일치 시 수정불가" required/></td>	
 							</tr>
 							<tr height="50">
 								<td><label for="title">제목</label></td>
 								<td><input type="text" name="anotitle" id="uanotitle" 
-											value="${anonymity.anotitle}"/></td>
+											value="${anonymity.anotitle}" required/></td>
 							</tr>
 							<tr>
 								<td colspan="2"><label for="contents">코멘트</label></td>

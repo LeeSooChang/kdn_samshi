@@ -130,12 +130,12 @@ function openpopup(){
 					<div class="form-group">
 						<label for="email" class="sr-only">Email</label> <input
 							type="text" name="mno" id="mno" class="form-control"
-							placeholder="사원번호">
+							placeholder="사원번호" required>
 					</div>
 					<div class="form-group">
 						<label for="key" class="sr-only">Password</label> <input
 							type="password" name="pw" id="pw" class="form-control"
-							placeholder="비밀번호">
+							placeholder="비밀번호" required>
 					</div>
 					<input type="submit" id="btn-login"
 						class="btn btn-custom btn-lg btn-block" value="LOGIN">
@@ -191,7 +191,7 @@ function openpopup(){
 							
 							<tr height="50">
 								<td><label for="title">아이디</label></td>
-								<td><input type="text" name="mno" id="mno" value="${mno }"/></td>
+								<td><input type="text" name="mno" id="mno" value="${mno }" required/></td>
 							</tr>
 							<tr height="50">
 								<td><label for="title">별점</label></td>
@@ -215,7 +215,7 @@ function openpopup(){
 							</tr>
 							<tr height="50">
 								<td><label for="title">메뉴</label></td>
-								<td><input type="text" name="fname" id="fname" /></td>
+								<td><input type="text" name="fname" id="fname" required/></td>
 							</tr>
 							<tr>
 								<td colspan="2" align="center"><label for="contents">코멘트</label></td>
