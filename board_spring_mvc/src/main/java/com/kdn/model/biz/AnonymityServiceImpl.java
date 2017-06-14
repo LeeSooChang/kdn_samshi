@@ -19,11 +19,9 @@ public class AnonymityServiceImpl implements AnonymityService {
 	
 	@Override
 	public void update(Anonymity anonymity) {
-		// TODO Auto-generated method stub
 		try {
 			dao.update(anonymity);
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			throw new UpdateException("ano update error");
 		}
@@ -32,11 +30,9 @@ public class AnonymityServiceImpl implements AnonymityService {
 
 	@Override
 	public void remove(Anonymity anonymity) {
-		// TODO Auto-generated method stub
 		try {
 			dao.remove(anonymity);
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			throw new UpdateException("ano remove error");
 		}
@@ -45,11 +41,9 @@ public class AnonymityServiceImpl implements AnonymityService {
 
 	@Override
 	public Anonymity search(int ano) {
-		// TODO Auto-generated method stub
 		try {
 			dao.search(ano);
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			throw new UpdateException("ano search error");
 		}
@@ -58,11 +52,9 @@ public class AnonymityServiceImpl implements AnonymityService {
 
 	@Override
 	public void add(Anonymity anonymity) {
-		// TODO Auto-generated method stub
 		try {
 			dao.add(anonymity);
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			throw new UpdateException("ano add error");
 		}
@@ -71,17 +63,13 @@ public class AnonymityServiceImpl implements AnonymityService {
 
 	@Override
 	public List<Anonymity> searchAll(AnonymityPageBean bean) {
-		// TODO Auto-generated method stub
 		try {
 			int total = dao.getCount(bean);
-			System.out.println("anoTotal : "+total);
 			AnonymityPageUtility bar = new AnonymityPageUtility(bean.getInterval(), total, bean.getPageNo(), "/images");
-			System.out.println("anobar : "+bar);
 			bean.setPagelink(bar.getPageBar());
 			
 			return dao.searchAll(bean);
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			throw new UpdateException("ano searchAll error");
 		}

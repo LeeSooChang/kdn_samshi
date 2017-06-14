@@ -11,6 +11,15 @@ create table event(
 	mno		number references member(mno)
 );
 
+select *
+from suyo
+
+select *
+from COUNTER
+
+select *
+from event
+
 insert into counter (cdate)
 values(to_char(sysdate, 'yyyy-mm-dd'));
 

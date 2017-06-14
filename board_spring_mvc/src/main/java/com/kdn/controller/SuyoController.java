@@ -58,21 +58,7 @@ public class SuyoController {
 		
 		Event findEvent = eventService.search(mno); 
 		
-		if(findEvent == null){
-			eventService.add(mno);
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter writer = null;
-			try {
-				writer = response.getWriter();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		     writer.println("<script type='text/javascript'>");
-		     writer.println("alert('식사 이벤트에 참여 하셨습니다!! 100번째 손님께는 선물을 드립니다.');");
-		     writer.println("history.go(-1);");
-		     writer.println("</script>");
-		     writer.flush();
-		}
+		
 		
 		Suyo suyo = new Suyo(dietNo, mno);
 		int findDietNo = dietNo;
@@ -144,18 +130,32 @@ public class SuyoController {
 				break;
 
 			default:
+				
+				if(findEvent == null){
+					eventService.add(mno);
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter writer = null;
+					try {
+						writer = response.getWriter();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				     writer.println("<script type='text/javascript'>");
+				     writer.println("alert('식사 이벤트에 참여 하셨습니다.');");
+				     writer.println("history.go(-1);");
+				     writer.println("</script>");
+				     writer.flush();
+				}
+				
 				isSuyo = suyoService.searchSuyo(suyo);
 				if (isSuyo == null) {
 					suyoService.add(suyo);
-					System.out.println("after suyo add>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 					if(findEvent == null){
 						if(dietScode == 1){
-							System.out.println("dietScode == 1 >>>>>>>>>>>>>>>>>>>>>>");
 							counter.setMcnt(counter.getMcnt() + 1);
 							count = counter.getMcnt();
 						}
 						else{
-							System.out.println("dietScode != 1 >>>>>>>>>>>>>>>>>>>>>>");
 							counter.setEcnt(counter.getEcnt() + 1);
 							count = counter.getEcnt();
 						}
@@ -214,7 +214,6 @@ public class SuyoController {
 			try {
 				writer = response.getWriter();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		     writer.println("<script type='text/javascript'>");

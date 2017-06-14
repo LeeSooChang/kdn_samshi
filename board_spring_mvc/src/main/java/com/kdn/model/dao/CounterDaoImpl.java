@@ -21,13 +21,11 @@ public class CounterDaoImpl implements CounterDao {
 
 	@Override
 	public void update(Counter counter) {
-		// TODO Auto-generated method stub
 		session.update("counter.update", counter);
 	}
 
 	@Override
 	public Counter search(String date) {
-		System.out.println("date : " +  date);
 		return session.selectOne("counter.search", date);
 	}
 

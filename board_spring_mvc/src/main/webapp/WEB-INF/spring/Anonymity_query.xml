@@ -12,11 +12,11 @@
 	
 	<update id="update" parameterType="anonymity">
 		update anoboard set anocontents=#{anocontents}, anotitle=#{anotitle}, anodate=sysdate
-		where ano=#{ano} and anopw=#{anopw}
+		where (ano=#{ano} and anopw=#{anopw}) or (ano=#{ano} and #{mno} in (select mno from member where grade='Y'))
 	</update>
 	
 	<delete id="delete" parameterType="anonymity">
-		DELETE FROM ANOBOARD WHERE ano=#{ano:INTEGER} AND anopw=#{anopw:VARCHAR}
+		DELETE FROM ANOBOARD WHERE (ano=#{ano} and anopw=#{anopw}) or (ano=#{ano} and #{mno} in (select mno from member where grade='Y'))
 	</delete>
 	
 	<select id="search" parameterType="int" resultType="anonymity">

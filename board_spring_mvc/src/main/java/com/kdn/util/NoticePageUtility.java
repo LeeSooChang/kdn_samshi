@@ -61,12 +61,6 @@ public class NoticePageUtility {
         noticebeforetenpage= noticebeforetenpage<1?1:noticebeforetenpage;
         noticenexttenpage=noticelastpagecount;
         
-        System.out.println("noticefirstpagecount:"+noticefirstpagecount);
-        System.out.println("noticelastpagecount:"+noticelastpagecount);
-        System.out.println("noticebeforetenpage:"+noticebeforetenpage);
-        System.out.println("noticenexttenpage:"+noticenexttenpage);
-        
-        
         if(noticebeforetenpage<1)     noticebeforetenpage=1;
         if(noticenexttenpage>noticetotalpagecount)
             noticenexttenpage=(((noticetotalpagecount-1)/noticepagePercount)+1)*noticepagePercount;

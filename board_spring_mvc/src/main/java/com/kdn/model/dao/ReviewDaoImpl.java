@@ -20,28 +20,24 @@ public class ReviewDaoImpl implements ReviewDao {
 
 	@Override
 	public void add(Review review) {
-		// TODO Auto-generated method stub
 		session.selectOne("review.insert", review);
 
 	}
 
 	@Override
 	public void update(Review review) {
-		// TODO Auto-generated method stub
 		session.update("review.update", review);
 
 	}
 
 	@Override
 	public void remove(int rno) {
-		// TODO Auto-generated method stub
 		session.delete("review.delete", rno);
 
 	}
 
 	@Override
 	public Review search(int rno) {
-		// TODO Auto-generated method stub
 		return session.selectOne("review.search", rno);
 	}
 
@@ -53,13 +49,11 @@ public class ReviewDaoImpl implements ReviewDao {
 
 	@Override
 	public int getCount(ReviewPageBean bean) {
-		// TODO Auto-generated method stub
 		return session.selectOne("review.getCount", bean);
 	}
 
 	@Override
 	public int getBoardNo() {
-		// TODO Auto-generated method stub
 		return session.selectOne("review.getReviewNo");
 	}
 

@@ -98,6 +98,9 @@ public class MemberController {
 		model.addAttribute("anonymityList", anonymityList);
 		model.addAttribute("anonymityPageBean", anonymitybean);
 		model.addAttribute("anonymityBoardContent",  "anonymity_board/listAnonymityFromHome.jsp");
+	
+		model.addAttribute("content", "member/register.jsp");
+		
 		return "index";
 	}
 	
@@ -137,7 +140,7 @@ public class MemberController {
 		model.addAttribute("anonymityBoardContent",  "anonymity_board/listAnonymityFromHome.jsp");
 		System.out.println(member);
 		memberService.add(member);
-		return "index";
+		return "redirect:/";
 	}
 	
 	//로그인

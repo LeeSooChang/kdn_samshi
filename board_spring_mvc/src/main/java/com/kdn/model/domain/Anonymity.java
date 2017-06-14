@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Anonymity implements Serializable{
 	private int ano;
+	private int mno;
 	private String anopw;
 	private String anotitle;
 	private String anocontents;
@@ -19,6 +20,14 @@ public class Anonymity implements Serializable{
 		this.anotitle = anotitle;
 		this.anocontents = anocontents;
 		this.anodate = anodate;
+	}
+
+	public int getMno() {
+		return mno;
+	}
+
+	public void setMno(int mno) {
+		this.mno = mno;
 	}
 
 	public int getAno() {

@@ -61,12 +61,6 @@ public class ReviewPageUtility {
         reviewbeforetenpage= reviewbeforetenpage<1?1:reviewbeforetenpage;
         reivewnexttenpage=reviewlastpagecount;
         
-        System.out.println("reviewfirstpagecount:"+reviewfirstpagecount);
-        System.out.println("reviewlastpagecount:"+reviewlastpagecount);
-        System.out.println("reviewbeforetenpage:"+reviewbeforetenpage);
-        System.out.println("reivewnexttenpage:"+reivewnexttenpage);
-        
-        
         if(reviewbeforetenpage<1)     reviewbeforetenpage=1;
         if(reivewnexttenpage>reviewtotalpagecount)
             reivewnexttenpage=(((reviewtotalpagecount-1)/reviewpagePercount)+1)*reviewpagePercount;

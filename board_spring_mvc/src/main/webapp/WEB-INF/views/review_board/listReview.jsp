@@ -207,9 +207,8 @@
 									<tbody>
 										<c:forEach var="reviewBoard" items="${list}">
 											<tr id=${reviewBoard.rno }>
-
-												<td align="center">
-												<c:if test="${ mno == reviewBoard.mno }">
+												<td align="center"><c:if
+														test="${ mno == reviewBoard.mno || grade == 'Y' }">
 														<a href="#" class="btn btn-default" data-toggle="modal"
 															data-target="#updateReviewModal"
 															onclick="updateform(${reviewBoard.rno },${reviewBoard.mno },'${reviewBoard.fname }', ${reviewBoard.spoint },'${reviewBoard.comments}')">
