@@ -7,11 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 <style type="text/css">
-body{background-color: black;}
+
+html{overflow:hidden;}
+body{
+	background-color: black;
+	overflow:hidden;
+}
 
 #pop_top{
 	width: 100%;
-	height: 250px;
+	height: 350px;
 	text-align: center;
 	font-size: 20px;
 	color: white;
@@ -28,16 +33,20 @@ body{background-color: black;}
 </script>
 </head>
 <body>
-<div id="pop_top">
-	<p>${mno}님 안녕하세요</p>
-	<c:if test="${!empty preferList}">
-		<c:forEach var="preferList" items="${preferList}">
-		<p>오늘은 <span style="color:red"> ${preferList.mainDish}</span> 나오는 날입니다:)</p>
-		</c:forEach>	
-	</c:if>
-	<c:if test="${empty preferList }">
-		<p>오늘도 좋은 하루 되세요:) </p>
-	</c:if>
+<div id="pop_top" >
+	<small>(ID: ${mno})</small>
+	<div style="padding-top:20%">
+		<c:if test="${!empty preferList}">
+			<c:forEach var="preferList" items="${preferList}">
+			<p>오늘은 <span style="color:red"> ${preferList.mainDish}</span> 나오는 날입니다.</p>
+			</c:forEach>
+			<p>식사하러 오세요♥</p>	
+		</c:if>
+		<c:if test="${empty preferList }">
+			<p>안녕하세요</p>
+			<p>오늘도 좋은 하루 되세요:)</p>
+		</c:if>
+	</div>
 </div>
 <div id="pop_bottom">
 <form id="form1" name="form1">

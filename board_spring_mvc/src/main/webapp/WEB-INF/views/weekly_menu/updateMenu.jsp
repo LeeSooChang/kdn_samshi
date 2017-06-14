@@ -37,6 +37,14 @@
 		}
 		console.log(dishes);
 		document.getElementById('sideDish').value = dishes;
+		
+		if(document.getElementById('mainDish').value == ""){
+			alert('메인음식을 입력하세요.');
+			location.href= 'http://localhost:8088/board/searchUpdateMenu.do#services';
+			return false;
+		}
+
+		
 		$('#updateMenufrm').submit();
 	}
 	

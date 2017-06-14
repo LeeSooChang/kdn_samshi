@@ -1,7 +1,11 @@
 package com.kdn.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Locale;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -84,10 +88,34 @@ public class DietController {
 	}
 	
 	@RequestMapping(value = "addWeeklyMenu.do", method = RequestMethod.POST)
-	public String addWeeklyMenu(Model model, NoticePageBean noticebean, ReviewPageBean bean, Diet diet ){
+	public String addWeeklyMenu(Model model, NoticePageBean noticebean, ReviewPageBean bean, Diet diet, HttpServletResponse response ){
 		System.out.println(diet);
-		dietService.add(diet);
-		System.out.println("diet Add : 완료");
+		Diet find = dietService.search(diet.getDietDate(), diet.getScode());
+		if(find != null){
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter writer = null;
+			try {
+				writer = response.getWriter();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			writer.println("<script type='text/javascript'>");
+			writer.println("alert('이미 식단이 등록된 날짜 입니다. 업데이트 페이지로 이동합니다.');");
+			writer.println("</script>");
+			writer.flush();
+			model.addAttribute("weeklyMenuContent", "weekly_menu/updateMenuForm.jsp");
+			model.addAttribute("dietDate", diet.getDietDate());
+			model.addAttribute("scode", diet.getScode());
+		}
+		else{
+			dietService.add(diet);
+			System.out.println("diet Add : 완료");
+			
+			List<Diet> dietList = dietService.searchAll();
+			model.addAttribute("dietList", dietList);
+			model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
+		}
 		
 		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
 		model.addAttribute("noticeList", noticeList);
@@ -97,9 +125,7 @@ public class DietController {
 		model.addAttribute("list", list);
 		model.addAttribute("reviewBoardContent", "review_board/listReviewFromHome.jsp");
 		
-		List<Diet> dietList = dietService.searchAll();
-		model.addAttribute("dietList", dietList);
-		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
+		
 
 		List<Ranking> rankingList = rankingService.searchN();
 		model.addAttribute("rankingList", rankingList);

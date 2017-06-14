@@ -49,31 +49,31 @@ function checkPrefer(){
     <div class="form-group">
       <label class="col-lg-2 control-label" for="id">ID</label>
       <div class="col-lg-8">
-        <input class="form-control" id="mno" name="mno" type="text" placeholder="ID">
+        <input class="form-control" id="mno" name="mno" type="text" placeholder="ID" required>
       </div>
     </div>
     <div class="form-group">
       <label class="col-lg-2 control-label" for="password">Password</label>
       <div class="col-lg-8">
-        <input class="form-control" id="password" name="password" type="password" placeholder="Password">
+        <input class="form-control" id="password" name="password" type="password" placeholder="Password" required>
       </div>
     </div>
     <div class="form-group">
       <label class="col-lg-2 control-label" for="name">Name</label>
       <div class="col-lg-8">
-        <input class="form-control" id="mname" name = "mname" type="text" placeholder="Name">
+        <input class="form-control" id="mname" name = "mname" type="text" placeholder="Name" required>
       </div>
     </div>
     <div class="form-group">
       <label class="col-lg-2 control-label" for="phone">Phone</label>
       <div class="col-lg-8">
-        <input class="form-control" id="phone" name = "phone" type="text" placeholder="Phone">
+        <input class="form-control" id="phone" name = "phone" type="text" placeholder="Phone" required>
       </div>
     </div>
     <div class="form-group">
       <label class="col-lg-2 control-label" for="email">Email</label>
       <div class="col-lg-8">
-        <input class="form-control" id="email" name = "email" type="email" placeholder="Email">
+        <input class="form-control" id="email" name = "email" type="email" placeholder="Email" required>
       </div>
     </div>
     <div class="form-group">

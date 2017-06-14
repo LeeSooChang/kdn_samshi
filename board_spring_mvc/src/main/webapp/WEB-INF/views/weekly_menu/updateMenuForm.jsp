@@ -17,6 +17,17 @@
 	}
 	
 	function submit(){
+		if(document.getElementById('dietDate').value == ""){
+			alert('날짜를 입력하세요.');
+			location.href= 'http://localhost:8088/board/updateWeeklyMenuForm.do#services';
+			return false;
+		}
+		if(document.getElementById('scode').value == ""){
+			alert('식사시간을 입력하세요.');
+			location.href= 'http://localhost:8088/board/updateWeeklyMenuForm.do#services';
+			return false;
+		}
+		
 		$("#updateFrm").submit();
 	}
 </script>
