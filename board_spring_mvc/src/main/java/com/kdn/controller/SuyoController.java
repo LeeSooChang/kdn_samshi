@@ -89,6 +89,8 @@ public class SuyoController {
 			isSuyo = suyoService.searchSuyo(findSuyo2);
 			if(isSuyo == null){
 				suyoService.add(suyo);
+				counter.setIcnt(counter.getIcnt() + 1);
+				count = counter.getIcnt();
 			} else {
 				try {
 					 response.setContentType("text/html; charset=UTF-8");
@@ -111,6 +113,8 @@ public class SuyoController {
 			isSuyo = suyoService.searchSuyo(findSuyo3);
 			if(isSuyo == null){
 				suyoService.add(suyo);
+				counter.setHcnt(counter.getHcnt() + 1);
+				count = counter.getHcnt();
 			} else {
 				try {
 					response.setContentType("text/html; charset=UTF-8");
@@ -131,6 +135,14 @@ public class SuyoController {
 			isSuyo = suyoService.searchSuyo(suyo);
 			if (isSuyo == null) {
 				suyoService.add(suyo);
+				if(dietScode == 1){
+					counter.setMcnt(counter.getMcnt() + 1);
+					count = counter.getMcnt();
+				}
+				else{
+					counter.setEcnt(counter.getEcnt() + 1);
+					count = counter.getEcnt();
+				}
 			} else {
 				try {
 					response.setContentType("text/html; charset=UTF-8");
@@ -147,20 +159,10 @@ public class SuyoController {
 			}
 			break;
 		}
-		List<Suyo> list = suyoService.getSuyoCountAll(); 
-		
-		for (Suyo suyo_ : list) {
-			if(suyo_.getDietNo() == dietNo){
-				count = suyo_.getSuyoCountAll();
-				break;
-			}
-		}	
 
-		System.out.println("counter : " + counter.getMcnt());
-		System.out.println("counter : " + counter.getIcnt());
-		System.out.println("counter : " + counter.getHcnt());
-		System.out.println("counter : " + counter.getEcnt());
-		if(count == 5){
+		int tCount = counter.getIcnt() + counter.getHcnt() + counter.getEcnt() + counter.getMcnt();
+				
+		if(tCount == 19){
 			 response.setContentType("text/html; charset=UTF-8");
 			 PrintWriter writer = null;
 			try {
