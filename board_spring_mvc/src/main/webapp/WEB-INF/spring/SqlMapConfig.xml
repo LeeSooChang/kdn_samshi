@@ -27,6 +27,7 @@
 		<typeAlias alias="review" type="com.kdn.model.domain.Review"/>
 		<typeAlias alias="ranking" type="com.kdn.model.domain.Ranking"/>
 		<typeAlias alias="counter" type="com.kdn.model.domain.Counter"/>
+		<typeAlias alias="event" type="com.kdn.model.domain.Event"/>
 		<typeAlias alias="rankingpagebean" type="com.kdn.model.domain.RankingPageBean"/>
 			 
 	</typeAliases>

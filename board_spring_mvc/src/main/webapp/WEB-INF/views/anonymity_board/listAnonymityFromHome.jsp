@@ -260,6 +260,10 @@
 					</div>
 				</div>
 			</div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/LeeSooChang/kdn_samshi.git
 		</form>
 	</div>
 

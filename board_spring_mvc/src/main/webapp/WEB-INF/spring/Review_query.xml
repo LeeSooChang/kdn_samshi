@@ -85,7 +85,7 @@
 	</select>
 	
 	<select id="getReviewNo" resultType="int">
-		select review_no.nextval from dual
+		select reviewboard_no.nextval from dual
 	</select>
 	
 </mapper>
