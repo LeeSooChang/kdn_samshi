@@ -47,35 +47,34 @@
 						<form>
 							<div class="row">
 								<div class="page-header" id="insertBoard">
-									<h3 class="text-center">Update Announcement</h3>
+									<h3 class="text-center">Edit Announcement</h3>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<input type="hidden" class="form-control" name="mno" id="mno"
-											value="${mno}" placeholder="Register Number" />
+											value="${mno}" placeholder="관리자번호" />
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<input type="hidden" class="form-control" name="nno" id="nno"
-											value="${noticeBoard.nno}" placeholder="Register Number" />
+											value="${noticeBoard.nno}" placeholder="관리자번호" />
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
 										<input type="text" class="form-control" name="title" value="${noticeBoard.title }"
-											id="title" placeholder="Title" />
+											id="title" placeholder="제목" />
 									</div>
 								</div>
 								<div class="col-md-12 text-center">
 									<div class="form-group">
 										<textarea class="form-control" name="contents" id="contents"
-											placeholder="Enter announcement to be notified" rows="6">${noticeBoard.contents}</textarea>
+											placeholder="내용" rows="6">${noticeBoard.contents}</textarea>
 									</div>
-									<a href="listNoticeBoard.do" class="btn btn-default">Cancel</a>
-									<button type="submit"  class="btn btn-danger">Submit</button>
-									<br />
-									<br />
+									<button type="submit"  class="btn btn-danger">수정</button>
+									<a href="listNoticeBoard.do" class="btn btn-default">취소</a>
+									<br/><br/>
 								</div>
 							</div>
 						</form>

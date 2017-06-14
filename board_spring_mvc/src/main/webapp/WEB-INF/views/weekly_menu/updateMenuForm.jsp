@@ -30,17 +30,17 @@
 
           <!-- Date input-->
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">날 짜</label>
-            <div class="col-sm-10  blackColor" style = "float : left ;">
-              	<input type = "date" name = "dietDate" id = "dietDate" required>
+            <label class="col-sm-2 control-label" for="textinput">날짜</label>
+            <div class="col-sm-10  blackColor">
+              	<input class="form-control" type = "date" name = "dietDate" id = "dietDate" required>
             </div>
           </div>
 
 		  <!-- foodTime input-->
 		    <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">시 간</label>
-            <div class="col-sm-10  blackColor" style = "float : left ;">
-              	<select	id = "scode" name = "scode">
+            <label class="col-sm-2 control-label" for="textinput">시간</label>
+            <div class="col-sm-10  blackColor">
+              	<select	class="form-control" id = "scode" name = "scode">
               		<option value = '1'>아 침</option>
               		<option value = '2'>일 품</option>
               		<option value = '3'>한 식</option>
@@ -52,7 +52,7 @@
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <div class = "blackColor">
-                <a href = "javascript:void(0);" class = "btn btn-sm btn-primary btn-create" onclick = "submit()">검색</a>
+                <a href = "javascript:void(0);" class = "btn btn-primary btn-create" onclick = "submit()">검색</a>
                 <a href = "javascript:void(0);" class="btn btn-danger btn-filter"  onclick = "updateMenuBack()" >취소</a>
               </div>
             </div>

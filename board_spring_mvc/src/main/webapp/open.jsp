@@ -11,7 +11,7 @@ body{background-color: black;}
 
 #pop_top{
 	width: 100%;
-	height: 150px;
+	height: 250px;
 	text-align: center;
 	font-size: 20px;
 	color: white;
@@ -19,11 +19,13 @@ body{background-color: black;}
 
 #pop_bottom{
 	width: 100%;
-	height:20px;
+	height: 30px;
 	text-align: right;
 	color: white;
 }
 </style>
+<script type="text/javascript">
+</script>
 </head>
 <body>
 <div id="pop_top">
@@ -59,5 +61,6 @@ function set_nopopup(name, value, expiredays){
  }
 }
 window.moveTo(0, 0);
+
 </script>
 </html>
