@@ -184,7 +184,7 @@ public class SuyoController {
 				break;
 
 			default:
-				
+				System.out.println("아침 아니면 저녁");
 				if(findEvent == null){
 					eventService.add(mno);
 					response.setContentType("text/html; charset=UTF-8");
@@ -200,18 +200,21 @@ public class SuyoController {
 				     writer.println("</script>");
 				     writer.flush();
 				}
+				System.out.println("이벤트 처리 완료");
 				
 				isSuyo = suyoService.searchSuyo(suyo);
 				if (isSuyo == null) {
 					suyoService.add(suyo);
 					if(findEvent == null){
 						if(dietScode == 1){
+							System.out.println("아침누르고 이벤트");
 							counter.setMcnt(counter.getMcnt() + 1);
-							count = counter.getMcnt();
+							System.out.println("이벤트 카운트 올리고");
 						}
 						else{
+							System.out.println("저녁누르고 이벤트");
 							counter.setEcnt(counter.getEcnt() + 1);
-							count = counter.getEcnt();
+							System.out.println("이벤트 카운트 올리고");
 						}
 					}
 				} else {

@@ -12,6 +12,9 @@ create table suyo (
 					mno NUMBER REFERENCES member(mno)
 )
 
+select * from suyo;
+select * from counter;
+
 delete from suyo where mno=3333;
 
 select * from suyo where mno=3333;
