@@ -74,14 +74,14 @@ public class NoticePageUtility {
             noticelastpagecount = noticetotalpagecount+1;
 		
         if(noticefirstpagecount>noticepagePercount)
-            sb.append(" <a href='javascript:noticePagelist("+noticebeforetenpage+")'><img src=\""+noticeimagepath+"btn_first.gif\" border='0'  hspace='3' align='absmiddle'></a>&nbsp;&nbsp;");
+            sb.append(" <a href='javascript:noticePagelist("+noticebeforetenpage+")' class='glyphicon glyphicon-chevron-left'></a>&nbsp;&nbsp;");
         else
-            sb.append("<img src=\""+noticeimagepath+"btn_first.gif\" border='0'  align=absmiddle>&nbsp;&nbsp;");
+            sb.append("<a href='#news' border='0'  align=absmiddle class='glyphicon glyphicon-chevron-left'></a>&nbsp;&nbsp;");
 
         if(((noticecurrentpagecount-1)/noticepagePercount*noticepagePercount)+1>noticebeforetenpage)
-            sb.append("<a href='javascript:noticePagelist("+ noticebeforetenpage+")'><img src=\""+noticeimagepath+"btn_prev.gif\" border='0' hspace='3' align=absmiddle></a>&nbsp;&nbsp;");
+            sb.append("<a href='javascript:noticePagelist("+ noticebeforetenpage+")' class='glyphicon glyphicon-triangle-left'></a>&nbsp;&nbsp;");
         else
-            sb.append("<img src=\""+noticeimagepath+"btn_prev.gif\" border='0'   align=absmiddle>&nbsp;&nbsp;");
+            sb.append("<a href='#news' border='0'   align=absmiddle class='glyphicon glyphicon-triangle-left'></a>&nbsp;&nbsp;");
 
         for (int i = noticefirstpagecount; i < noticelastpagecount; i++)
         {
@@ -97,14 +97,14 @@ public class NoticePageUtility {
         }
 
         if(noticenexttenpage<((noticetotalpagecount-1)/noticepagePercount+1)*noticepagePercount)
-            sb.append("&nbsp;&nbsp;<a href='javascript:noticePagelist("+ (noticenexttenpage)+ ")'><img src=\""+noticeimagepath+"btn_next.gif\" border='0' hspace='3' align=absmiddle></a>");
+            sb.append("&nbsp;&nbsp;<a href='javascript:noticePagelist("+ (noticenexttenpage)+ ")' class='glyphicon glyphicon-triangle-right'></a>");
         else
-            sb.append("&nbsp;&nbsp;<img src=\""+noticeimagepath+"btn_next.gif\" border='0' hspace='3' align=absmiddle>");
+            sb.append("&nbsp;&nbsp;<a href='#news' border='0' hspace='3' align=absmiddle class='glyphicon glyphicon-triangle-right'></a>");
 
         if((((noticecurrentpagecount-1)/noticepagePercount)+1)*noticepagePercount < noticenexttenpage)
-            sb.append("&nbsp;&nbsp;<a href='javascript:noticePagelist("+ (noticenexttenpage)+")'><img src=\""+noticeimagepath+"btn_end.gif\" border='0' align=absmiddle></a>");
+            sb.append("&nbsp;&nbsp;<a href='javascript:noticePagelist("+ (noticenexttenpage)+")' class='glyphicon glyphicon-chevron-right'></a>");
         else
-            sb.append("&nbsp;&nbsp;<img src=\""+noticeimagepath+"btn_end.gif\" border='0' align=absmiddle>");
+            sb.append("&nbsp;&nbsp;<a href='#news' border='0' align=absmiddle class='glyphicon glyphicon-chevron-right'></a>");
         return sb.toString();
     }
     public String getTotalPageCount() {       
