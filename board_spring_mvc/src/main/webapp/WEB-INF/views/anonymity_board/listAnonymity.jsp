@@ -142,7 +142,7 @@
 							<tr align="center">
 								<td colspan="2" align="right">
 									<button type="button" class="close" data-dismiss="modal">
-										<span class="glyphicon glyphicon-remove"></span> 취소
+										<span class="glyphicon glyphicon-remove"></span>취소
 									</button>
 									<button type="submit" class="close">
 										<span class="glyphicon glyphicon-ok"></span>수정

@@ -58,43 +58,48 @@
 </style>
 </head>
 <body>
-	<div style="overflow: hidden" id="updateForm" class="modal fade"
+<!-- 리뷰게시판 수정 모달 -->
+<div style="overflow: hidden" id="updateForm" class="modal fade"
 		tabindex="-1" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
+			<div class="modal-content" style="width:400px">
+				<div class="modal-header" align="left">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 style="color: blue">
-						<span class="glyphicon glyphicon-exclamation-sign"></span><label
-							id="modal-title">수정 포멧</label>
+					<h4 style="color: red">
+						<span class="glyphicon glyphicon-envelope"></span>
+						<label id="modal-title">리뷰 수정</label>
 					</h4>
+					<small>식사하신 메뉴에 대한 평점과 의견을 남겨주세요.</small>
+					<br/>
 				</div>
 				<div class="modal-body" id="modal-body">
-
 					<form method="post" action="updateReview.do"
 						enctype="multipart/form-data">
-						
 						<table align="center" width="300">
-							<tr>
-								<th colspan="2">게시글 작성</th>
-							</tr>
-							<tr height="50">
+							<%-- <tr height="50">
 								<td><label for="title">번호</label></td>
 								<td><input type="hidden" name="rno" id="urno"
 									value="${urno }" /></td>
-							</tr>
+							</tr> --%>
 							<tr height="50">
 								<td><label for="title">아이디</label></td>
-								<td><input type="hidden" name="mno" id="mno"
-									value="${mno }" /></td>
+								<td><input type="text" name="mno" id="mno"
+									value="${mno }"/></td>
 							</tr>
 							<tr height="50">
 								<td><label for="title">별점</label></td>
-								<td><input type="text" name="spoint" id="spoint" /></td>
+								<td><select name="spoint" id="spoint" >
+										<option value="5">5</option>
+										<option value="4">4</option>
+										<option value="3">3</option>
+										<option value="2">2</option>
+										<option value="1">1</option>
+									</select>	
+								</td>
 							</tr>
 							<tr height="50">
-								<td><label for="title">음식이름</label></td>
+								<td><label for="title">메뉴</label></td>
 								<td><input type="text" name="fname" id="fname" /></td>
 							</tr>
 							<tr>
@@ -102,12 +107,17 @@
 							</tr>
 							<tr>
 								<td colspan="2" align="center"><textarea name="comments"
-										id="comments" cols="30" rows="5"></textarea></td>
+										id="comments" cols="30" rows="5" style="resize:none;"></textarea></td>
 							</tr>
 							<tr>
-								<button type="submit" class="btn btn-default btn-success">
-									<span class="glyphicon glyphicon-ok"></span> 수정
-								</button>
+								<td colspan="2" align="right">
+									<button type="button" class="close" data-dismiss="modal">
+										<span class="glyphicon glyphicon-remove"></span> 취소
+									</button>
+									<button type="submit" class="close">
+										<span class="glyphicon glyphicon-ok"></span>수정
+									</button>
+								</td>
 							</tr>
 						</table>
 					</form>
@@ -115,23 +125,25 @@
 			</div>
 		</div>
 	</div>
+<!-- 리뷰 삭제 경고 모달  -->
 	<div style="overflow: hidden" id="checkForm" class="modal fade"
 		tabindex="-1" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
-			<div class="modal-content">
+			<div class="modal-content" style="width:400px">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 style="color: blue">
+					<h4 style="color: red">
 						<span class="glyphicon glyphicon-exclamation-sign"></span><label
 							id="modal-title">삭제 경고</label>
 					</h4>
 				</div>
 				<div class="modal-body" id="modal-body">
 					<form role="form" method="post" action="deleteReview.do">
-						정말 삭제하시겠습니까? <input type="hidden" id="rno" name="rno" value="" />
-						<button type="submit" class="btn btn-default btn-success">
-							<span class="glyphicon glyphicon-ok"></span> 삭제
+						정말 삭제하시겠습니까? 
+						<input type="hidden" id="rno" name="rno" />
+						<button type="submit" class="close">
+							<span class="glyphicon glyphicon-ok"></span>삭제
 						</button>
 					</form>
 				</div>
@@ -139,45 +151,38 @@
 		</div>
 	</div>
 
-
+<!-- 리뷰게시판 메인 -->
 	<div class="main">
 		<form id="rfrm">
 			<input type="hidden" id="reviewPageNo" name="reviewPageNo" value="1" />
 			<input type="hidden" id="no" name="no" />
-
 			<div class="container">
 				<div class="row">
-
 					<div class="col-md-10 col-md-offset-1">
-
 						<div class="panel panel-default panel-table">
 							<div class="panel-heading">
 								<div class="row">
 									<div class="col col-xs-6">
 										<select name="key" id="key">
 											<option value="all">-----선택-----</option>
-											<option value="rno" <%=reviewPageBean.getKey("rno")%>>리뷰번호</option>
+											<option value="rno" <%=reviewPageBean.getKey("rno")%>>번호</option>
 											<option value="mno" <%=reviewPageBean.getKey("mno")%>>사원번호</option>
-											<option value="fname" <%=reviewPageBean.getKey("fname")%>>음식이름</option>
+											<option value="fname" <%=reviewPageBean.getKey("fname")%>>메뉴</option>
 											<option value="spoint" <%=reviewPageBean.getKey("spoint")%>>별점</option>
 											<option value="comments"
 												<%=reviewPageBean.getKey("comments")%>>코멘트</option>
 										</select> <input type="text" id="word" name="word"
 											value="${reviewPageBean.word}"> <a href="#"
 											onclick="reviewPagelist(1)" class="btn btn-danger btn-filter">검색</a>
-
 									</div>
 									<div class="col col-xs-6 text-right">
 										<c:if test="${ !empty mno }">
-											<a href="#" class="btn btn-sm btn-primary btn-create"
+											<a href="#" class="btn btn-primary btn-create"
 												data-toggle="modal" data-target="#reviewModal">글쓰기</a>
 										</c:if>
 									</div>
 								</div>
 							</div>
-
-
-
 							<div class="panel-body">
 								<table class="table table-hover">
 									<thead>
@@ -185,10 +190,10 @@
 											<th><em class="fa fa-cog"></em></th>
 											<th class="hidden-xs" style="width:60px">번호</th>
 											<th>사원번호</th>
-											<th>음식이름</th>
+											<th>메뉴</th>
 											<th>별점</th>
 											<th>코멘트</th>
-											<th>등록일</th>
+											<th>날짜</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -210,7 +215,11 @@
 												<td class="hidden-xs">${reviewBoard.rno}</td>
 												<td>${reviewBoard.mno }</td>
 												<td>${reviewBoard.fname }</td>
-												<td>${reviewBoard.spoint }</td>
+												<td>
+												<c:forEach begin="1" end="${reviewBoard.spoint }">
+													<c:out value="★"/>
+												</c:forEach>
+												</td>
 												<td>${reviewBoard.comments}</td>
 												<td>${reviewBoard.regdate }</td>
 
@@ -234,59 +243,6 @@
 					</div>
 				</div>
 			</div>
-
-
-
-
-			<%-- <table align="center">
-				<tr align="center">
-					<td colspan="3" height="100" align="center">
-					<select
-						name="key" id="key" class="btn btn-success btn-filter">
-							<option value="all">-----all-----</option>
-							<option value="rno" <%=pageBean.getKey("rno")%>>아이디</option>
-							<option value="spoint" <%=pageBean.getKey("spoint")%>>별점</option>
-							<option value="fname" <%=pageBean.getKey("fname")%>>음식</option>
-							<option value="comments" <%=pageBean.getKey("comments")%>>내용</option>
-					</select> <input type="text" id="word" name="word" value="${reviewPageBean.word}"
-						class="btn btn-default btn-filter"> <a href="#"
-						onclick="pagelist(1)" class="btn btn-danger btn-filter">검색</a> 
-						<c:if test="${ !empty mno }">
-						<a href="insertReviewForm.do" class="btn btn-warning btn-filter">글쓰기</a>
-						<a href="insert.do" class="btn btn-warning btn-filter">삭제</a></td>
-						</c:if>
-				</tr>
-				<tr align="center">
-					<div class="table-container">
-						<table id="r-table" class="table table-filter">
-							<tbody>
-								<tr data-status="pagado">
-									<c:forEach var="reviewBoard" items="${list}">
-										<div class="col-md-2 text-center">
-											<p class="">
-												<span class="glyphicon glyphicon-calendar"
-													aria-hidden="true"></span>
-											</p>
-										</div>
-										<div class="col-md-10 text-justify">
-											<p>${reviewBoard.rno}</p>
-											<p>${reviewBoard.mno }</p>
-											<p>${reviewBoard.spoint }</p>
-											<p>${reviewBoard.fno }</p>
-											<p>${reviewBoard.fname }</p>
-											<p>${reviewBoard.comments}</p>
-											<p>${reviewBoard.regdate }</p>
-										</div>
-									</c:forEach>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</tr>
-			</table>
-			<div class="bottom">
-				<center>${reviewPageBean.pagelink }</center>
-			</div> --%>
 		</form>
 	</div>
 
