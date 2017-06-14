@@ -166,7 +166,7 @@
 										<select name="key" id="key">
 											<option value="all">-----선택-----</option>
 											<option value="rno" <%=reviewPageBean.getKey("rno")%>>번호</option>
-											<option value="mno" <%=reviewPageBean.getKey("mno")%>>사원번호</option>
+											<option value="mno" <%=reviewPageBean.getKey("mno")%>>사번</option>
 											<option value="fname" <%=reviewPageBean.getKey("fname")%>>메뉴</option>
 											<option value="spoint" <%=reviewPageBean.getKey("spoint")%>>별점</option>
 											<option value="comments"
@@ -189,7 +189,7 @@
 										<tr>
 											<th><em class="fa fa-cog"></em></th>
 											<th class="hidden-xs" style="width:60px">번호</th>
-											<th>사원번호</th>
+											<th>사번</th>
 											<th>메뉴</th>
 											<th>별점</th>
 											<th>코멘트</th>
