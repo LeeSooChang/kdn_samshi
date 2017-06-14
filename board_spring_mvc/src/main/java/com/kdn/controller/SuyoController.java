@@ -85,14 +85,20 @@ public class SuyoController {
 					if (isSuyo == null) {
 						suyoService.add(suyo);
 						if(findEvent == null){
-							if(dietScode == 1){
-								counter.setMcnt(counter.getMcnt() + 1);
-								count = counter.getMcnt();
-							}
-							else{
-								counter.setEcnt(counter.getEcnt() + 1);
-								count = counter.getEcnt();
-							}
+								counter.setIcnt(counter.getIcnt() + 1);
+								count = counter.getIcnt();
+								response.setContentType("text/html; charset=UTF-8");
+								PrintWriter writer = null;
+								try {
+									writer = response.getWriter();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							     writer.println("<script type='text/javascript'>");
+							     writer.println("alert('식사 이벤트에 참여 하셨습니다.');");
+							     writer.println("history.go(-1);");
+							     writer.println("</script>");
+							     writer.flush();
 						}
 					} else {
 						try {
@@ -132,14 +138,20 @@ public class SuyoController {
 					if (isSuyo == null) {
 						suyoService.add(suyo);
 						if(findEvent == null){
-							if(dietScode == 1){
-								counter.setMcnt(counter.getMcnt() + 1);
-								count = counter.getMcnt();
-							}
-							else{
-								counter.setEcnt(counter.getEcnt() + 1);
-								count = counter.getEcnt();
-							}
+								counter.setHcnt(counter.getHcnt() + 1);
+								count = counter.getHcnt();
+								response.setContentType("text/html; charset=UTF-8");
+								PrintWriter writer = null;
+								try {
+									writer = response.getWriter();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							     writer.println("<script type='text/javascript'>");
+							     writer.println("alert('식사 이벤트에 참여 하셨습니다.');");
+							     writer.println("history.go(-1);");
+							     writer.println("</script>");
+							     writer.flush();
 						}
 					} else {
 						try {
